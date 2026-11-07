@@ -6,7 +6,8 @@
   <title>Su Misura 3D | Oggetti stampati in 3D, fatti per te</title>
   <meta name="description" content="Oggetti stampati in 3D per la casa, regali e pezzi personalizzati. Scegli dal catalogo o descrivi la tua idea: la progettiamo e la stampiamo su misura.">
   <meta name="theme-color" content="#14161a">
-  <link rel="preload" as="image" href="assets/hero-1-800.webp" imagesrcset="assets/hero-1-400.webp 400w, assets/hero-1-800.webp 800w" imagesizes="100vw" type="image/webp" fetchpriority="high">
+  <script>document.documentElement.classList.add('js');</script>
+  <link rel="preload" as="image" href="assets/hero-1-800.webp" imagesrcset="assets/hero-1-400.webp 400w, assets/hero-1-800.webp 800w" imagesizes="(max-width: 700px) 100vw, 50vw" type="image/webp" fetchpriority="high">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="it_IT">
   <meta property="og:title" content="Su Misura 3D | Oggetti stampati in 3D, fatti per te">
@@ -319,9 +320,9 @@ html{scroll-padding-top:102px}
  .site-header .cart-toggle{grid-column:3;grid-row:1;font-size:.82rem}
  .site-header .menu-btn{grid-column:2;grid-row:1;display:none;align-items:center;gap:.4rem;color:#fff4ed;border-color:#815b4d;min-height:42px;padding:.4rem .6rem}
  .site-header .nav{grid-column:1/-1;grid-row:2;order:0;width:100%;justify-content:flex-start;gap:.35rem 1rem;padding:.45rem 0}
- .site-header.nav-ready .menu-btn{display:inline-flex}
- .site-header.nav-ready .nav{display:none}
- .site-header.nav-ready .nav.open{display:flex;animation:nav-drop .2s ease-out}
+ html.js .site-header .menu-btn{display:inline-flex}
+ html.js .site-header .nav{display:none}
+ html.js .site-header .nav.open{display:flex;animation:nav-drop .2s ease-out}
  .menu-mark{display:grid;gap:4px;width:16px}
  .menu-mark i{height:2px;background:#ffbc9c;border-radius:3px;transition:transform .2s ease}
  .menu-btn[aria-expanded=true] .menu-mark i:first-child{transform:translateY(3px) rotate(45deg)}
@@ -648,19 +649,19 @@ body:has(#salva-1:checked) .stripe-pay-native[data-stripe-product="1"]{display:i
         <div class="frame is-active" data-label="Vaso scultoreo">
           <picture>
             
-            <img src="assets/hero-1-800.webp" width="1600" height="900" alt="" fetchpriority="high" decoding="async" srcset="assets/hero-1-400.webp 400w, assets/hero-1-800.webp 800w" sizes="100vw" loading="eager">
+            <img src="assets/hero-1-800.webp" width="1600" height="900" alt="" fetchpriority="high" decoding="async" srcset="assets/hero-1-400.webp 400w, assets/hero-1-800.webp 800w" sizes="(max-width: 700px) 100vw, 50vw" loading="eager">
           </picture>
         </div>
         <div class="frame" data-label="Materia a strati">
           <picture>
             
-            <img src="assets/hero-2-800.webp" width="1600" height="900" alt="" loading="lazy" decoding="async" fetchpriority="low" srcset="assets/hero-2-400.webp 400w, assets/hero-2-800.webp 800w" sizes="100vw">
+            <img src="assets/hero-2-800.webp" width="1600" height="900" alt="" loading="lazy" decoding="async" fetchpriority="low" srcset="assets/hero-2-400.webp 400w, assets/hero-2-800.webp 800w" sizes="(max-width: 700px) 100vw, 50vw">
           </picture>
         </div>
         <div class="frame" data-label="Stampa in corso">
           <picture>
             
-            <img src="assets/hero-3-800.webp" width="1600" height="900" alt="" loading="lazy" decoding="async" fetchpriority="low" srcset="assets/hero-3-400.webp 400w, assets/hero-3-800.webp 800w" sizes="100vw">
+            <img src="assets/hero-3-800.webp" width="1600" height="900" alt="" loading="lazy" decoding="async" fetchpriority="low" srcset="assets/hero-3-400.webp 400w, assets/hero-3-800.webp 800w" sizes="(max-width: 700px) 100vw, 50vw">
           </picture>
         </div>
       </div>
@@ -1034,7 +1035,6 @@ function markSection() {
 }
 window.addEventListener('hashchange', markSection);
 markSection();
-nav.closest('header').classList.add('nav-ready');
 
 })();
 </script><script>
@@ -1308,4 +1308,4 @@ contact.addEventListener('submit', event => {
       <fieldset class="quick-quantity"><legend>Quantità</legend><div class="quantity-stepper"><input type="radio" name="qty-2" value="1" checked id="qty-2-1" aria-label="1 pezzi" class="sr"><div class="step-state" data-step="1"><span class="step-control" aria-hidden="true">−</span><output>1</output><label class="step-control" for="qty-2-2" aria-label="Aumenta quantità">+</label></div><input type="radio" name="qty-2" value="2" id="qty-2-2" aria-label="2 pezzi" class="sr"><div class="step-state" data-step="2"><label class="step-control" for="qty-2-1" aria-label="Diminuisci quantità">−</label><output>2</output><label class="step-control" for="qty-2-3" aria-label="Aumenta quantità">+</label></div><input type="radio" name="qty-2" value="3" id="qty-2-3" aria-label="3 pezzi" class="sr"><div class="step-state" data-step="3"><label class="step-control" for="qty-2-2" aria-label="Diminuisci quantità">−</label><output>3</output><label class="step-control" for="qty-2-4" aria-label="Aumenta quantità">+</label></div><input type="radio" name="qty-2" value="4" id="qty-2-4" aria-label="4 pezzi" class="sr"><div class="step-state" data-step="4"><label class="step-control" for="qty-2-3" aria-label="Diminuisci quantità">−</label><output>4</output><label class="step-control" for="qty-2-5" aria-label="Aumenta quantità">+</label></div><input type="radio" name="qty-2" value="5" id="qty-2-5" aria-label="5 pezzi" class="sr"><div class="step-state" data-step="5"><label class="step-control" for="qty-2-4" aria-label="Diminuisci quantità">−</label><output>5</output><label class="step-control" for="qty-2-6" aria-label="Aumenta quantità">+</label></div><input type="radio" name="qty-2" value="6" id="qty-2-6" aria-label="6 pezzi" class="sr"><div class="step-state" data-step="6"><label class="step-control" for="qty-2-5" aria-label="Diminuisci quantità">−</label><output>6</output><label class="step-control" for="qty-2-7" aria-label="Aumenta quantità">+</label></div><input type="radio" name="qty-2" value="7" id="qty-2-7" aria-label="7 pezzi" class="sr"><div class="step-state" data-step="7"><label class="step-control" for="qty-2-6" aria-label="Diminuisci quantità">−</label><output>7</output><label class="step-control" for="qty-2-8" aria-label="Aumenta quantità">+</label></div><input type="radio" name="qty-2" value="8" id="qty-2-8" aria-label="8 pezzi" class="sr"><div class="step-state" data-step="8"><label class="step-control" for="qty-2-7" aria-label="Diminuisci quantità">−</label><output>8</output><label class="step-control" for="qty-2-9" aria-label="Aumenta quantità">+</label></div><input type="radio" name="qty-2" value="9" id="qty-2-9" aria-label="9 pezzi" class="sr"><div class="step-state" data-step="9"><label class="step-control" for="qty-2-8" aria-label="Diminuisci quantità">−</label><output>9</output><label class="step-control" for="qty-2-10" aria-label="Aumenta quantità">+</label></div><input type="radio" name="qty-2" value="10" id="qty-2-10" aria-label="10 pezzi" class="sr"><div class="step-state" data-step="10"><label class="step-control" for="qty-2-9" aria-label="Diminuisci quantità">−</label><output>10</output><span class="step-control" aria-hidden="true">+</span></div></div></fieldset><p class="form-note">Salva l’articolo una volta. Puoi poi modificare la quantità dal carrello.</p>
       <input type="checkbox" id="salva-2" class="sr saved-product" aria-label="Salva prodotto nel carrello"><label for="salva-2" class="btn btn-accent save-choice"><span class="save-inactive">Salva nel carrello</span><span class="save-active">✓ Nel carrello</span></label><a href="#cart" class="btn btn-accent saved-checkout-link">Apri il carrello →</a><a class="btn btn-dark continue-saved" href="#prodotti">Continua a esplorare</a>
     <a href="#contatti" class="btn btn-dark">Vai ai contatti</a></article></div></section></body>
-</html> 
+</html>
