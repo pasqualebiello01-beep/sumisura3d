@@ -1295,7 +1295,7 @@ body:has(#salva-1:checked) .stripe-pay-native[data-stripe-product="1"]{display:i
 <p><strong>14.1.</strong> Le CGV sono regolate dalla legge italiana, ferme le tutele inderogabili del Paese di residenza abituale del Consumatore nei casi previsti dall’art. 6 del Regolamento (CE) n. 593/2008.</p>
 <p><strong>14.2.</strong> Per le controversie con i consumatori si applicano le norme inderogabili sulla competenza, incluso l’art. 66-bis del Codice del Consumo ove applicabile. Per i clienti professionali, [indicare il foro previsto, se concordato].</p>
 
-<h2>15. Modifiche</h2>  
+<h2>15. Modifiche</h2>
 <p>Le modifiche si applicano agli ordini successivi alla loro pubblicazione. La data di aggiornamento va indicata all’inizio di questa pagina.</p>
 </div><h2>Documenti correlati</h2><nav aria-label="Documenti correlati"><a href="#info-resi">Recesso, resi e rimborsi</a><a href="#info-spedizioni">Spedizioni e consegne</a><a href="#info-garanzia">Garanzia legale di conformità</a><a href="#info-privacy">Informativa privacy</a><a href="#info-cookie">Cookie policy</a><a href="#info-note-legali">Note legali</a></nav></div></section><section id="checkout" hidden aria-labelledby="checkoutTitle" class="section checkout-page" tabindex="-1">
 <div class="wrap checkout-card"><a id="backCart" class="back-button" href="#prodotti">← Torna al negozio</a>
@@ -1517,7 +1517,7 @@ cart.addEventListener('keydown', event => {
   if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
 });
 function renderCheckout() {
-  const list = byId('checkoutItems');
+  const list = byId('checkoutItems'); 
   list.replaceChildren();
   let hasPricedProducts = false;
   let hasQuoteProducts = false;
