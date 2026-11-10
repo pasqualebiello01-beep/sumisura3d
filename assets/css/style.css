@@ -670,3 +670,6 @@ html.no-motion .reveal { clip-path: none; }
 }
 @keyframes print-curtain { from { height: 100%; } to { height: 0%; } }
 @media (prefers-reduced-motion: reduce) { .stage-shot.is-printing::before { display: none; } }
+
+/* la tenda copre la prima immagine fin dal primo istante e parte quando l'immagine è arrivata */
+.js .stage-shot.is-waiting::before, .js .stage-shot.is-waiting::after { animation-play-state: paused; }

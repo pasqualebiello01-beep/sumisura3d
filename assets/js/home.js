@@ -12,11 +12,11 @@ document.addEventListener("DOMContentLoaded", () => {
       const mp = minPrice(p);
       const price = mp == null ? "Su preventivo" : (hasPriceRange(p) ? "da " : "") + money(mp);
       return `<li><button type="button" class="rail-item" data-id="${esc(p.id)}" aria-expanded="false" aria-controls="rail-panel">
-        <img src="${esc(thumbSrc(S.imagesFor(p)[0].src))}" alt="" width="600" height="600" decoding="async" style="view-transition-name:p-${esc(p.id)}" onerror="this.onerror=null;this.src='${esc(S.imagesFor(p)[0].src)}'">
+        <img src="${esc(thumbSrc(S.imagesFor(p)[0].src))}" srcset="${esc(S.thumbSet(S.imagesFor(p)[0].src))}" sizes="(max-width: 860px) 42vw, 190px" alt="" width="600" height="600" loading="lazy" decoding="async" style="view-transition-name:p-${esc(p.id)}" onerror="${esc(S.thumbFallback(S.imagesFor(p)[0].src))}">
         <span class="rail-label"><strong>${esc(p.name)}</strong><span>${price}</span></span></button></li>`;
     }).join("");
     let current = null, lastTrigger = null;
-    const restoreImg = (b) => { const q = PRODUCTS.find((x) => x.id === b.dataset.id); const src = thumbSrc(S.imagesFor(q)[0].src); const im = $("img", b); if (im.getAttribute("src") !== src) im.src = src; };
+    const restoreImg = (b) => { const q = PRODUCTS.find((x) => x.id === b.dataset.id); const full = S.imagesFor(q)[0].src; const src = thumbSrc(full); const im = $("img", b); if (im.getAttribute("src") !== src) { im.srcset = S.thumbSet(full); im.src = src; } };
     const desktop = () => matchMedia("(min-width: 861px)").matches;
 
     function moveSelected(btn) {
@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const recolor = () => {
         const imgs = S.imagesFor(p, selected);
         const src = thumbSrc(imgs[Math.min(view, imgs.length - 1)].src);
-        if (selImg.getAttribute("src") !== src) { selImg.classList.remove("recolor"); void selImg.offsetWidth; selImg.src = src; selImg.classList.add("recolor"); }
+        if (selImg.getAttribute("src") !== src) { selImg.classList.remove("recolor"); void selImg.offsetWidth; selImg.removeAttribute("srcset"); selImg.src = src; selImg.classList.add("recolor"); }
       };
       $$("[data-variant]", panel).forEach((r) => r.addEventListener("change", () => {
         selected[r.dataset.variant] = r.value; upd();
@@ -161,7 +161,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const setStageH = () => stage.style.setProperty("--stage-h", stage.clientHeight + "px");
   setStageH(); addEventListener("resize", setStageH, { passive: true });
-  show(0, true);
+  // la prima "stampa" parte solo quando l'immagine è arrivata
+  const firstImg = $("img", shots[0]);
+  const startFirst = () => { show(0, true); shots[0].classList.remove("is-waiting"); };
+  if (firstImg && !firstImg.complete) { firstImg.addEventListener("load", startFirst, { once: true }); firstImg.addEventListener("error", startFirst, { once: true }); }
+  else startFirst();
   if (playing) play(); else { toggle.innerHTML = ICON_PLAY; toggle.setAttribute("aria-label", "Avvia lo scorrimento"); }
 
   // Parallasse leggera allo scroll

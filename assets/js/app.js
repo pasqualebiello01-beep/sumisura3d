@@ -23,6 +23,10 @@
   const product = (id) => PRODUCTS.find((p) => p.id === id);
   const category = (id) => CATS.find((c) => c.id === id);
   const thumbSrc = (src) => src.replace(/\.webp$/, "-600.webp");
+  /** Miniature responsive: versione da 300 px per gli schermi piccoli, 600 px per gli altri.
+   *  Se la versione -300 manca, l'immagine ripiega da sola su quella grande. */
+  const thumbSet = (src) => `${src.replace(/\.webp$/, "-300.webp")} 300w, ${src.replace(/\.webp$/, "-600.webp")} 600w`;
+  const thumbFallback = (src) => `this.onerror=null;this.removeAttribute('srcset');this.src='${src}'`;
   const ph = (label) => `<span class="ph ph-only">[${esc(label)}]</span>`;
 
   function unitPrice(p, options) {
@@ -261,8 +265,8 @@
     return `
       <article class="card">
         <div class="card-media">
-          <img src="${esc(thumbSrc(img.src))}" alt="${esc(img.alt)}" width="600" height="600" style="view-transition-name:p-${esc(p.id)}" loading="${opts.eager ? "eager" : "lazy"}" decoding="async"
-               onerror="this.onerror=null;this.src='${esc(img.src)}'">
+          <img src="${esc(thumbSrc(img.src))}" srcset="${esc(thumbSet(img.src))}" sizes="(max-width: 600px) 46vw, (max-width: 1000px) 30vw, 290px" alt="${esc(img.alt)}" width="600" height="600" style="view-transition-name:p-${esc(p.id)}" loading="${opts.eager ? "eager" : "lazy"}" decoding="async"
+               onerror="${esc(thumbFallback(img.src))}">
           ${badges.length ? `<div class="card-badges">${badges.join("")}</div>` : ""}
         </div>
         <div class="card-body">
@@ -467,7 +471,7 @@
   });
 
   window.S3D = {
-    C, PRODUCTS, CATS, $, $$, esc, money, product, category, unitPrice, minPrice, defaultOption, defaultOptions, imagesFor, colorFor, modelFor, swatch, isCustom, SHIPPING, hasPriceRange, thumbSrc, ph,
+    C, PRODUCTS, CATS, $, $$, esc, money, product, category, unitPrice, minPrice, defaultOption, defaultOptions, imagesFor, colorFor, modelFor, swatch, isCustom, SHIPPING, hasPriceRange, thumbSrc, thumbSet, thumbFallback, ph,
     Cart, cardHTML, toast, postJSON, fallbackHTML, waUrl, sendViaWhatsApp, bindWhatsAppButton, bindCopy, reasonFor, setupValidation, validateForm, setBusy,
     reduceMotion, store, updateBadge
   };

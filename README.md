@@ -53,7 +53,7 @@ Un'opzione può avere un proprio modello 3D (`model`). Quando il cliente la sceg
 Se le foto dipendono da più scelte insieme, ad esempio colore e attacco, usa `imageVariants` e `imageViews` (vedi "Manopola zigrinata" in `products.js`). In quel caso le foto si chiamano `<id>-<colore>-<attacco>.webp` e `<id>-<colore>-<attacco>-sotto.webp`, ad esempio `manopola-ricambio-nero-opaco-albero-tondo-sotto.webp`, più le versioni `-600`.
 
 ### Immagini
-Metti le foto in `assets/img/prodotti/`. Il formato consigliato è WebP quadrato da 1100×1100 px su sfondo neutro o scontornato. Per ogni foto aggiungi anche una versione da 600 px con suffisso `-600` (es. `vaso-600.webp`), che viene usata nelle schede: se manca, il sito usa l'immagine grande. Compila sempre il campo `alt`.
+Metti le foto in `assets/img/prodotti/`. Il formato consigliato è WebP quadrato da 1100×1100 px su sfondo neutro o scontornato. Per ogni foto aggiungi anche le miniature con suffisso `-600` e `-300`, per esempio `vaso-600.webp` e `vaso-300.webp`. Le schede le usano per caricare velocemente sul telefono; se mancano, il sito ripiega da solo sull'immagine grande. Compila sempre il campo `alt`.
 
 ### Modelli 3D
 Metti i file `.glb` (o `.gltf`) in `assets/models/` e indica il percorso nel campo `model`. Con `model: null` la scheda mostra solo le foto, senza la vista 3D.
