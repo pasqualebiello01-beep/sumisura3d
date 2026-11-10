@@ -144,7 +144,7 @@ function handleCheckout(req, res) {
       checkoutLib = checkoutLib || (await import("./lib/checkout.mjs"));
       const url = `http://${req.headers.host || "localhost"}${req.url}`;
       const request = new Request(url, { method: req.method, headers: { "Content-Type": "application/json" }, body: req.method === "POST" ? Buffer.concat(chunks) : undefined });
-      const response = await checkoutLib.handleApi(request, process.env);
+      const response = await checkoutLib.handleApi(request, { ...process.env, READ_ASSET: (rel) => { try { return new Uint8Array(fs.readFileSync(path.join(ROOT, rel))); } catch (e) { return null; } } });
       res.writeHead(response.status, { "Content-Type": "application/json; charset=utf-8", "Cache-Control": "no-store" });
       res.end(await response.text());
     } catch (e) {
