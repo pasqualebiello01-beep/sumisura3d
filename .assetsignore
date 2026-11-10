@@ -1,0 +1,14 @@
+worker.js
+wrangler.toml
+lib
+functions
+server.js
+tools
+data
+node_modules
+README.md
+README-PRIMA-DEL-LIVE.txt
+.gitignore
+.wrangler
+.dev.vars
+.git
