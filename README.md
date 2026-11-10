@@ -119,3 +119,7 @@ Se modifichi `assets/css/style.css`, rilancia `node tools/inline-css.mjs` (oppur
 - In Stripe: Impostazioni → Email clienti → attiva "Pagamenti riusciti", così ogni cliente riceve la conferma dell'ordine via email.
 - Recesso: le richieste fatte con "Recedi dal contratto qui" vengono registrate nei metadati del pagamento in Stripe (campi `recesso_...`). Rispondi al cliente via email con l'indirizzo per la restituzione.
 - Google Fonts si carica solo se il visitatore accetta il banner cookie.
+
+## Foto nella pagina di pagamento Stripe
+Stripe non mostra le immagini WebP: il server usa le copie JPG in `assets/img/checkout/` (stesso nome della foto, estensione .jpg).
+Quando aggiungi o cambi le foto dei prodotti, crea anche le copie JPG con `python tools/checkout-images.py` (oppure chiedi di farlo).
