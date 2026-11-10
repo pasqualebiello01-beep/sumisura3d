@@ -82,8 +82,9 @@ export const S3D_PRODUCTS = [
     price: 18,
     short: "Ingranaggio a denti dritti ricostruito sulle misure del pezzo originale.",
     description: [
-      "Testo di esempio. Descrivi qui il prodotto reale: a cosa serve, su quali apparecchi si monta e quali misure servono per ordinarlo.",
-      "Per un ricambio diverso da questo, aggiungi le misure o il modello dell'apparecchio nel campo note: valutiamo la fattibilità prima di confermare il prezzo."
+      "Un ingranaggio consumato o con un dente rotto può fermare un intero apparecchio, e spesso il ricambio originale non si trova più. Questo ingranaggio a denti dritti, con mozzo centrale e cava per chiavetta, è pensato proprio per rimettere in funzione meccanismi come piccoli elettrodomestici, giocattoli, tapparelle, stampanti e attrezzi da laboratorio.",
+      "Lo stampiamo in 3D strato dopo strato con un materiale tecnico adatto a lavorare sotto sforzo, così i denti restano precisi e resistenti all'usura. Scegli il colore e il diametro che ti servono: il prezzo si aggiorna in automatico.",
+      "Il tuo ingranaggio ha un numero di denti, uno spessore o un foro diversi? Scrivi le misure o il modello dell'apparecchio nel campo note: il pezzo diventa su misura e ti mandiamo il preventivo su WhatsApp prima di realizzarlo."
     ],
     images: [
       { src: "assets/img/prodotti/ingranaggio-ricambio.webp", alt: "Ingranaggio nero a 18 denti con mozzo centrale e cava per chiavetta" },
@@ -95,7 +96,8 @@ export const S3D_PRODUCTS = [
       { name: "Diametro", options: [{ label: "40 mm", priceDelta: -4 }, { label: "60 mm", priceDelta: 0 }, { label: "80 mm", priceDelta: 6 }] }
     ],
     specs: [
-      { label: "Denti", value: "18 (modello di esempio)" },
+      { label: "Tecnologia", value: "Stampa 3D FDM" },
+      { label: "Denti", value: "18" },
       { label: "Spessore", value: "10 mm + mozzo 4 mm" }
     ],
     featured: true,
@@ -108,8 +110,9 @@ export const S3D_PRODUCTS = [
     price: 9,
     short: "Manopola di ricambio con presa zigrinata, per elettrodomestici e attrezzature.",
     description: [
-      "Testo di esempio. Indica qui per quali apparecchi è pensata e come si sceglie l'attacco corretto.",
-      "Scegli l'attacco per vedere il foro sotto la manopola. Con \"Su misura\" la manopola arriva piena e il foro viene realizzato sulle misure che indichi nel campo note."
+      "La manopola di forno, piano cottura, lavatrice o di un'attrezzatura da lavoro si è rotta o è andata persa? Questa manopola cilindrica con presa zigrinata si impugna bene anche con le mani bagnate o unte e ridà un aspetto ordinato all'apparecchio.",
+      "Scegli l'attacco giusto per il tuo perno: \"Albero a D\" per i perni con un lato piatto, il più comune su forni e fornelli; \"Albero tondo\" per i perni cilindrici. Selezionando l'attacco vedi la foto e il modello 3D del foro sotto la manopola.",
+      "Se il tuo perno ha una forma o una misura diversa, scegli \"Su misura\" e indica nel campo note il diametro del perno e il modello dell'apparecchio: realizziamo il foro sulle tue misure e ti mandiamo il preventivo su WhatsApp."
     ],
     images: [{ src: "assets/img/prodotti/manopola-ricambio.webp", alt: "Manopola grigia cilindrica con zigrinatura verticale" }],
     model: "assets/models/manopola-ricambio-albero-a-d.glb",
@@ -131,7 +134,7 @@ export const S3D_PRODUCTS = [
       { suffix: "", label: "vista dall'alto" },
       { suffix: "-sotto", label: "vista da sotto, con il foro di attacco" }
     ],
-    specs: [{ label: "Diametro", value: "32 mm (modello di esempio)" }],
+    specs: [{ label: "Tecnologia", value: "Stampa 3D FDM" }, { label: "Diametro", value: "32 mm" }],
     featured: true,
     placeholder: true
   },
@@ -142,7 +145,9 @@ export const S3D_PRODUCTS = [
     price: 29,
     short: "Vaso con pareti a torsione che giocano con la luce.",
     description: [
-      "Testo di esempio. Racconta qui forma, dimensioni e uso del prodotto reale."
+      "Un vaso dalle linee morbide che sembra ruotare su sé stesso: le pareti a torsione creano giochi di luce e ombra che cambiano durante il giorno. È perfetto per fiori secchi, piante grasse, pennelli o come oggetto decorativo su una mensola, una libreria o la scrivania.",
+      "La stampa 3D a strati lascia sulla superficie una texture sottile e regolare, che rende ogni vaso un pezzo dal carattere artigianale. Puoi sceglierlo in tre colori e in due altezze, 12 o 18 cm.",
+      "Per fiori freschi con acqua ti consigliamo di inserire all'interno un piccolo contenitore in vetro. Vuoi un'altezza o un colore diverso? Scrivilo nel campo note e ti mandiamo un preventivo."
     ],
     images: [
       { src: "assets/img/prodotti/vaso-geometrico.webp", alt: "Vaso arancione con superficie a spirale" },
@@ -153,7 +158,7 @@ export const S3D_PRODUCTS = [
       coloreVariante("vaso-geometrico", "Vaso torsione", ["Arancione", "Nero opaco", "Grigio titanio"]),
       { name: "Altezza", options: [{ label: "12 cm", priceDelta: 0 }, { label: "18 cm", priceDelta: 10 }] }
     ],
-    specs: [{ label: "Altezza", value: "12 cm (modello di esempio)" }],
+    specs: [{ label: "Tecnologia", value: "Stampa 3D FDM" }, { label: "Altezza", value: "12 o 18 cm" }],
     featured: true,
     placeholder: true
   },
@@ -163,14 +168,18 @@ export const S3D_PRODUCTS = [
     category: "accessori",
     price: 14,
     short: "Supporto da scrivania inclinato, con bordo di appoggio.",
-    description: ["Testo di esempio. Indica compatibilità e dimensioni del prodotto reale."],
+    description: [
+      "Un supporto semplice e stabile per tenere il telefono in piedi sulla scrivania, sul comodino o in cucina. Lo schienale inclinato lascia lo schermo ben visibile mentre lavori, segui una ricetta, guardi un video o fai una videochiamata.",
+      "Il bordo di appoggio trattiene il telefono in modo sicuro e la base larga evita che si ribalti. Va bene per la maggior parte degli smartphone, anche con la cover.",
+      "Disponibile in tre colori. Hai un tablet o ti serve un'inclinazione diversa? Indicalo nel campo note e lo realizziamo su misura."
+    ],
     images: [
       { src: "assets/img/prodotti/supporto-smartphone.webp", alt: "Supporto nero per smartphone con schienale inclinato" },
       { src: "assets/img/prodotti/supporto-smartphone-dettaglio.webp", alt: "Supporto nero visto di lato" }
     ],
     model: "assets/models/supporto-smartphone.glb",
     variants: [coloreVariante("supporto-smartphone", "Supporto per smartphone", TRE_COLORI)],
-    specs: [{ label: "Larghezza", value: "76 mm (modello di esempio)" }],
+    specs: [{ label: "Tecnologia", value: "Stampa 3D FDM" }, { label: "Larghezza", value: "76 mm" }],
     featured: true,
     placeholder: true
   },
@@ -181,7 +190,9 @@ export const S3D_PRODUCTS = [
     price: 24,
     short: "Organizer a scomparti per penne, cavi e piccoli oggetti.",
     description: [
-      "Testo di esempio. Descrivi qui dimensioni, scomparti e uso del prodotto reale."
+      "Penne, evidenziatori, cavi, chiavette USB, graffette: tutto al suo posto e sempre a portata di mano. Questo organizer a scomparti di diverse altezze mette ordine sulla scrivania di casa o dell'ufficio senza occupare troppo spazio.",
+      "Ha un design pulito, con linee essenziali che stanno bene in qualsiasi ambiente, ed è stampato in 3D in un unico pezzo, robusto e leggero. Puoi sceglierlo in tre colori, per abbinarlo alla tua postazione.",
+      "Ti servono scomparti diversi, il tuo nome o il logo della tua attività? Scrivilo nel campo note: lo progettiamo su misura e ti mandiamo il preventivo su WhatsApp."
     ],
     images: [
       { src: "assets/img/prodotti/organizer-scrivania.webp", alt: "Organizer color avorio con quattro scomparti" },
@@ -189,7 +200,7 @@ export const S3D_PRODUCTS = [
     ],
     model: "assets/models/organizer-scrivania.glb",
     variants: [coloreVariante("organizer-scrivania", "Organizer da scrivania", TRE_COLORI)],
-    specs: [{ label: "Dimensioni", value: "120 × 80 × 60 mm (modello di esempio)" }],
+    specs: [{ label: "Tecnologia", value: "Stampa 3D FDM" }, { label: "Dimensioni", value: "120 × 80 × 60 mm" }],
     featured: false,
     placeholder: true
   },
@@ -200,8 +211,9 @@ export const S3D_PRODUCTS = [
     price: null,
     short: "Parti da un'idea, un disegno o un pezzo rotto: lo realizziamo per te.",
     description: [
-      "Descrivi nel campo note cosa ti serve: misure, quantità, uso previsto. Se hai foto, disegni o file 3D, indicalo nella richiesta e ti diremo come inviarceli.",
-      "Il prezzo dipende dal progetto e te lo comunichiamo nel preventivo."
+      "Hai un'idea da trasformare in oggetto, un prototipo da testare o un pezzo rotto che non si trova più? Lo progettiamo e lo stampiamo in 3D per te, anche in un solo esemplare.",
+      "Descrivi nel campo note cosa ti serve: misure, quantità, uso previsto e, se lo sai, dove verrà utilizzato il pezzo (all'interno, all'aperto, vicino a fonti di calore). Se hai foto, disegni o file 3D, indicalo nella richiesta e ti diremo come inviarceli.",
+      "In base all'uso scegliamo insieme il materiale più adatto tra PLA, PETG, ABS e ASA. Il prezzo dipende dal progetto e te lo comunichiamo nel preventivo su WhatsApp prima di iniziare."
     ],
     images: [
       { src: "assets/img/prodotti/ingranaggio-ricambio-dettaglio.webp", alt: "Esempio di pezzo tecnico stampato in 3D" }
@@ -210,7 +222,7 @@ export const S3D_PRODUCTS = [
     variants: [
       { name: "Tipo di richiesta", options: [{ label: "Prototipo", priceDelta: 0 }, { label: "Ricambio", priceDelta: 0 }, { label: "Oggetto personalizzato", priceDelta: 0 }] }
     ],
-    specs: [],
+    specs: [{ label: "Tecnologia", value: "Stampa 3D FDM" }, { label: "Materiali", value: "PLA, PETG, ABS, ASA" }],
     featured: false,
     placeholder: false
   }

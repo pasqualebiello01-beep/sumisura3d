@@ -73,8 +73,8 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
           </form>
 
-          <div class="prose">${(p.description || []).map((d) => `<p>${esc(d)}</p>`).join("")}</div>
-          ${p.specs && p.specs.length ? `<dl class="spec-list">${p.specs.map((s) => `<div><dt>${esc(s.label)}</dt><dd>${esc(s.value)}</dd></div>`).join("")}</dl>` : ""}
+          <section class="product-desc" aria-labelledby="desc-title"><h2 id="desc-title">Descrizione</h2><div class="prose">${(p.description || []).map((d) => `<p>${esc(d)}</p>`).join("")}</div></section>
+          ${p.specs && p.specs.length ? `<h2 class="spec-title">Caratteristiche</h2><dl class="spec-list">${p.specs.map((s) => `<div><dt>${esc(s.label)}</dt><dd>${esc(s.value)}</dd></div>`).join("")}</dl>` : ""}
           <p class="small muted" style="margin-top:1.5rem">Hai bisogno di una versione diversa? <a href="contatti.html#richiesta">Chiedici un pezzo su misura</a>.</p>
         </div>
       </div>`;

@@ -281,6 +281,7 @@
         <div class="card-body">
           <span class="card-cat">${esc(cat ? cat.name : "")}</span>
           <h3 class="card-title"><a href="prodotto.html#${esc(p.id)}">${esc(p.name)}</a></h3>
+          ${p.short ? `<p class="card-desc">${esc(p.short)}</p>` : ""}
           <span class="card-price">${price}</span>
         </div>
       </article>`;

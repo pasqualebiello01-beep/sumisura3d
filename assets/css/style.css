@@ -685,3 +685,10 @@ html.no-motion .reveal { clip-path: none; }
 
 /* la tenda copre la prima immagine fin dal primo istante e parte quando l'immagine è arrivata */
 .js .stage-shot.is-waiting::before, .js .stage-shot.is-waiting::after { animation-play-state: paused; }
+
+/* Descrizioni dei prodotti */
+.product-desc { margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--line); }
+.product-desc h2, .spec-title { font-size: 1.15rem; margin: 0 0 .75rem; }
+.spec-title { margin-top: 1.5rem; }
+.product-desc .prose p { margin: 0 0 .9rem; line-height: 1.65; }
+.card-desc { margin: .1rem 0 .35rem; font-size: .9rem; line-height: 1.45; color: var(--ink-2); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
