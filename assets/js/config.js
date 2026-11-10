@@ -17,9 +17,15 @@ window.S3D_CONFIG = {
   address: "",          // es. "Via Roma 1, 00100 Città (XX)"
   openingHours: "Aperto 24 ore",
 
-  // --- Dati legali (obbligatori per un sito commerciale in Italia) ---
-  legalName: "",        // ragione sociale
-  vatNumber: "",        // P.IVA
+  // --- Dati legali (OBBLIGATORI per vendere online in Italia) --------
+  // Compaiono nel footer di ogni pagina e nelle Condizioni di vendita.
+  legalName: "",        // nome e cognome della ditta o ragione sociale, es. "Mario Rossi" o "Sumisura 3D di Mario Rossi"
+  vatNumber: "",        // Partita IVA (obbligatoria in home page per legge)
+  legalAddress: "",     // sede legale, es. "Via Roma 1, 80100 Napoli (NA)"
+  legalEmail: "",       // email per clienti, reclami e recesso (obbligatoria)
+  pec: "",              // PEC (facoltativa ma consigliata)
+  rea: "",              // numero REA, se iscritto al Registro Imprese (es. "NA-123456")
+  vatNote: "Prezzi IVA inclusa, ove dovuta.", // se sei in regime forfettario puoi lasciare questa frase
 
   // --- Invio moduli ---------------------------------------------------
   // Con il numero WhatsApp impostato, "Invia" apre WhatsApp con il messaggio già scritto
@@ -37,7 +43,7 @@ window.S3D_CONFIG = {
 
   // --- Visualizzazione ------------------------------------------------
   currency: "EUR",
-  priceNote: "Ordini e paghi online con Stripe. Spedizione con Poste Italiane: 6,99 €.", // il costo vero è in products.js (S3D_SHIPPING)
+  priceNote: "Prezzi IVA inclusa, ove dovuta. Paghi online con Stripe. Spedizione con Poste Italiane: 6,99 €.", // il costo vero è in products.js (S3D_SHIPPING)
   customNote: "Non si paga online: ti mandiamo il preventivo su WhatsApp.",
 
   // --- Pagamenti Stripe -------------------------------------------------
@@ -45,5 +51,6 @@ window.S3D_CONFIG = {
   // Stripe NON va mai inserita qui, ma nelle variabili segrete (vedi README).
   checkoutEndpoint: "/api/checkout",
   orderEndpoint: "/api/order",
+  withdrawalEndpoint: "/api/recesso",
   showPlaceholders: false // true mostra i badge "Esempio" e i segnaposto evidenziati
 };

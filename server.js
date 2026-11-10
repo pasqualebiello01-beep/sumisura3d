@@ -156,7 +156,7 @@ function handleCheckout(req, res) {
 
 http.createServer((req, res) => {
   const p = req.url.split("?")[0];
-  if (p === "/api/checkout" || p === "/api/order") return handleCheckout(req, res);
+  if (p === "/api/checkout" || p === "/api/order" || p === "/api/recesso") return handleCheckout(req, res);
   if (p === "/api/preventivo") return handleApi(req, res, "preventivo");
   if (p === "/api/contatto") return handleApi(req, res, "contatto");
   if (req.method !== "GET" && req.method !== "HEAD") { res.writeHead(405); return res.end(); }

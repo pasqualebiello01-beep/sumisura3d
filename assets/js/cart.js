@@ -60,7 +60,9 @@ document.addEventListener("DOMContentLoaded", () => {
             <div class="sum-row"><span>Prodotti</span><span>${money(t.total)}</span></div>
             <div class="sum-row"><span>Spedizione ${esc(SHIPPING.label)}</span><span>${money(SHIPPING.amount)}</span></div>
             <div class="total-row"><span>Totale</span><span>${money(t.total + SHIPPING.amount)}</span></div>
-            <button type="button" class="btn btn-block" id="pay-btn">Paga con Stripe</button>
+            <p class="small muted" style="margin:.6rem 0 0">${esc(C.vatNote || "")}</p>
+            <label class="legal-check"><input type="checkbox" id="terms-ok"> <span>Ho letto e accetto le <a href="condizioni-vendita.html" target="_blank" rel="noopener">Condizioni di vendita</a> e l'<a href="condizioni-vendita.html#recesso" target="_blank" rel="noopener">informativa sul diritto di recesso</a>, e ho preso visione dell'<a href="privacy.html" target="_blank" rel="noopener">informativa privacy</a>.</span></label>
+            <button type="button" class="btn btn-block" id="pay-btn">Procedi al pagamento</button>
             <p class="small muted" style="margin:.8rem 0 0">Pagamento sicuro gestito da Stripe: indirizzo di spedizione e dati di pagamento li inserisci nella pagina di Stripe.${both ? " I pezzi su misura non sono inclusi: per quelli ricevi un preventivo a parte." : ""}</p>
             <div id="pay-result" role="alert" style="margin-top:1rem"></div>
           </aside>` : ""}
@@ -93,6 +95,12 @@ document.addEventListener("DOMContentLoaded", () => {
   async function pay(shop) {
     const btn = $("#pay-btn"), out = $("#pay-result");
     out.innerHTML = "";
+    const terms = $("#terms-ok");
+    if (terms && !terms.checked) {
+      out.innerHTML = `<div class="notice notice-err"><p>Per procedere devi accettare le Condizioni di vendita.</p></div>`;
+      terms.focus();
+      return;
+    }
     S.setBusy(btn, true, "Apertura del pagamento…");
     try {
       const res = await S.postJSON(C.checkoutEndpoint, { items: shop.map((i) => ({ id: i.id, options: i.options, qty: i.qty, note: i.note })) }, 15000);

@@ -16,12 +16,9 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#24272C">
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Space+Grotesk:wght@600;700&display=optional" media="print" onload="this.media='all'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Space+Grotesk:wght@600;700&display=optional"></noscript>
 <link rel="stylesheet" href="assets/css/style.css">
 <script>(function(){var t=null;try{t=JSON.parse(localStorage.getItem("s3d-theme"))}catch(e){}document.documentElement.dataset.theme=t||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")})();</script>
+<script>try{var c=JSON.parse(localStorage.getItem("s3d-consent"));if(c&&c.fonts===true&&Date.now()-c.date<15724800000){var l=document.createElement("link");l.id="s3d-fonts";l.rel="stylesheet";l.href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Space+Grotesk:wght@600;700&display=swap";document.head.appendChild(l)}}catch(e){}</script>
 </head>
 <body data-page="privacy">
 <a class="skip-link" href="#main">Vai al contenuto</a>
@@ -30,38 +27,64 @@
   <nav class="main-nav" aria-label="Principale"><ul><li><a href="catalogo.html">Catalogo</a></li><li><a href="chi-siamo.html">Chi siamo</a></li><li><a href="faq.html">FAQ</a></li><li><a href="contatti.html">Contatti</a></li></ul></nav></div></noscript>
 </header>
 <main id="main">
-
 <section class="page-head">
   <div class="wrap">
     <nav class="breadcrumb" aria-label="Percorso"><ol><li><a href="index.html">Home</a></li><li aria-current="page">Privacy</li></ol></nav>
     <h1>Informativa privacy</h1>
-    <p class="lead">Come trattiamo i dati che ci invii tramite questo sito.</p>
+    <p class="lead">Come trattiamo i tuoi dati quando visiti il sito, chiedi un preventivo o fai un ordine.</p>
   </div>
 </section>
 <section class="wrap prose">
+  <p class="small muted">Ultimo aggiornamento: 10 novembre 2026.</p>
   <h2>Titolare del trattamento</h2>
-  <p><!-- Ragione sociale e P.IVA compaiono qui da sole se le inserisci in config.js (legalName, vatNumber) --><span data-requires="legalName"><span data-config="legalName"></span>. </span><span data-requires="vatNumber">P.IVA <span data-config="vatNumber"></span>. </span>Contatto: <span data-config="whatsapp" data-as="wa" data-label="WhatsApp" data-placeholder="numero WhatsApp"></span>.</p>
-  <h2>Quali dati raccogliamo</h2>
   <ul>
-    <li>Dati che inserisci nei moduli di contatto e di richiesta preventivo: nome, email e telefono (facoltativi), località (facoltativa), messaggio e prodotti selezionati, oltre al numero WhatsApp da cui ci scrivi.</li>
-    <li>Dati tecnici necessari al funzionamento del sito, come l'indirizzo IP registrato nei log del server.</li>
+    <li data-hide-empty>Venditore: <span data-config="legalName" data-placeholder="nome o ragione sociale"></span></li>
+    <li data-hide-empty>Partita IVA: <span data-config="vatNumber" data-placeholder="partita IVA"></span></li>
+    <li data-hide-empty>Sede: <span data-config="legalAddress" data-placeholder="indirizzo della sede"></span></li>
+    <li data-hide-empty>REA: <span data-config="rea"></span></li>
+    <li data-hide-empty>Email: <span data-config="legalEmail" data-as="mailto" data-placeholder="email"></span></li>
+    <li data-hide-empty>PEC: <span data-config="pec" data-as="mailto"></span></li>
+    <li>WhatsApp: <span data-config="whatsapp" data-as="wa" data-label="scrivici su WhatsApp"></span></li>
   </ul>
-  <h2>Perché li usiamo</h2>
-  <p>Per rispondere alle tue richieste e preparare preventivi (base giuridica: misure precontrattuali richieste dall'interessato) e per adempiere a obblighi di legge.</p>
-  <h2>Per quanto tempo</h2>
-  <p>Le richieste di informazioni e di preventivo che non diventano un ordine sono conservate per un massimo di <strong>12 mesi</strong> dall'ultimo contatto, poi vengono cancellate. I dati legati a un ordine confermato sono conservati per <strong>10 anni</strong>, come richiesto dalle norme fiscali e contabili. Puoi chiedere in qualsiasi momento la cancellazione anticipata dei dati non soggetti a obblighi di legge.</p>
-  <h2>Pagamenti</h2>
-  <p>I pagamenti online sono gestiti da Stripe: i dati della carta e del pagamento li inserisci nella pagina di Stripe e non passano dai nostri sistemi. Da Stripe riceviamo i dati necessari a evadere l'ordine (nome, email, telefono, indirizzo di spedizione, prodotti acquistati e importo).</p>
-  <h2>Invio tramite WhatsApp</h2>
-  <p>I moduli del sito preparano un messaggio su WhatsApp diretto al nostro numero: il messaggio parte solo quando premi Invia nella chat. Da quel momento i dati sono trattati anche da WhatsApp (Meta Platforms Ireland), secondo la sua informativa.</p>
-  <h2>Archiviazione nel browser</h2>
-  <p>Il sito salva nel tuo browser (localStorage) il contenuto del carrello e la preferenza tra tema chiaro e scuro. Questi dati restano sul tuo dispositivo e non vengono usati per profilazione. Il sito non usa cookie di profilazione.</p>
-  <h2>Servizi di terze parti</h2>
-  <p>Il sito carica i caratteri tipografici da Google Fonts, che riceve l'indirizzo IP del visitatore. <span class="ph-only">Per evitarlo puoi ospitare i caratteri sul tuo server (vedi README).</span></p>
-  <h2>I tuoi diritti</h2>
-  <p>Puoi chiedere accesso, rettifica, cancellazione, limitazione od opposizione al trattamento e la portabilità dei dati scrivendo al titolare. Puoi inoltre proporre reclamo al Garante per la protezione dei dati personali.</p>
-</section>
 
+  <h2>Quali dati trattiamo</h2>
+  <ul>
+    <li><strong>Ordini</strong>: nome, email, telefono, indirizzo di spedizione e di fatturazione, prodotti acquistati e importo. Li inserisci sulla pagina di pagamento di Stripe.</li>
+    <li><strong>Preventivi e contatti</strong>: i dati che scrivi nei moduli (nome, email e città se le indichi, messaggio, prodotti) e il numero WhatsApp da cui ci scrivi.</li>
+    <li><strong>Recesso e garanzia</strong>: nome, email, riferimento dell'ordine ed eventuale motivo.</li>
+    <li><strong>Dati tecnici</strong>: indirizzo IP e informazioni sul browser, registrati dal fornitore di hosting per sicurezza e funzionamento.</li>
+  </ul>
+
+  <h2>Perché li trattiamo e su quale base</h2>
+  <ul>
+    <li>Gestire ordini, pagamenti, spedizioni, recesso e garanzia: esecuzione del contratto (art. 6.1.b GDPR).</li>
+    <li>Rispondere alle richieste e preparare preventivi: misure precontrattuali richieste da te (art. 6.1.b).</li>
+    <li>Tenere fatture e documenti fiscali: obbligo di legge (art. 6.1.c).</li>
+    <li>Proteggere il sito da abusi e attacchi: nostro legittimo interesse (art. 6.1.f).</li>
+    <li>Caricare i caratteri da Google Fonts: il tuo consenso (art. 6.1.a), che puoi revocare quando vuoi dalle <button type="button" class="link-btn" data-cookie-prefs style="text-decoration:underline">preferenze cookie</button>.</li>
+  </ul>
+  <p>I dati per ordini e preventivi sono necessari: senza non possiamo rispondere o consegnare. Non facciamo profilazione né decisioni automatizzate e non usiamo i tuoi dati per pubblicità.</p>
+
+  <h2>Per quanto tempo</h2>
+  <p>Le richieste di informazioni e di preventivo che non diventano un ordine sono conservate per un massimo di <strong>12 mesi</strong> dall'ultimo contatto, poi vengono cancellate. I dati legati a un ordine sono conservati per <strong>10 anni</strong>, come richiesto dalle norme fiscali e civilistiche. I dati tecnici di sicurezza sono conservati per il tempo strettamente necessario.</p>
+
+  <h2>A chi li comunichiamo</h2>
+  <ul>
+    <li><strong>Stripe</strong> (Stripe Payments Europe Ltd, Irlanda): gestisce i pagamenti come titolare autonomo, secondo la sua <a href="https://stripe.com/it/privacy" rel="noopener">informativa</a>.</li>
+    <li><strong>Cloudflare</strong> (Cloudflare Inc.): ospita il sito, come responsabile del trattamento.</li>
+    <li><strong>Poste Italiane</strong>: riceve nome, indirizzo e recapito per consegnare il pacco.</li>
+    <li><strong>WhatsApp</strong> (WhatsApp Ireland Ltd, gruppo Meta): quando ci scrivi su WhatsApp, secondo la sua <a href="https://www.whatsapp.com/legal/privacy-policy-eea" rel="noopener">informativa</a>.</li>
+    <li><strong>Google</strong> (Google Ireland Ltd): solo l'indirizzo IP, e solo se accetti Google Fonts.</li>
+    <li>Commercialista e consulenti, per gli obblighi fiscali e di legge.</li>
+  </ul>
+  <p>Alcuni di questi fornitori possono trasferire dati fuori dall'Unione europea, in particolare negli Stati Uniti. In questi casi il trasferimento avviene sulla base dell'EU-US Data Privacy Framework o delle clausole contrattuali standard approvate dalla Commissione europea.</p>
+
+  <h2>Archiviazione nel browser</h2>
+  <p>Il sito salva nel tuo browser il carrello, il tema e la scelta sui cookie. Tutti i dettagli sono nell'<a href="cookie.html">informativa cookie</a>.</p>
+
+  <h2>I tuoi diritti</h2>
+  <p>Puoi chiedere in qualsiasi momento di accedere ai tuoi dati, correggerli, cancellarli, limitarne il trattamento, opporti al trattamento basato sul legittimo interesse e riceverli in un formato leggibile (portabilità). Puoi revocare il consenso dato, senza conseguenze sui trattamenti già fatti. Per esercitare i diritti scrivici ai recapiti indicati sopra: rispondiamo entro un mese. Se ritieni che il trattamento non sia corretto puoi presentare reclamo al <a href="https://www.garanteprivacy.it" rel="noopener">Garante per la protezione dei dati personali</a>.</p>
+</section>
 </main>
 <footer class="site-footer" id="site-footer"></footer>
 <script src="assets/js/config.js" defer></script>

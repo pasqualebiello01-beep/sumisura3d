@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Recedi dal contratto qui – Sumisura 3D</title>
+<meta name="description" content="Esercita il diritto di recesso per un acquisto fatto su Sumisura 3D: compila il modulo e conferma.">
+<link rel="canonical" href="https://www.sumisura3d.it/recesso.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Sumisura 3D">
+<meta property="og:title" content="Recedi dal contratto qui – Sumisura 3D">
+<meta property="og:description" content="Esercita il diritto di recesso per un acquisto fatto su Sumisura 3D: compila il modulo e conferma.">
+<meta property="og:url" content="https://www.sumisura3d.it/recesso.html">
+<meta property="og:image" content="https://www.sumisura3d.it/assets/img/og-image.jpg">
+<meta property="og:locale" content="it_IT">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#24272C">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/css/style.css">
+<script>(function(){var t=null;try{t=JSON.parse(localStorage.getItem("s3d-theme"))}catch(e){}document.documentElement.dataset.theme=t||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")})();</script>
+<script>try{var c=JSON.parse(localStorage.getItem("s3d-consent"));if(c&&c.fonts===true&&Date.now()-c.date<15724800000){var l=document.createElement("link");l.id="s3d-fonts";l.rel="stylesheet";l.href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Space+Grotesk:wght@600;700&display=swap";document.head.appendChild(l)}}catch(e){}</script>
+</head>
+<body data-page="recesso">
+<a class="skip-link" href="#main">Vai al contenuto</a>
+<header class="site-header" id="site-header">
+  <noscript><div class="wrap header-inner"><a class="logo" href="index.html"><span class="logo-word">Sumisura 3D</span></a>
+  <nav class="main-nav" aria-label="Principale"><ul><li><a href="catalogo.html">Catalogo</a></li><li><a href="chi-siamo.html">Chi siamo</a></li><li><a href="faq.html">FAQ</a></li><li><a href="contatti.html">Contatti</a></li></ul></nav></div></noscript>
+</header>
+<main id="main">
+<section class="page-head">
+  <div class="wrap">
+    <nav class="breadcrumb" aria-label="Percorso"><ol><li><a href="index.html">Home</a></li><li aria-current="page">Recesso</li></ol></nav>
+    <h1>Recedi dal contratto qui</h1>
+    <p class="lead">Hai cambiato idea su un acquisto? Puoi recedere in pochi passaggi.</p>
+  </div>
+</section>
+<section class="wrap" style="max-width:46rem">
+  <div class="prose">
+    <p>Se sei un consumatore, puoi recedere dall'acquisto dei prodotti del catalogo <strong>entro 14 giorni dalla consegna</strong>, senza dare spiegazioni. Compila il modulo e premi <strong>Conferma recesso</strong>: ricevi subito una ricevuta con data e ora.</p>
+    <p class="small muted">I prodotti su misura o personalizzati sono esclusi dal recesso, ma restano coperti dalla garanzia legale. Tutti i dettagli sono nelle <a href="condizioni-vendita.html#recesso">Condizioni di vendita</a>.</p>
+  </div>
+  <form id="recesso-form" novalidate style="margin-top:1.5rem">
+    <div class="field"><label for="r-name">Nome e cognome</label><input id="r-name" name="name" type="text" autocomplete="name" maxlength="120" data-rules="required" aria-describedby="r-name-err"><span class="error-msg" id="r-name-err"></span></div>
+    <div class="field"><label for="r-email">Email usata per l'ordine</label><input id="r-email" name="email" type="email" autocomplete="email" maxlength="200" data-rules="required email" aria-describedby="r-email-hint r-email-err"><span class="error-msg" id="r-email-err"></span><span class="hint" id="r-email-hint">Ti serve per ricevere le istruzioni per la restituzione.</span></div>
+    <div class="field"><label for="r-ref">Riferimento dell'ordine</label><input id="r-ref" name="reference" type="text" maxlength="40" autocapitalize="characters" spellcheck="false" data-rules="required" aria-describedby="r-ref-hint r-ref-err"><span class="error-msg" id="r-ref-err"></span><span class="hint" id="r-ref-hint">Il codice di 8 caratteri che trovi nella pagina di conferma dell'ordine.</span></div>
+    <div class="field"><label for="r-items">Prodotti da restituire <span class="optional">(facoltativo)</span></label><input id="r-items" name="items" maxlength="400" placeholder="Lascia vuoto se vuoi recedere da tutto l'ordine"></div>
+    <div class="field"><label for="r-reason">Motivo <span class="optional">(facoltativo)</span></label><textarea id="r-reason" name="reason" maxlength="400" style="min-height:80px"></textarea></div>
+    <button type="submit" class="btn">Conferma recesso</button>
+    <div id="recesso-result" role="alert" style="margin-top:1rem"></div>
+  </form>
+  <div id="recesso-done" hidden></div>
+</section>
+</main>
+<footer class="site-footer" id="site-footer"></footer>
+<script src="assets/js/config.js" defer></script>
+<script type="module" src="assets/js/products.js"></script>
+<script src="assets/js/app.js" defer></script>
+<script src="assets/js/recesso.js" defer></script>
+</body>
+</html>

@@ -30,6 +30,7 @@ document.addEventListener("DOMContentLoaded", async () => {
           ${o.email ? `<dt>Email</dt><dd>${esc(o.email)}</dd>` : ""}
         </dl>
         ${left ? `<div class="notice" style="margin-bottom:1.5rem"><p>Nel carrello ${left === 1 ? "è rimasto un pezzo su misura" : `sono rimasti ${left} pezzi su misura`}: <a href="carrello.html">richiedi il preventivo su WhatsApp</a>.</p></div>` : ""}
+        <p class="small muted">Hai 14 giorni dalla consegna per cambiare idea: conserva il riferimento dell'ordine. <a href="recesso.html?ordine=${encodeURIComponent(o.reference)}">Recedi dal contratto qui</a>.</p>
         <p style="display:flex;gap:.6rem;flex-wrap:wrap"><a class="btn" href="catalogo.html">Torna al catalogo</a>${C.whatsapp ? `<a class="btn btn-ghost" href="${esc(S.waUrl())}" rel="noopener">Scrivici su WhatsApp</a>` : ""}</p>
       </div>`;
   } catch (err) {

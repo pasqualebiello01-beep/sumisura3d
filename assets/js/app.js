@@ -163,6 +163,12 @@
     if (C.instagram) contact.push(`<li><a href="${esc(C.instagram)}" rel="noopener">Instagram</a></li>`);
     if (C.openingHours) contact.push(`<li>${esc(C.openingHours)}</li>`);
     contact.push(`<li><a href="contatti.html">Modulo di contatto</a></li>`);
+    const legal = [];
+    if (C.vatNumber) legal.push(`P.IVA ${esc(C.vatNumber)}`);
+    if (C.rea) legal.push(`REA ${esc(C.rea)}`);
+    if (C.legalAddress || C.address) legal.push(`Sede: ${esc(C.legalAddress || C.address)}`);
+    if (C.legalEmail) legal.push(`<a href="mailto:${esc(C.legalEmail)}">${esc(C.legalEmail)}</a>`);
+    if (C.pec) legal.push(`PEC <a href="mailto:${esc(C.pec)}">${esc(C.pec)}</a>`);
     el.innerHTML = `
       <div class="wrap">
         <div class="footer-grid">
@@ -177,15 +183,67 @@
           <div><h2>Informazioni</h2><ul>
             <li><a href="chi-siamo.html">Chi siamo</a></li>
             <li><a href="spedizioni.html">Spedizioni</a></li>
-            <li><a href="faq.html">Domande frequenti</a></li>
-            <li><a href="privacy.html">Privacy</a></li></ul></div>
+            <li><a href="faq.html">Domande frequenti</a></li></ul></div>
+          <div><h2>Note legali</h2><ul>
+            <li><a href="condizioni-vendita.html">Condizioni di vendita</a></li>
+            <li><a href="recesso.html">Recedi dal contratto qui</a></li>
+            <li><a href="privacy.html">Privacy</a></li>
+            <li><a href="cookie.html">Cookie</a></li>
+            <li><button type="button" class="link-btn" data-cookie-prefs>Preferenze cookie</button></li></ul></div>
           <div><h2>Contatti</h2><ul>${contact.join("")}</ul></div>
         </div>
         <div class="footer-bottom">
-          <span>© ${year} ${esc(C.legalName || C.brand)}${C.vatNumber ? ` · P.IVA ${esc(C.vatNumber)}` : ""}</span>
-          ${C.address ? `<span>${esc(C.address)}</span>` : ""}
+          <span>© ${year} ${esc(C.legalName || C.brand)}</span>
+          ${legal.length ? `<span>${legal.join(" · ")}</span>` : ""}
         </div>
       </div>`;
+  }
+
+
+  /* ------------------------------------------------------------ consenso cookie */
+  // Il sito usa solo strumenti tecnici (carrello, tema). L'unico servizio esterno facoltativo
+  // è Google Fonts: si carica solo dopo il consenso. Scelta salvata per 6 mesi.
+  const CONSENT_KEY = "s3d-consent";
+  const FONTS_URL = "https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Space+Grotesk:wght@600;700&display=swap";
+  const SIX_MONTHS = 1000 * 60 * 60 * 24 * 182;
+  function getConsent() {
+    const c = store.get(CONSENT_KEY, null);
+    if (!c || typeof c.fonts !== "boolean" || !c.date || Date.now() - c.date > SIX_MONTHS) return null;
+    return c;
+  }
+  function loadFonts() {
+    if (document.getElementById("s3d-fonts")) return;
+    const l = document.createElement("link");
+    l.id = "s3d-fonts"; l.rel = "stylesheet"; l.href = FONTS_URL;
+    document.head.appendChild(l);
+  }
+  function setConsent(fonts) {
+    store.set(CONSENT_KEY, { fonts, date: Date.now(), v: 1 });
+    if (fonts) loadFonts();
+    else { const l = document.getElementById("s3d-fonts"); if (l) l.remove(); }
+  }
+  function cookieBanner(force) {
+    const old = $(".cookie-banner"); if (old) old.remove();
+    if (!force && getConsent()) return;
+    const box = document.createElement("div");
+    box.className = "cookie-banner";
+    box.setAttribute("role", "dialog"); box.setAttribute("aria-labelledby", "cookie-title"); box.setAttribute("aria-describedby", "cookie-text");
+    box.innerHTML = `
+      <button type="button" class="cookie-x" data-c="no" aria-label="Chiudi e rifiuta">×</button>
+      <p class="cookie-title" id="cookie-title">Cookie e contenuti esterni</p>
+      <p class="cookie-text" id="cookie-text">Usiamo solo strumenti tecnici necessari al sito (carrello e tema), senza profilazione. Con il tuo consenso carichiamo anche i caratteri da Google Fonts, che riceve il tuo indirizzo IP. <a href="cookie.html">Informativa cookie</a></p>
+      <div class="cookie-actions">
+        <button type="button" class="btn btn-ghost" data-c="no">Rifiuta</button>
+        <button type="button" class="btn btn-ghost" data-c="yes">Accetta</button>
+      </div>`;
+    document.body.appendChild(box);
+    $$("[data-c]", box).forEach((b) => b.addEventListener("click", () => { setConsent(b.dataset.c === "yes"); box.remove(); }));
+  }
+  function setupConsent() {
+    const c = getConsent();
+    if (c && c.fonts) loadFonts();
+    cookieBanner(false);
+    document.addEventListener("click", (e) => { if (e.target.closest("[data-cookie-prefs]")) cookieBanner(true); });
   }
 
   /* ------------------------------------------------------------ toast */
@@ -474,6 +532,7 @@
   document.addEventListener("DOMContentLoaded", () => {
     renderHeader();
     renderFooter();
+    setupConsent();
     updateBadge(false);
     fillConfigSlots();
     externalLinks();

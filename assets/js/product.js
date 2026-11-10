@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
             <div class="field">
               <label for="note">Note per la personalizzazione <span class="optional">(facoltativo)</span></label>
               <textarea id="note" maxlength="600" style="min-height:90px" placeholder="Misure, modello dell'apparecchio, quantità particolari…" aria-describedby="note-hint"></textarea>
-              <span class="hint" id="note-hint">Se scrivi una modifica, il prodotto diventa su misura: niente pagamento online, ti mandiamo un preventivo su WhatsApp.</span>
+              <span class="hint" id="note-hint">Se scrivi una modifica, il prodotto diventa su misura: niente pagamento online, ti mandiamo un preventivo su WhatsApp. I prodotti su misura sono esclusi dal diritto di recesso.</span>
             </div>
             <div class="buy-row">
               <div class="qty" role="group" aria-label="Quantità">

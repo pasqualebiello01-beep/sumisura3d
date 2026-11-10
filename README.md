@@ -113,3 +113,9 @@ I dati reali usati provengono dalle indicazioni del brand: 8 anni di attività, 
 Per caricare la home più in fretta, il CSS è copiato direttamente dentro `index.html` (blocco `<style id="css-in-pagina">`).
 Le altre pagine continuano a usare `assets/css/style.css`.
 Se modifichi `assets/css/style.css`, rilancia `node tools/inline-css.mjs` (oppure chiedi di aggiornare la home), altrimenti la home resta con lo stile vecchio.
+
+## Parte legale (da completare prima di vendere)
+- In `assets/js/config.js` compila i dati aziendali: `legalName`, `vatNumber`, `legalAddress`, `legalEmail` (e se li hai `pec`, `rea`). Compaiono nel footer, nelle Condizioni di vendita, nella privacy e nel modulo di recesso.
+- In Stripe: Impostazioni → Email clienti → attiva "Pagamenti riusciti", così ogni cliente riceve la conferma dell'ordine via email.
+- Recesso: le richieste fatte con "Recedi dal contratto qui" vengono registrate nei metadati del pagamento in Stripe (campi `recesso_...`). Rispondi al cliente via email con l'indirizzo per la restituzione.
+- Google Fonts si carica solo se il visitatore accetta il banner cookie.
