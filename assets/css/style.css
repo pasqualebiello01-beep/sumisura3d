@@ -112,10 +112,16 @@ button { font: inherit; color: inherit; }
 /* ---------------------------------------------------------------- header */
 .site-header {
   position: sticky; top: 0; z-index: 50; height: var(--header-h);
-  background: color-mix(in srgb, var(--bg) 88%, transparent);
-  backdrop-filter: saturate(1.2) blur(12px); -webkit-backdrop-filter: saturate(1.2) blur(12px);
   border-bottom: 1px solid transparent; transition: border-color .25s;
 }
+/* L'effetto vetro sta su un livello a parte: se fosse sull'intestazione, il menu mobile
+   (position: fixed) resterebbe chiuso dentro l'intestazione invece di coprire lo schermo */
+.site-header::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: saturate(1.2) blur(12px); -webkit-backdrop-filter: saturate(1.2) blur(12px);
+}
+.nav-open .site-header::before { background: var(--bg); }
 .site-header.scrolled { border-bottom-color: var(--line); }
 .header-inner { height: 100%; display: flex; align-items: center; gap: 1.5rem; }
 .logo { display: inline-flex; align-items: center; gap: .6rem; text-decoration: none; color: var(--ink); }

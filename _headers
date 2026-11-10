@@ -1,0 +1,10 @@
+# Regole di cache per Cloudflare: JS e CSS vengono sempre ricontrollati,
+# così dopo ogni aggiornamento i visitatori vedono subito la versione nuova
+/assets/js/*
+  Cache-Control: public, max-age=0, must-revalidate
+/assets/css/*
+  Cache-Control: public, max-age=0, must-revalidate
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate
+/
+  Cache-Control: public, max-age=0, must-revalidate
