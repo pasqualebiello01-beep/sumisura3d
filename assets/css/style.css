@@ -656,3 +656,17 @@ html.no-motion .reveal { clip-path: none; }
 /* il blocco di testo non deve coprire i comandi del carosello (frecce e pausa) */
 .hero .hero-copy { pointer-events: none; }
 .hero .hero-copy > * { pointer-events: auto; }
+
+/* Effetto stampa a strati senza nascondere l'immagine (migliora il Largest Contentful Paint):
+   l'immagine è subito disegnata, una "tenda" con lo stesso sfondo la scopre strato dopo strato */
+.stage-shot.is-printing img { animation: none; }
+.stage-shot.is-printing::before {
+  content: ""; position: absolute; left: 0; right: 0; top: 0; z-index: 1; pointer-events: none;
+  background:
+    repeating-linear-gradient(to bottom, transparent 0 5px, color-mix(in srgb, var(--ink) 5%, transparent) 5px 6px),
+    radial-gradient(120% 90% at 30% 20%, var(--panel) 0%, var(--panel-2) 70%);
+  background-size: 100% var(--stage-h, 100vh); background-position: top;
+  animation: print-curtain 1.7s steps(26, end) both;
+}
+@keyframes print-curtain { from { height: 100%; } to { height: 0%; } }
+@media (prefers-reduced-motion: reduce) { .stage-shot.is-printing::before { display: none; } }

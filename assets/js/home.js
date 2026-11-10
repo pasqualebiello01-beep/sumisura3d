@@ -159,6 +159,8 @@ document.addEventListener("DOMContentLoaded", () => {
   // Pausa quando la scheda non è visibile o il carosello esce dallo schermo
   document.addEventListener("visibilitychange", () => { if (document.hidden && playing) { pause(); stage.dataset.autoPaused = "1"; } else if (!document.hidden && stage.dataset.autoPaused) { delete stage.dataset.autoPaused; play(); } });
 
+  const setStageH = () => stage.style.setProperty("--stage-h", stage.clientHeight + "px");
+  setStageH(); addEventListener("resize", setStageH, { passive: true });
   show(0, true);
   if (playing) play(); else { toggle.innerHTML = ICON_PLAY; toggle.setAttribute("aria-label", "Avvia lo scorrimento"); }
 
