@@ -161,6 +161,7 @@
     if (C.email) contact.push(`<li><a href="mailto:${esc(C.email)}">${esc(C.email)}</a></li>`);
     if (C.phone) contact.push(`<li><a href="tel:${esc(C.phone.replace(/\s/g, ""))}">${esc(C.phone)}</a></li>`);
     if (C.instagram) contact.push(`<li><a href="${esc(C.instagram)}" rel="noopener">Instagram</a></li>`);
+    if (C.tiktok) contact.push(`<li><a href="${esc(C.tiktok)}" rel="noopener">TikTok</a></li>`);
     if (C.openingHours) contact.push(`<li>${esc(C.openingHours)}</li>`);
     contact.push(`<li><a href="contatti.html">Modulo di contatto</a></li>`);
     const legal = [];
@@ -525,7 +526,7 @@
   function externalLinks() {
     if (inFrame) return;
     $$('a[href^="https://wa.me"], a[href*="whatsapp.com"]').forEach((a) => { a.rel = "noopener noreferrer"; a.referrerPolicy = "no-referrer"; });
-    $$('a[href^="https://wa.me"], a[href*="whatsapp.com"], a[href*="instagram.com"]').forEach((a) => { a.target = "_blank"; if (!a.rel) a.rel = "noopener"; });
+    $$('a[href^="https://wa.me"], a[href*="whatsapp.com"], a[href*="instagram.com"], a[href*="tiktok.com"]').forEach((a) => { a.target = "_blank"; if (!a.rel) a.rel = "noopener"; });
   }
 
   /* ------------------------------------------------------------ avvio */

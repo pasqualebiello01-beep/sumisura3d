@@ -14,6 +14,7 @@ window.S3D_CONFIG = {
   whatsapp: "393518148844",  // solo cifre, con prefisso 39 e senza "+" (sul sito compare solo la scritta "WhatsApp")
   instagram: "https://www.instagram.com/sumisura3d.it/",
   instagramHandle: "@sumisura3d.it",
+  tiktok: "https://www.tiktok.com/@sumisura3d.it",
   address: "",          // es. "Via Roma 1, 00100 Città (XX)"
   openingHours: "Aperto 24 ore",
 
