@@ -16,25 +16,53 @@ document.addEventListener("DOMContentLoaded", () => {
         <span class="rail-label"><strong>${esc(p.name)}</strong><span>${price}</span></span></button></li>`;
     }).join("");
     let current = null, lastTrigger = null;
+    const arrowSvg = (d) => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="${d}"/></svg>`;
+    showcase.insertAdjacentHTML("beforeend", `
+      <button type="button" class="showcase-arrow showcase-prev" data-step="-1" aria-label="Prodotto precedente">${arrowSvg("M15 5l-7 7 7 7")}</button>
+      <button type="button" class="showcase-arrow showcase-next" data-step="1" aria-label="Prodotto successivo">${arrowSvg("M9 5l7 7-7 7")}</button>`);
+    $$(".showcase-arrow", showcase).forEach((a) => a.addEventListener("click", () => {
+      const items = $$(".rail-item", rail);
+      const i = items.findIndex((b) => b.dataset.id === current);
+      const step = Number(a.dataset.step);
+      const next = i < 0 ? (step > 0 ? 0 : items.length - 1) : (i + step + items.length) % items.length;
+      open(items[next].dataset.id, items[next], step);
+    }));
     const restoreImg = (b) => { const q = PRODUCTS.find((x) => x.id === b.dataset.id); const full = S.imagesFor(q)[0].src; const src = thumbSrc(full); const im = $("img", b); if (im.getAttribute("src") !== src) { im.srcset = S.thumbSet(full); im.src = src; } };
     const desktop = () => matchMedia("(min-width: 861px)").matches;
 
-    function moveSelected(btn) {
+    function moveSelected(btn, dir) {
       const img = $("img", btn);
       img.style.transform = "";
-      if (!desktop()) return;
+      if (!desktop()) {
+        if (dir && !reduceMotion) img.animate([{ transform: `translateX(${dir * 40}px)`, opacity: 0 }, { transform: "none", opacity: 1 }], { duration: 450, easing: "cubic-bezier(.22,.7,.2,1)" });
+        return;
+      }
       const box = showcase.getBoundingClientRect(), r = img.getBoundingClientRect();
       const targetX = box.left + box.width * 0.32, targetY = box.top + box.height * 0.5;
       const scale = Math.min(2.1, (box.height * 0.9) / r.height);
       const dx = targetX - (r.left + r.width / 2);
       const dy = targetY - (r.top + r.height / 2) + (r.height * scale) / 2 - r.height / 2;
-      img.style.transform = `translate(${dx}px, ${dy}px) scale(${scale})`;
+      const final = `translate(${dx}px, ${dy}px) scale(${scale})`;
+      if (dir && !reduceMotion) {
+        // effetto swap: il nuovo prodotto entra scivolando dal lato della freccia, con una leggera sfocatura
+        img.style.transform = final;
+        img.animate([
+          { transform: `${final} translateX(${dir * 90}px)`, opacity: 0, filter: "blur(6px)" },
+          { transform: final, opacity: 1, filter: "blur(0)" }
+        ], { duration: 700, easing: "cubic-bezier(.22,.7,.2,1)" });
+      } else img.style.transform = final;
     }
-    function open(id, btn) {
+    function open(id, btn, dir) {
       const p = PRODUCTS.find((x) => x.id === id);
       if (!p) return;
       if (current === id) return close();
-      $$(".rail-item", rail).forEach((b) => { b.classList.remove("is-selected"); b.setAttribute("aria-expanded", "false"); $("img", b).style.transform = ""; restoreImg(b); });
+      // su computer i prodotti sfocati dietro non si possono cliccare né raggiungere con Tab: si cambia con le frecce
+      const prevBtn = $(".rail-item.is-selected", rail);
+      if (dir && prevBtn && prevBtn !== btn && desktop() && !reduceMotion) {
+        const pi = $("img", prevBtn), from = pi.style.transform;
+        if (from) pi.animate([{ transform: from, opacity: 1 }, { transform: `${from} translateX(${-dir * 90}px)`, opacity: 0, offset: .45 }, { transform: "none", opacity: 0 }], { duration: 700, easing: "cubic-bezier(.22,.7,.2,1)" });
+      }
+      $$(".rail-item", rail).forEach((b) => { b.classList.remove("is-selected"); b.setAttribute("aria-expanded", "false"); $("img", b).style.transform = ""; restoreImg(b); b.tabIndex = desktop() && b !== btn ? -1 : 0; });
       current = id; lastTrigger = btn;
       btn.classList.add("is-selected"); btn.setAttribute("aria-expanded", "true");
       showcase.classList.add("has-selection");
@@ -70,8 +98,14 @@ document.addEventListener("DOMContentLoaded", () => {
       $("[data-add]", panel).addEventListener("click", () => { Cart.add(p.id, { ...selected }, 1, ""); toast(`${p.name} aggiunto al carrello.`, { href: "carrello.html", label: "Vai al carrello" }); });
       $(".rail-close", panel).addEventListener("click", close);
       panel.hidden = false;
-      requestAnimationFrame(() => { moveSelected(btn); panel.classList.add("is-open"); });
-      setTimeout(() => $("#rail-panel-title").focus({ preventScroll: true }), reduceMotion ? 0 : 350);
+      requestAnimationFrame(() => {
+        moveSelected(btn, dir);
+        panel.classList.add("is-open");
+        if (dir && !reduceMotion) [...panel.children].forEach((el, k) => el.animate(
+          [{ transform: `translateX(${dir * 24}px)`, opacity: 0 }, { transform: "none", opacity: 1 }],
+          { duration: 420, delay: 40 + k * 35, easing: "cubic-bezier(.22,.7,.2,1)", fill: "backwards" }));
+      });
+      if (!dir) setTimeout(() => { const t = $("#rail-panel-title"); if (t) t.focus({ preventScroll: true }); }, reduceMotion ? 0 : 350);
       if (!desktop()) { const sb = reduceMotion ? "auto" : "smooth"; rail.scrollTo({ left: btn.parentElement.offsetLeft - (rail.clientWidth - btn.parentElement.offsetWidth) / 2, behavior: sb }); setTimeout(() => panel.scrollIntoView({ behavior: sb, block: "nearest" }), 50); }
     }
     function close() {
@@ -79,7 +113,7 @@ document.addEventListener("DOMContentLoaded", () => {
       current = null;
       showcase.classList.remove("has-selection");
       panel.classList.remove("is-open");
-      $$(".rail-item", rail).forEach((b) => { b.classList.remove("is-selected"); b.setAttribute("aria-expanded", "false"); $("img", b).style.transform = ""; restoreImg(b); });
+      $$(".rail-item", rail).forEach((b) => { b.classList.remove("is-selected"); b.setAttribute("aria-expanded", "false"); $("img", b).style.transform = ""; restoreImg(b); b.tabIndex = 0; });
       setTimeout(() => { if (!current) { panel.hidden = true; panel.innerHTML = ""; } }, reduceMotion ? 0 : 400);
       if (lastTrigger) lastTrigger.focus({ preventScroll: true });
     }

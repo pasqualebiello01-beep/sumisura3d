@@ -728,3 +728,29 @@ html.no-motion .reveal { clip-path: none; }
   font: 700 .8rem/1 var(--font-head); color: var(--ink); letter-spacing: .02em;
 }
 .thumb-3d-label svg { width: 22px; height: 22px; }
+
+/* Vetrina: frecce ai lati per passare da un prodotto all'altro */
+.showcase-arrow {
+  position: absolute; top: calc(50% - 32px); transform: translateY(-50%); z-index: 4;
+  width: 48px; height: 48px; border-radius: 50%; display: grid; place-items: center; cursor: pointer;
+  border: 1px solid var(--line); background: var(--surface); color: var(--ink);
+  box-shadow: 0 6px 18px rgba(30, 28, 25, .10); transition: background .2s, transform .2s var(--ease), right .5s var(--ease);
+}
+.showcase-arrow:hover { background: var(--panel); }
+.showcase-arrow:active { transform: translateY(-50%) scale(.94); }
+.showcase-arrow svg { width: 22px; height: 22px; }
+.showcase-prev { left: 0; }
+.showcase-next { right: 0; }
+@media (min-width: 861px) {
+  .showcase { padding-inline: 64px; }
+  /* con un prodotto aperto: la freccia destra si sposta accanto al pannello, i prodotti sfocati non sono cliccabili */
+  .showcase.has-selection .showcase-next { right: calc(min(360px, 36%) + 1rem); }
+  .showcase.has-selection .rail-item:not(.is-selected) { pointer-events: none; }
+  .showcase.has-selection .showcase-prev { top: 50%; }
+  .showcase.has-selection .showcase-next { top: 50%; }
+}
+@media (max-width: 860px) {
+  .showcase-arrow { top: calc((100vw - 2 * var(--gutter)) * .42 / 2); width: 40px; height: 40px; }
+  .showcase-prev { left: calc(var(--gutter) * -0.5); }
+  .showcase-next { right: calc(var(--gutter) * -0.5); }
+}
