@@ -157,7 +157,7 @@
     if (!el) return;
     const year = new Date().getFullYear();
     const contact = [];
-    if (C.whatsapp) contact.push(`<li><a href="${esc(waUrl())}" rel="noopener">WhatsApp</a></li>`);
+    if (C.whatsapp) contact.push(`<li><a href="${esc(waUrl())}" rel="noopener noreferrer" referrerpolicy="no-referrer">WhatsApp</a></li>`);
     if (C.email) contact.push(`<li><a href="mailto:${esc(C.email)}">${esc(C.email)}</a></li>`);
     if (C.phone) contact.push(`<li><a href="tel:${esc(C.phone.replace(/\s/g, ""))}">${esc(C.phone)}</a></li>`);
     if (C.instagram) contact.push(`<li><a href="${esc(C.instagram)}" rel="noopener">Instagram</a></li>`);
@@ -381,7 +381,7 @@
     if (!btn) return null;
     const a = document.createElement("a");
     a.className = btn.className; a.innerHTML = btn.innerHTML; a.setAttribute("role", "button");
-    a.rel = "noopener"; if (!inFrame) a.target = "_blank";
+    a.rel = "noopener noreferrer"; a.referrerPolicy = "no-referrer"; if (!inFrame) a.target = "_blank";
     btn.replaceWith(a);
     const read = () => { const d = Object.fromEntries(new FormData(form).entries()); return d; };
     const update = () => { a.href = waUrl(buildText(read())); };
@@ -448,7 +448,7 @@
       if (val) {
         if (el.dataset.as === "mailto") el.innerHTML = `<a href="mailto:${esc(val)}">${esc(val)}</a>`;
         else if (el.dataset.as === "tel") el.innerHTML = `<a href="tel:${esc(val.replace(/\s/g, ""))}">${esc(val)}</a>`;
-        else if (el.dataset.as === "wa") el.innerHTML = `<a href="${esc(waUrl())}" rel="noopener">${esc(el.dataset.label || "Scrivici su WhatsApp")}</a>`;
+        else if (el.dataset.as === "wa") el.innerHTML = `<a href="${esc(waUrl())}" rel="noopener noreferrer" referrerpolicy="no-referrer">${esc(el.dataset.label || "Scrivici su WhatsApp")}</a>`;
         else if (el.dataset.as === "link") el.innerHTML = `<a href="${esc(val)}" rel="noopener">${esc((el.dataset.labelConfig && C[el.dataset.labelConfig]) || el.dataset.label || val)}</a>`;
         else el.textContent = val;
       } else {
@@ -465,7 +465,8 @@
   /** Link esterni: in nuova scheda sul sito pubblicato, link semplici dentro un riquadro protetto */
   function externalLinks() {
     if (inFrame) return;
-    $$('a[href^="https://wa.me"], a[href*="whatsapp.com"], a[href*="instagram.com"]').forEach((a) => { a.target = "_blank"; a.rel = "noopener"; });
+    $$('a[href^="https://wa.me"], a[href*="whatsapp.com"]').forEach((a) => { a.rel = "noopener noreferrer"; a.referrerPolicy = "no-referrer"; });
+    $$('a[href^="https://wa.me"], a[href*="whatsapp.com"], a[href*="instagram.com"]').forEach((a) => { a.target = "_blank"; if (!a.rel) a.rel = "noopener"; });
   }
 
   /* ------------------------------------------------------------ avvio */

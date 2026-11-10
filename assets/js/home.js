@@ -110,9 +110,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const im = $("img", shot);
     if (im && im.dataset.src) { if (im.dataset.srcset) im.srcset = im.dataset.srcset; im.src = im.dataset.src; delete im.dataset.src; delete im.dataset.srcset; }
   }
-  const loadRest = () => shots.forEach(loadShot);
-  if (document.readyState === "complete") setTimeout(loadRest, 1200);
-  else addEventListener("load", () => ("requestIdleCallback" in window ? requestIdleCallback(loadRest, { timeout: 2500 }) : setTimeout(loadRest, 1200)));
+  // (la successiva viene scaricata 1,5 s prima del cambio, vedi tick)
 
   function show(i, animate = true) {
     index = (i + shots.length) % shots.length;
@@ -136,6 +134,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!playing) return;
     const t = elapsed + (now - start);
     bar.style.width = Math.min(100, (t / DURATION) * 100) + "%";
+    if (t > DURATION - 1500) loadShot(shots[(index + 1) % shots.length]);
     if (t >= DURATION) { show(index + 1); }
     raf = requestAnimationFrame(tick);
   }
