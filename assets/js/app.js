@@ -149,7 +149,7 @@
       store.set("s3d-theme", next);
     });
     const onScroll = () => el.classList.toggle("scrolled", window.scrollY > 8);
-    window.addEventListener("scroll", onScroll, { passive: true }); onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true }); requestAnimationFrame(onScroll);
   }
 
   function renderFooter() {

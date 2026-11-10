@@ -119,10 +119,12 @@ document.addEventListener("DOMContentLoaded", () => {
       const active = k === index;
       s.classList.toggle("is-active", active);
       s.setAttribute("aria-hidden", String(!active));
-      s.classList.remove("is-printing");
-      s.classList.remove("is-streaking");
-      // primo caricamento: stampa a strati; cambi successivi: scia orizzontale
-      if (active && animate && !reduceMotion) { void s.offsetWidth; s.classList.add(firstShow ? "is-printing" : "is-streaking"); }
+      // primo caricamento: stampa a strati (già impostata nell'HTML); cambi successivi: scia orizzontale.
+      // L'animazione riparte al fotogramma successivo, senza leggere le misure della pagina (niente reflow forzato).
+      if (active && animate && !reduceMotion) {
+        if (firstShow) { s.classList.remove("is-streaking"); s.classList.add("is-printing"); }
+        else { s.classList.remove("is-printing", "is-streaking"); requestAnimationFrame(() => requestAnimationFrame(() => { if (s.classList.contains("is-active")) s.classList.add("is-streaking"); })); }
+      } else s.classList.remove("is-printing", "is-streaking");
     });
     firstShow = false;
     const cur = shots[index];
@@ -180,6 +182,6 @@ document.addEventListener("DOMContentLoaded", () => {
         ticking = false;
       });
     };
-    addEventListener("scroll", onScroll, { passive: true }); onScroll();
+    addEventListener("scroll", onScroll, { passive: true }); // parte al primo scroll: niente misure durante il caricamento
   }
 });
