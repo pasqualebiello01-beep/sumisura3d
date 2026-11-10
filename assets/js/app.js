@@ -175,7 +175,7 @@
         <div class="footer-grid">
           <div>
             ${logoHTML}
-            <p class="small">Stampa 3D su ordinazione: ricambi introvabili, prototipi e progetti personalizzati.</p>
+            <p class="small">Sumisura 3D (Su Misura 3D): stampa 3D su ordinazione di ricambi introvabili, prototipi e progetti personalizzati.</p>
           </div>
           <div><h2>Negozio</h2><ul>
             <li><a href="catalogo.html">Catalogo</a></li>
