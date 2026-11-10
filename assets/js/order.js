@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", async () => {
           ${o.email ? `<dt>Email</dt><dd>${esc(o.email)}</dd>` : ""}
         </dl>
         ${left ? `<div class="notice" style="margin-bottom:1.5rem"><p>Nel carrello ${left === 1 ? "è rimasto un pezzo su misura" : `sono rimasti ${left} pezzi su misura`}: <a href="carrello.html">richiedi il preventivo su WhatsApp</a>.</p></div>` : ""}
-        <p style="display:flex;gap:.6rem;flex-wrap:wrap"><a class="btn" href="catalogo.html">Torna al catalogo</a>${C.whatsapp ? `<a class="btn btn-ghost" href="https://wa.me/${esc(C.whatsapp)}" rel="noopener">Scrivici su WhatsApp</a>` : ""}</p>
+        <p style="display:flex;gap:.6rem;flex-wrap:wrap"><a class="btn" href="catalogo.html">Torna al catalogo</a>${C.whatsapp ? `<a class="btn btn-ghost" href="${esc(S.waUrl())}" rel="noopener">Scrivici su WhatsApp</a>` : ""}</p>
       </div>`;
   } catch (err) {
     fail("Non riusciamo a verificare l'ordine", `Se hai pagato, l'ordine è comunque registrato da Stripe: scrivici su WhatsApp indicando il riferimento ${esc(id.slice(-8).toUpperCase())}.`);

@@ -21,6 +21,15 @@
     set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) { /* storage non disponibile */ } }
   };
   const product = (id) => PRODUCTS.find((p) => p.id === id);
+  /** Link WhatsApp: sul telefono apre l'app (wa.me), sul computer apre direttamente
+   *  WhatsApp Web, evitando la pagina intermedia api.whatsapp.com che alcuni browser bloccano */
+  const isMobileDevice = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent || "");
+  const waUrl = (text) => {
+    const t = text ? encodeURIComponent(text) : "";
+    return isMobileDevice
+      ? `https://wa.me/${C.whatsapp}${t ? `?text=${t}` : ""}`
+      : `https://web.whatsapp.com/send?phone=${C.whatsapp}${t ? `&text=${t}` : ""}`;
+  };
   const category = (id) => CATS.find((c) => c.id === id);
   const thumbSrc = (src) => src.replace(/\.webp$/, "-600.webp");
   /** Miniature responsive: versione da 300 px per gli schermi piccoli, 600 px per gli altri.
@@ -148,7 +157,7 @@
     if (!el) return;
     const year = new Date().getFullYear();
     const contact = [];
-    if (C.whatsapp) contact.push(`<li><a href="https://wa.me/${esc(C.whatsapp)}" rel="noopener">WhatsApp</a></li>`);
+    if (C.whatsapp) contact.push(`<li><a href="${esc(waUrl())}" rel="noopener">WhatsApp</a></li>`);
     if (C.email) contact.push(`<li><a href="mailto:${esc(C.email)}">${esc(C.email)}</a></li>`);
     if (C.phone) contact.push(`<li><a href="tel:${esc(C.phone.replace(/\s/g, ""))}">${esc(C.phone)}</a></li>`);
     if (C.instagram) contact.push(`<li><a href="${esc(C.instagram)}" rel="noopener">Instagram</a></li>`);
@@ -299,7 +308,7 @@
   function fallbackHTML(subject, text, reason) {
     const actions = [];
     if (C.email) actions.push(`<a class="btn btn-sm" href="mailto:${esc(C.email)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(text)}">Invia via email</a>`);
-    if (C.whatsapp) actions.push(`<a class="btn btn-sm btn-dark" href="https://wa.me/${esc(C.whatsapp)}?text=${encodeURIComponent(subject + "\n\n" + text)}" rel="noopener">Invia su WhatsApp</a>`);
+    if (C.whatsapp) actions.push(`<a class="btn btn-sm btn-dark" href="${esc(waUrl(subject + "\n\n" + text))}" rel="noopener">Invia su WhatsApp</a>`);
     actions.push(`<button type="button" class="btn btn-sm btn-ghost" data-copy>Copia il riepilogo</button>`);
     const contacts = [C.email && `email ${esc(C.email)}`, C.phone && `telefono ${esc(C.phone)}`].filter(Boolean).join(" · ");
     return `
@@ -334,7 +343,6 @@
   }
 
   /* ------------------------------------------------------------ WhatsApp */
-  const waUrl = (text) => `https://wa.me/${C.whatsapp}?text=${encodeURIComponent(text)}`;
   /**
    * Apre la chat WhatsApp con il messaggio già scritto e mostra nel contenitore
    * un riquadro con il pulsante per riaprirla (se il browser blocca la nuova scheda).
@@ -440,7 +448,7 @@
       if (val) {
         if (el.dataset.as === "mailto") el.innerHTML = `<a href="mailto:${esc(val)}">${esc(val)}</a>`;
         else if (el.dataset.as === "tel") el.innerHTML = `<a href="tel:${esc(val.replace(/\s/g, ""))}">${esc(val)}</a>`;
-        else if (el.dataset.as === "wa") el.innerHTML = `<a href="https://wa.me/${esc(val)}" rel="noopener">${esc(el.dataset.label || "Scrivici su WhatsApp")}</a>`;
+        else if (el.dataset.as === "wa") el.innerHTML = `<a href="${esc(waUrl())}" rel="noopener">${esc(el.dataset.label || "Scrivici su WhatsApp")}</a>`;
         else if (el.dataset.as === "link") el.innerHTML = `<a href="${esc(val)}" rel="noopener">${esc((el.dataset.labelConfig && C[el.dataset.labelConfig]) || el.dataset.label || val)}</a>`;
         else el.textContent = val;
       } else {
@@ -450,14 +458,14 @@
       }
     });
     $$("[data-requires]").forEach((el) => { if (!C[el.dataset.requires]) el.hidden = true; });
-    $$("a[data-wa]").forEach((a) => { if (C.whatsapp) a.href = `https://wa.me/${C.whatsapp}?text=${encodeURIComponent(a.dataset.wa)}`; });
+    $$("a[data-wa]").forEach((a) => { if (C.whatsapp) a.href = waUrl(a.dataset.wa); });
     $$("a[data-href-config]").forEach((a) => { const v = C[a.dataset.hrefConfig]; if (v) a.href = v; });
   }
 
   /** Link esterni: in nuova scheda sul sito pubblicato, link semplici dentro un riquadro protetto */
   function externalLinks() {
     if (inFrame) return;
-    $$('a[href^="https://wa.me"], a[href*="instagram.com"]').forEach((a) => { a.target = "_blank"; a.rel = "noopener"; });
+    $$('a[href^="https://wa.me"], a[href*="whatsapp.com"], a[href*="instagram.com"]').forEach((a) => { a.target = "_blank"; a.rel = "noopener"; });
   }
 
   /* ------------------------------------------------------------ avvio */
