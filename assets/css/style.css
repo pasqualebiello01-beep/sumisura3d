@@ -606,3 +606,50 @@ html.no-motion .reveal { clip-path: none; }
 .order-box dt { color: var(--ink-2); }
 .order-box dd { margin: 0; font-weight: 500; }
 .summary-col:has(#quote-form) { position: static; }
+
+/* =====================================================================
+   Hero a tutto schermo: le immagini scorrevoli occupano tutta la prima
+   schermata, testo e pulsanti in sovrimpressione a sinistra
+   ===================================================================== */
+.hero {
+  position: relative; overflow: hidden; padding: 0;
+  min-height: calc(100vh - var(--header-h)); min-height: calc(100svh - var(--header-h));
+  display: flex; align-items: center;
+}
+.hero .hero-grid { position: static; display: block; width: 100%; }
+.hero .hero-copy { position: relative; z-index: 3; max-width: 34rem; padding-block: clamp(2.5rem, 6vw, 5rem); }
+.hero .stage {
+  position: absolute; inset: 0; z-index: 1; order: 0;
+  width: auto; max-width: none; margin: 0; aspect-ratio: auto; border-radius: 0;
+}
+/* velo che tiene leggibile il testo sopra l'immagine */
+.hero .stage::before {
+  content: ""; position: absolute; inset: 0; z-index: 2; pointer-events: none;
+  background: linear-gradient(90deg,
+    color-mix(in srgb, var(--panel) 96%, transparent) 0%,
+    color-mix(in srgb, var(--panel) 80%, transparent) 34%,
+    color-mix(in srgb, var(--panel) 0%, transparent) 58%);
+}
+.hero .stage-shot { justify-items: end; padding-right: max(var(--gutter), calc((100vw - var(--wrap)) / 2 - 7rem)); }
+.hero .stage-shot img { width: min(40vw, 78vh); height: auto; aspect-ratio: 1; max-width: 860px; }
+.hero .stage-ui {
+  left: auto; bottom: clamp(1rem, 3vh, 2rem);
+  right: max(var(--gutter), calc((100vw - var(--wrap)) / 2 + var(--gutter)));
+}
+.hero .stage-ui .stage-caption { margin-right: .5rem; }
+.hero .stage-progress { top: 0; }
+
+@media (max-width: 860px) {
+  .hero { align-items: flex-end; min-height: 0; }
+  .hero .hero-copy { max-width: none; padding-block: calc(min(78vw, 44vh) + 2rem) 2.5rem; }
+  .hero .stage-shot { justify-items: center; align-items: start; padding: 1rem var(--gutter) 0; }
+  .hero .stage-shot img { width: min(78vw, 44vh); height: auto; aspect-ratio: 1; }
+  .hero .stage::before {
+    background: linear-gradient(180deg,
+      color-mix(in srgb, var(--panel) 0%, transparent) calc(min(78vw, 44vh) - 2rem),
+      color-mix(in srgb, var(--panel) 92%, transparent) calc(min(78vw, 44vh) + 2rem),
+      var(--panel) 100%);
+  }
+  .hero .stage-ui { top: calc(min(78vw, 44vh) - 1.5rem); bottom: auto; right: var(--gutter); }
+  .hero .stage-ui .stage-caption { display: none; }
+}
