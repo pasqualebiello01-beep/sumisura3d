@@ -27,8 +27,18 @@ document.addEventListener("DOMContentLoaded", () => {
     $("#bc-name").textContent = p.name;
 
     let images = S.imagesFor(p, selected);
-    const thumbsHTML = () => images.length > 1 ? images.map((im, i) =>
-      `<button type="button" data-img="${i}" aria-label="Mostra immagine ${i + 1}: ${esc(im.alt)}"${i === 0 ? ' aria-current="true"' : ""}><img src="${esc(S.thumbSrc(im.src))}" alt="" width="76" height="76" loading="lazy" onerror="this.onerror=null;this.src='${esc(im.src)}'"></button>`).join("") : "";
+    let imgIndex = 0;
+    const thumbImg = (im) => `<img src="${esc(S.thumbSrc(im.src))}" alt="" width="76" height="76" loading="lazy" onerror="this.onerror=null;this.src='${esc(im.src)}'">`;
+    // Con il modello 3D: prima miniatura = foto, seconda = vista 3D. Senza modello: tutte le foto.
+    const thumbsHTML = () => {
+      if (p.model) {
+        const i = Math.min(imgIndex, images.length - 1), im = images[i];
+        return `<button type="button" data-img="${i}" aria-label="Mostra la foto: ${esc(im.alt)}" aria-current="${!viewer}">${thumbImg(im)}</button>
+          <button type="button" class="thumb-3d" data-3d aria-label="Apri la vista 3D" aria-current="${!!viewer}">${thumbImg(im)}<span class="thumb-3d-label" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M12 2 3 7v10l9 5 9-5V7z"/><path d="M3 7l9 5 9-5M12 12v10"/></svg>3D</span></button>`;
+      }
+      return images.length > 1 ? images.map((im, i) =>
+        `<button type="button" data-img="${i}" aria-label="Mostra immagine ${i + 1}: ${esc(im.alt)}"${i === 0 ? ' aria-current="true"' : ""}>${thumbImg(im)}</button>`).join("") : "";
+    };
 
     root.innerHTML = `
       <div class="product" style="padding-bottom:1rem">
@@ -113,9 +123,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Galleria
     const mainWrap = $("#gallery-main");
-    let imgIndex = 0;
+    const markThumbs = () => $$(".thumbs button", root).forEach((b) => b.setAttribute("aria-current", String(b.hasAttribute("data-3d") ? !!viewer : !viewer && Number(b.dataset.img) === imgIndex)));
     function bindThumbs() {
-      $$(".thumbs button", root).forEach((b) => b.addEventListener("click", () => { if (p.model) selectTab("img"); showImage(Number(b.dataset.img)); }));
+      $$(".thumbs button", root).forEach((b) => b.addEventListener("click", () => {
+        if (b.hasAttribute("data-3d")) { if (!viewer) selectTab("3d"); return; }
+        if (p.model && viewer) selectTab("img");
+        showImage(Number(b.dataset.img));
+      }));
     }
     /** Mostra il prodotto nel colore/variante scelti: foto e modello 3D */
     let startBelow = false;
@@ -124,9 +138,10 @@ document.addEventListener("DOMContentLoaded", () => {
       const next = S.imagesFor(p, selected);
       if (next !== images || view != null) {
         images = next;
+        imgIndex = Math.min(imgIndex, images.length - 1);
         $(".thumbs", root).innerHTML = thumbsHTML(); bindThumbs();
-        if (!viewer) showImage(Math.min(imgIndex, images.length - 1));
-        else $$(".thumbs button", root).forEach((b) => b.setAttribute("aria-current", "false"));
+        if (!viewer) showImage(imgIndex);
+        markThumbs();
       }
       if (viewer) {
         if (viewer.src !== S.modelFor(p, selected)) open3D(); // forma diversa: carica l'altro modello
@@ -140,7 +155,8 @@ document.addEventListener("DOMContentLoaded", () => {
       if (!img) { mainWrap.innerHTML = `<img id="main-img" width="1100" height="1100">`; img = $("#main-img"); }
       img.src = im.src; img.alt = im.alt;
       img.classList.remove("swap"); void img.offsetWidth; img.classList.add("swap");
-      $$(".thumbs button", root).forEach((b, k) => b.setAttribute("aria-current", String(k === i)));
+      if (p.model) { const t = $(".thumbs button[data-img]", root); if (t) { t.dataset.img = i; t.innerHTML = thumbImg(im); } const t3 = $(".thumb-3d img", root); if (t3) t3.src = S.thumbSrc(im.src); }
+      markThumbs();
     }
     bindThumbs();
 
@@ -152,6 +168,7 @@ document.addEventListener("DOMContentLoaded", () => {
       t3.setAttribute("aria-selected", String(is3d)); ti.setAttribute("aria-selected", String(!is3d));
       mainWrap.setAttribute("aria-labelledby", is3d ? "tab-3d" : "tab-img");
       if (is3d) open3D(); else { if (viewer) { viewer.destroy(); viewer = null; } mainWrap.innerHTML = ""; showImage(imgIndex); }
+      markThumbs();
     }
     function open3D() {
       if (viewer) { viewer.destroy(); viewer = null; }
