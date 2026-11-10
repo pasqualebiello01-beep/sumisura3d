@@ -21,6 +21,8 @@
     set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) { /* storage non disponibile */ } }
   };
   const product = (id) => PRODUCTS.find((p) => p.id === id);
+  /** Indirizzo della pagina di un prodotto (es. manopola-ricambio.html) */
+  const productUrl = (id) => `${encodeURIComponent(id)}.html`;
   /** Link WhatsApp: sul telefono apre l'app (wa.me), sul computer apre direttamente
    *  WhatsApp Web, evitando la pagina intermedia api.whatsapp.com che alcuni browser bloccano */
   const isMobileDevice = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent || "");
@@ -339,7 +341,7 @@
         </div>
         <div class="card-body">
           <span class="card-cat">${esc(cat ? cat.name : "")}</span>
-          <h3 class="card-title"><a href="prodotto.html#${esc(p.id)}">${esc(p.name)}</a></h3>
+          <h3 class="card-title"><a href="${esc(productUrl(p.id))}">${esc(p.name)}</a></h3>
           ${p.short ? `<p class="card-desc">${esc(p.short)}</p>` : ""}
           <span class="card-price">${price}</span>
         </div>
@@ -541,7 +543,7 @@
   });
 
   window.S3D = {
-    C, PRODUCTS, CATS, $, $$, esc, money, product, category, unitPrice, minPrice, defaultOption, defaultOptions, imagesFor, colorFor, modelFor, swatch, isCustom, SHIPPING, hasPriceRange, thumbSrc, thumbSet, thumbFallback, ph,
+    C, PRODUCTS, CATS, $, $$, esc, money, product, productUrl, category, unitPrice, minPrice, defaultOption, defaultOptions, imagesFor, colorFor, modelFor, swatch, isCustom, SHIPPING, hasPriceRange, thumbSrc, thumbSet, thumbFallback, ph,
     Cart, cardHTML, toast, postJSON, fallbackHTML, waUrl, sendViaWhatsApp, bindWhatsAppButton, bindCopy, reasonFor, setupValidation, validateForm, setBusy,
     reduceMotion, store, updateBadge
   };

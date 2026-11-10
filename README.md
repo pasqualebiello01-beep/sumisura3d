@@ -123,3 +123,8 @@ Se modifichi `assets/css/style.css`, rilancia `node tools/inline-css.mjs` (oppur
 ## Foto nella pagina di pagamento Stripe
 Stripe non mostra le immagini WebP: il server usa le copie JPG in `assets/img/checkout/` (stesso nome della foto, estensione .jpg). La prima volta che una variante viene ordinata, il server carica la foto direttamente su Stripe e crea un prodotto Stripe con id che inizia per `s3d_` (lo vedi in Catalogo prodotti): dagli ordini successivi lo riusa. Non cancellare quei prodotti mentre il sito è attivo; se lo fai, vengono ricreati al primo ordine.
 Quando aggiungi o cambi le foto dei prodotti, crea anche le copie JPG con `python tools/checkout-images.py` (oppure chiedi di farlo).
+
+## Pagine dei prodotti
+Ogni prodotto ha una sua pagina (es. `manopola-ricambio.html`, online come sumisura3d.it/manopola-ricambio), con titolo, descrizione, foto, prezzo e dati per Google già scritti dentro. Le pagine e la `sitemap.xml` si creano con:
+`node tools/build-products.mjs`
+Rilancialo (oppure chiedi di farlo) ogni volta che aggiungi, togli o modifichi un prodotto in `assets/js/products.js`. I vecchi link `prodotto.html#id` portano in automatico alla pagina nuova.

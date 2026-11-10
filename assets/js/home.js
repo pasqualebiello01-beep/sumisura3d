@@ -77,7 +77,7 @@ document.addEventListener("DOMContentLoaded", () => {
           `<label class="chip"><input type="radio" name="rv${vi}" value="${esc(o.label)}" data-variant="${esc(v.name)}"${o.label === S.defaultOption(v) ? " checked" : ""}><span>${S.swatch(o)}${esc(o.label)}</span></label>`).join("")}</div></fieldset>`).join("")}
         <div class="rail-panel-actions">
           <button type="button" class="btn" data-add>Aggiungi al carrello</button>
-          <a class="btn btn-ghost" href="prodotto.html#${esc(p.id)}">${p.model ? "Apri la scheda e la vista 3D" : "Apri la scheda"}</a>
+          <a class="btn btn-ghost" href="${esc(S.productUrl(p.id))}">${p.model ? "Apri la scheda e la vista 3D" : "Apri la scheda"}</a>
         </div>`;
       const priceEl = $("[data-price]", panel);
       const upd = () => { const u = unitPrice(p, selected); priceEl.textContent = money(u); };

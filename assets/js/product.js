@@ -7,8 +7,10 @@ document.addEventListener("DOMContentLoaded", () => {
   let viewer = null;
 
   function render() {
-    const id = decodeURIComponent(location.hash.slice(1));
+    const id = document.body.dataset.product || decodeURIComponent(location.hash.slice(1));
     const p = product(id);
+    // vecchi link prodotto.html#id: porta alla pagina del prodotto
+    if (p && !document.body.dataset.product) { location.replace(S.productUrl(p.id)); return; }
     if (!p) {
       root.innerHTML = `<div class="empty-state" style="margin:2rem 0 4rem"><h1 style="font-size:2rem">Prodotto non trovato</h1>
         <p class="muted">Il link potrebbe essere errato o il prodotto non è più disponibile.</p>
@@ -223,6 +225,7 @@ document.addEventListener("DOMContentLoaded", () => {
     $("#related-section").hidden = related.length === 0;
 
     // Dati strutturati per i motori di ricerca
+    if (document.body.dataset.product) return; // la pagina del prodotto ha già i dati completi
     const old = $("#product-ld"); if (old) old.remove();
     const ld = { "@context": "https://schema.org", "@type": "Product", name: p.name, description: p.short, category: cat ? cat.name : undefined,
       image: p.images.map((i) => new URL(i.src, location.href).href), brand: { "@type": "Brand", name: "Sumisura 3D" } };
@@ -231,6 +234,6 @@ document.addEventListener("DOMContentLoaded", () => {
     document.head.appendChild(sc);
   }
 
-  addEventListener("hashchange", () => { if (viewer) { viewer.destroy(); viewer = null; } render(); scrollTo(0, 0); });
+  if (!document.body.dataset.product) addEventListener("hashchange", () => { if (viewer) { viewer.destroy(); viewer = null; } render(); scrollTo(0, 0); });
   render();
 });

@@ -12,9 +12,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const opts = Object.entries(i.options).map(([k, v]) => `${esc(k)}: ${esc(v)}`).join(" · ");
     const img = S.imagesFor(p, i.options)[0].src;
     return `<li class="cart-item" data-key="${esc(i.key)}">
-      <a class="thumb" href="prodotto.html#${esc(p.id)}" tabindex="-1" aria-hidden="true"><img src="${esc(S.thumbSrc(img))}" alt="" width="96" height="96" loading="lazy" onerror="this.onerror=null;this.src='${esc(img)}'"></a>
+      <a class="thumb" href="${esc(S.productUrl(p.id))}" tabindex="-1" aria-hidden="true"><img src="${esc(S.thumbSrc(img))}" alt="" width="96" height="96" loading="lazy" onerror="this.onerror=null;this.src='${esc(img)}'"></a>
       <div>
-        <h3><a href="prodotto.html#${esc(p.id)}">${esc(p.name)}</a>${custom ? ' <span class="badge badge-ph">Su misura</span>' : ""}</h3>
+        <h3><a href="${esc(S.productUrl(p.id))}">${esc(p.name)}</a>${custom ? ' <span class="badge badge-ph">Su misura</span>' : ""}</h3>
         <p class="opts">${opts}${i.note ? `<br>Note: ${esc(i.note)}` : ""}<br>${u == null ? "Prezzo su preventivo" : custom ? `Da ${money(u)} cad., prezzo finale nel preventivo` : `${money(u)} cad.`}</p>
         <div style="display:flex;gap:1rem;align-items:center;flex-wrap:wrap">
           <div class="qty" role="group" aria-label="Quantità di ${esc(p.name)}">
