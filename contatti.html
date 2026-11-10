@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contatti e preventivi – Sumisura 3D</title>
+<meta name="description" content="Contatta Sumisura 3D per ricambi, prototipi e progetti di stampa 3D su misura. Richiedi un preventivo su WhatsApp.">
+<link rel="canonical" href="https://www.sumisura3d.it/contatti.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Sumisura 3D">
+<meta property="og:title" content="Contatti e preventivi – Sumisura 3D">
+<meta property="og:description" content="Contatta Sumisura 3D per ricambi, prototipi e progetti di stampa 3D su misura. Richiedi un preventivo su WhatsApp.">
+<meta property="og:url" content="https://www.sumisura3d.it/contatti.html">
+<meta property="og:image" content="https://www.sumisura3d.it/assets/img/og-image.jpg">
+<meta property="og:locale" content="it_IT">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#24272C">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="assets/css/style.css">
+<script>(function(){var t=null;try{t=JSON.parse(localStorage.getItem("s3d-theme"))}catch(e){}document.documentElement.dataset.theme=t||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")})();</script>
+</head>
+<body data-page="contact">
+<a class="skip-link" href="#main">Vai al contenuto</a>
+<header class="site-header" id="site-header">
+  <noscript><div class="wrap header-inner"><a class="logo" href="index.html"><span class="logo-word">Sumisura 3D</span></a>
+  <nav class="main-nav" aria-label="Principale"><ul><li><a href="catalogo.html">Catalogo</a></li><li><a href="chi-siamo.html">Chi siamo</a></li><li><a href="faq.html">FAQ</a></li><li><a href="contatti.html">Contatti</a></li></ul></nav></div></noscript>
+</header>
+<main id="main">
+
+<section class="page-head">
+  <div class="wrap">
+    <nav class="breadcrumb" aria-label="Percorso"><ol><li><a href="index.html">Home</a></li><li aria-current="page">Contatti</li></ol></nav>
+    <h1>Contatti e preventivi</h1>
+    <p class="lead">Scrivici per un ricambio, un prototipo o un'idea da realizzare. Il modulo apre WhatsApp con il tuo messaggio già pronto: più dettagli ci dai, più preciso sarà il preventivo.</p>
+  </div>
+</section>
+<section class="wrap">
+  <div class="two-col">
+    <div>
+      <ul class="contact-list">
+        <li data-hide-empty><span class="k">WhatsApp</span><span class="v" data-config="whatsapp" data-as="wa" data-label="Scrivici su WhatsApp" data-placeholder="Numero WhatsApp da inserire in config.js"></span></li>
+        <li><span class="k">Instagram</span><span class="v" data-config="instagram" data-as="link" data-label="Seguici su Instagram"></span></li>
+        <li data-hide-empty><span class="k">Orari</span><span class="v" data-config="openingHours" data-placeholder="Orari da inserire in config.js"></span></li>
+      </ul>
+      <p class="muted small">Hai foto, disegni o file 3D? Puoi allegarli direttamente nella chat WhatsApp dopo aver inviato il messaggio.</p>
+    </div>
+
+    <div id="richiesta">
+      <h2>Scrivici</h2>
+      <form id="contact-form" novalidate>
+        <div class="form-row">
+          <div class="field"><label for="c-name">Nome e cognome</label><input id="c-name" name="name" type="text" autocomplete="name" data-rules="required" aria-describedby="c-name-err"><span class="error-msg" id="c-name-err"></span></div>
+          <div class="field"><label for="c-email">Email <span class="optional">(facoltativa)</span></label><input id="c-email" name="email" type="email" autocomplete="email" data-rules="email" aria-describedby="c-email-err"><span class="error-msg" id="c-email-err"></span></div>
+        </div>
+        <div class="form-row">
+          <div class="field"><label for="c-topic">Argomento</label>
+            <select id="c-topic" name="topic" data-rules="required" aria-describedby="c-topic-err">
+              <option value="">Scegli…</option><option>Ricambio</option><option>Prototipo</option><option>Progetto su misura</option><option>Ordine dal catalogo</option><option>Altro</option>
+            </select><span class="error-msg" id="c-topic-err"></span></div>
+        </div>
+        <div class="field"><label for="c-msg">Messaggio</label><textarea id="c-msg" name="message" data-rules="required min10" aria-describedby="c-msg-hint c-msg-err"></textarea><span class="hint" id="c-msg-hint">Descrivi il pezzo, le misure indicative, la quantità e l'uso previsto.</span><span class="error-msg" id="c-msg-err"></span></div>
+        <div class="hp" aria-hidden="true"><label for="c-web">Lascia vuoto</label><input id="c-web" name="website" type="text" tabindex="-1" autocomplete="off"></div>
+        <div class="field"><label class="consent"><input id="c-consent" name="consent" type="checkbox" data-rules="checked" aria-describedby="c-consent-err"> <span>Ho letto l'<a href="privacy.html">informativa privacy</a> e acconsento al trattamento dei dati per ricevere una risposta.</span></label><span class="error-msg" id="c-consent-err"></span></div>
+        <button class="btn" type="submit">Invia su WhatsApp</button>
+        <p class="small muted" style="margin:.8rem 0 0">Si apre la nostra chat WhatsApp con il messaggio già scritto: ti basta premere Invia.</p>
+        <div id="contact-result" style="margin-top:1.2rem"></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+</main>
+<footer class="site-footer" id="site-footer"></footer>
+<script src="assets/js/config.js" defer></script>
+<script type="module" src="assets/js/products.js"></script>
+<script src="assets/js/app.js" defer></script>
+<script src="assets/js/contact.js" defer></script>
+</body>
+</html>

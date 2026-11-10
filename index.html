@@ -1,771 +1,142 @@
-<!doctype html> 
+<!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Su Misura 3D | Oggetti stampati in 3D, fatti per te</title>
-  <meta name="description" content="Oggetti stampati in 3D per la casa, regali e pezzi personalizzati. Scegli dal catalogo o descrivi la tua idea: la progettiamo e la stampiamo su misura.">
-  <meta name="theme-color" content="#14161a">
-  <!-- Favicon: logo a cubo di Su Misura 3D -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231b1716'/%3E%3Cpath d='M16 4l10 5.5v13L16 28 6 22.5v-13z' fill='none' stroke='%23ffffff' stroke-width='2.4' stroke-linejoin='round'/%3E%3Cpath d='M6 9.5L16 15l10-5.5M16 15v13' fill='none' stroke='%23ffa078' stroke-width='2.4' stroke-linejoin='round'/%3E%3C/svg%3E">
-  <script>document.documentElement.classList.add('js');</script>
-  <link rel="preload" as="image" href="assets/hero-1-800.webp" imagesrcset="assets/hero-1-400.webp 400w, assets/hero-1-800.webp 800w" imagesizes="100vw" type="image/webp" fetchpriority="high">
-  <meta property="og:type" content="website">
-  <meta property="og:locale" content="it_IT">
-  <meta property="og:title" content="Su Misura 3D | Oggetti stampati in 3D, fatti per te">
-  <meta property="og:description" content="Dal catalogo o dalla tua idea: oggetti stampati in 3D su misura.">
-  <!-- Prima immagine della home: precaricata, una per desktop e una per mobile -->
-  <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"Store","name":"Su Misura 3D","description":"Oggetti stampati in 3D, anche personalizzati su misura.","inLanguage":"it"}
-  </script>
-<style>
-:root{--accent:#ff8354;--ink:#201c22;color:var(--ink);font:16px/1.6 system-ui,sans-serif}
-*{box-sizing:border-box}
-body{margin:0;background:#f8f5f2}
-[hidden]{display:none!important}
-a{color:inherit}
-.wrap{width:min(1160px,92%);margin:auto}
-.skip,.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
-.skip:focus{width:auto;height:auto;clip-path:none;z-index:5;background:white}
-.site-header,.site-footer,.section.dark{background:#201c22;color:white}
-.bar,.nav,.cta-row,.foot{display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
-.bar{justify-content:space-between;min-height:76px;padding:12px 0}
-.brand,.nav a,.btn{text-decoration:none}
-.brand{display:flex;align-items:center;gap:.65rem;font-size:1.22rem;font-weight:800}
-.brand b,.brand-line b{color:var(--accent)}
-.menu-btn{display:none}
-.hero,.band{position:relative;isolation:isolate;color:white;background:#211923;overflow:hidden}
-.hero{min-height:580px;display:grid;align-content:center;padding:75px 0 55px}
-.hero-media,.hero-veil,.band-bg,.band-veil,.frame{position:absolute;inset:0;z-index:-1}
-.hero img,.band img,.media img{width:100%;height:100%;object-fit:cover}
-.frame:not(.is-active){display:none}
-.hero-veil,.band-veil{background:linear-gradient(90deg,#151219 0%,#151219d9 35%,#15121924 100%)}
-.hero h1,.band h2,.head h2{line-height:1.02;letter-spacing:-.055em;margin:.2em 0}
-.hero h1{font-size:clamp(3rem,8vw,6.5rem);max-width:760px}
-.lead{max-width:48ch;font-size:1.14rem}
-.eyebrow{text-transform:uppercase;letter-spacing:.16em;font-size:.75rem;font-weight:800;color:#ff9c76}
-.eyebrow.dark{color:#963616}
-.btn,.ctl{display:inline-flex;align-items:center;gap:.5rem;border:0;border-radius:10px;padding:.75rem 1rem;font:inherit;font-weight:750;cursor:pointer}
-.btn-accent{background:var(--accent);color:#25160f}
-.btn-ghost{color:white;background:#262029;border:1px solid #a392a7}
-.ico{width:1.15em;height:1.15em;fill:none;stroke:currentColor;stroke-width:2}
-@media(max-width:700px){.hero,.band{padding:60px 0}
-.hero{min-height:530px}
-.hero-veil,.band-veil{background:#151219a8}
-.nav{font-size:.9rem}
-.bar{align-items:flex-start}}
-:root{--accent:#ff844d;--ink:#19191a;color:#232222}
-body{background:#f6f2ed}
-.site-header{position:relative;z-index:2;background:#151516;border-bottom:1px solid #373331}
-.bar{min-height:80px}
-.brand{letter-spacing:-.035em}
-.nav{gap:1.3rem}
-.nav>a{font-size:.88rem}
-.cart-toggle,.menu-btn{background:#292627;color:white;border:1px solid #62514a;border-radius:100px;padding:.5rem .85rem;font:inherit;cursor:pointer}
-.cart-toggle{display:flex;align-items:center;gap:.5rem}
-.cart-toggle span{display:grid;place-items:center;min-width:1.5rem;height:1.5rem;border-radius:50%;background:var(--accent);color:#21150f;font-weight:750}
-.hero{min-height:clamp(580px,76svh,780px);background:#131112;padding:84px 0 42px;align-content:center}
-.hero-media .frame{display:block;opacity:0;transition:opacity .8s ease}
-.hero-media .frame.is-active{opacity:1}
-.hero-media img{position:absolute;inset:0 0 0 auto;width:76%;object-position:center}
-.hero-media .frame:first-child img{object-position:68% center}
-.hero-veil{background:linear-gradient(90deg,#111011 4%,#111011f2 25%,#11101165 57%,transparent 86%),linear-gradient(0deg,#111011cf,transparent 32%)}
-.hero h1{max-width:800px;font-size:clamp(3.25rem,8vw,7.6rem);letter-spacing:-.078em;font-weight:780}
-.hero h1 span,.hero h1 em{display:block;animation:title-in .62s both}
-.hero h1 em{font-style:normal;color:#ff996d;animation-delay:.13s}
-@keyframes title-in{from{opacity:0}to{opacity:1}}
-.hero .lead{color:#eee4df;margin:1.4rem 0 1.7rem}
-.btn{border-radius:100px;justify-content:center}
-.btn-ghost{background:#201c1ddd}
-.card h3,.card>p,.card>.btn{margin-left:5px;margin-right:5px}
-.card>.btn{margin-top:auto}
-.drawer-foot .btn{width:100%}
-@media(min-width:701px) and (max-width:1000px){.nav{order:3;width:100%}
-.bar{padding:12px 0}}
-@media(max-width:700px){.bar{display:grid;grid-template-columns:1fr auto auto;gap:.5rem;align-items:center;min-height:66px}
-.brand{font-size:1rem}
-.brand svg{width:22px}
-.menu-btn{display:block;grid-column:2;padding:.45rem .65rem}
-.cart-toggle{grid-column:3;font-size:.8rem;padding:.4rem .55rem}
-.nav{display:none;grid-row:2;grid-column:1/-1;padding:.5rem 0}
-.nav.open{display:flex}
-.hero{min-height:670px;align-content:end;padding:140px 0 26px}
-.hero-media img{width:100%;height:74%;object-position:center top}
-.hero-veil{background:linear-gradient(0deg,#111011 12%,#111011f7 27%,#11101180 53%,transparent 82%)}
-.hero h1{font-size:clamp(2.8rem,10vw,4.5rem)}}
-@media(max-width:360px){.cart-toggle{gap:.25rem}
-.cart-toggle>.ico{display:none}}
-@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
-@media(prefers-reduced-motion:no-preference){.hero-media .frame.is-active img{animation:hero-drift 9s ease-out both}}
-@keyframes hero-drift{from{transform:scale(1)}to{transform:scale(1.045)}}
-.script-note{color:white;font-size:.85rem}
-html{scroll-padding-top:120px}
-.site-header{position:sticky;top:0;z-index:8;background:#161515f7}
-.cart-toggle{text-decoration:none}
-.cart-toggle:hover,.cart-toggle:focus-visible{border-color:var(--accent)}
-.hero{min-height:clamp(595px,82svh,840px);padding:85px 0;overflow:hidden}
-.hero h1{font-size:clamp(3.4rem,8.1vw,8rem);line-height:.94}
-.hero-signature{display:flex;align-items:center;gap:.65rem;margin-top:2rem;font-size:.7rem;font-weight:750;letter-spacing:.16em;text-transform:uppercase;color:#edc6b6}
-.signal{width:.48rem;height:.48rem;border-radius:50%;background:#ff9a69;box-shadow:0 0 14px #ff9a69}
-@media(prefers-reduced-motion:no-preference){.hero-media .frame{animation:live-photo 10.5s linear infinite;transition:none}
-.hero-media .frame:nth-child(2){animation-delay:-7s}
-.hero-media .frame:nth-child(3){animation-delay:-3.5s}
-.hero-media .frame img,.hero-media .frame.is-active img{animation:live-zoom 18s ease-in-out infinite alternate}
-.signal{animation:signal 2.5s ease-in-out infinite}
-.hero:focus-within .frame,.hero:focus-within .frame img,.band:hover .band-bg img,.band:focus-within .band-bg img{animation-play-state:paused}}
-@keyframes live-photo{0%,28%{opacity:1}33.33%,94.67%{opacity:0}100%{opacity:1}}
-@keyframes live-zoom{from{transform:scale(1)}to{transform:scale(1.07)}}
-@keyframes workshop-drift{from{transform:scale(1.045) translateX(-1%)}to{transform:scale(1.13) translateX(1%)}}
-@keyframes signal{50%{opacity:.55}}
-@keyframes line-drift{to{background-position:0 16px}}
-#contatti>.wrap{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);align-items:start;gap:clamp(1.5rem,6vw,6rem);max-width:1160px}
-@media(max-width:700px){html{scroll-padding-top:83px}
-.hero{min-height:620px;padding:160px 0 32px;align-content:end}
-.hero h1{font-size:clamp(2.65rem,10vw,4.25rem)}
-#contatti>.wrap,#contatti .two{grid-template-columns:1fr}}
-@keyframes drawer-in{from{transform:translateX(100%)}to{transform:translateX(0)}}
-#cart .drawer-head .eyebrow{color:#ffa77c}
-.card>.btn{align-self:stretch}
-.quick-checkout-page .eyebrow{margin:1.5rem 0 0}
-.payment-placeholder .btn:disabled{opacity:.55;cursor:default}
-body{--saved-0:0;--saved-1:0;--saved-2:0;--saved-3:0;--saved-count:calc(var(--saved-0) + var(--saved-1) + var(--saved-2) + var(--saved-3));--saved-cents:calc(6700 * var(--saved-0) + 890 * var(--saved-1))}
-#cartToggle .native-count{counter-reset:items var(--saved-count)}
-.native-count::after{content:counter(items)}
-body:not(.cart-enhanced) #cartCount,.cart-enhanced #cartToggle .native-count,#nativeCart,.native-actions,.native-line,.save-active,.saved-checkout-link,.continue-saved{display:none}
-.native-actions>.btn{display:flex;margin-top:.55rem}
-html{scroll-padding-top:102px}
-.site-header{background:linear-gradient(112deg,#211b19 0%,#181718 45%,#1b1818 100%);border-bottom:1px solid #664437;box-shadow:0 8px 22px #130c0b36;color:#fff9f4;isolation:isolate}
-.site-header::after{content:"";position:absolute;inset:auto 0 -1px;height:1px;background:linear-gradient(90deg,transparent 12%,#a95233 37%,#ffb38c 50%,#a95233 63%,transparent 88%);background-size:180% 100%;pointer-events:none;animation:nav-light 12s ease-in-out infinite alternate}
-@keyframes nav-light{from{background-position:0 0}to{background-position:100% 0}}
-.site-header .bar{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:clamp(.8rem,2vw,1.7rem);min-height:84px;align-items:center}
-.site-header .brand{white-space:nowrap;gap:.6rem;letter-spacing:-.025em}
-.site-header .brand svg{box-sizing:content-box;padding:6px;border:1px solid #744738;border-radius:12px;background:#3b2923;transition:transform .24s ease,border-color .24s ease}
-.site-header .brand:is(:hover,:focus-visible) svg{transform:translateY(-2px) rotate(-6deg);border-color:#ff9d70}
-.site-header .nav{display:flex;justify-content:center;gap:clamp(.55rem,1.3vw,1.25rem)}
-.site-header .nav a:not(.btn){position:relative;padding:.55rem 0;color:#efe0d7;transition:color .18s ease}
-.site-header .nav a:not(.btn)::after{content:"";position:absolute;inset:auto 0 .24rem;height:2px;background:#ff9f75;border-radius:8px;transform:scaleX(0);transform-origin:left;transition:transform .22s ease}
-.site-header .nav a:not(.btn):is(:hover,:focus-visible,[aria-current="location"]){color:#ffbe9f}
-.site-header .nav a:not(.btn):is(:hover,:focus-visible,[aria-current="location"])::after{transform:scaleX(1)}
-.site-header .nav .btn{min-height:42px;background:linear-gradient(115deg,#ffb188,#ff8650);box-shadow:0 2px 13px #ff865030;transition:transform .18s ease,box-shadow .18s ease}
-.site-header .nav .btn:is(:hover,:focus-visible){transform:translateY(-2px);box-shadow:0 4px 17px #ff865065}
-.site-header .cart-toggle{justify-self:end;min-height:42px;padding:.45rem .6rem .45rem .8rem;border-color:#815b4d;background:#2d2524;white-space:nowrap;transition:background .18s ease,border-color .18s ease}
-.site-header .cart-toggle:is(:hover,:focus-visible,[aria-expanded="true"]){background:#493027;border-color:#ff9f75}
-.site-header .cart-toggle .ico{color:#ffc2a6;transition:transform .2s ease}
-.site-header .cart-toggle:hover .ico{transform:translateY(-2px)}
-.site-header .cart-toggle span{place-items:center;align-self:center;flex:none;box-sizing:border-box;min-width:1.5rem;height:1.5rem;padding:0 .3rem;border-radius:999px;background:#ffac83;color:#2f1b14;font-size:.83rem;font-variant-numeric:tabular-nums;line-height:1;text-align:center}
-.site-header :is(a,button):focus-visible{outline:2px solid #ffd0ba;outline-offset:4px}
-.site-header .script-note{grid-row:3;grid-column:1/-1;margin:0}
-@media(max-width:1000px){.site-header .bar{grid-template-columns:1fr auto auto;gap:.55rem;min-height:69px;padding:10px 0}
-.site-header .brand{grid-column:1;grid-row:1;font-size:clamp(.92rem,2.8vw,1.14rem)}
-.site-header .brand svg{width:21px;height:21px;padding:4px}
-.site-header .cart-toggle{grid-column:3;grid-row:1;font-size:.82rem}
-.site-header .menu-btn{grid-column:2;grid-row:1;display:none;align-items:center;gap:.4rem;color:#fff4ed;border-color:#815b4d;min-height:42px;padding:.4rem .6rem}
-.site-header .nav{grid-column:1/-1;grid-row:2;order:0;width:100%;justify-content:flex-start;gap:.35rem 1rem;padding:.45rem 0}
-html.js .site-header .menu-btn{display:inline-flex}
-html.js .site-header .nav{display:none}
-html.js .site-header .nav.open{display:flex;animation:nav-drop .2s ease-out}
-.menu-mark{display:grid;gap:4px;width:16px}
-.menu-mark i{height:2px;background:#ffbc9c;border-radius:3px;transition:transform .2s ease}
-.menu-btn[aria-expanded=true] .menu-mark i:first-child{transform:translateY(3px) rotate(45deg)}
-.menu-btn[aria-expanded=true] .menu-mark i:last-child{transform:translateY(-3px) rotate(-45deg)}
-html{scroll-padding-top:88px}}
-@keyframes nav-drop{from{opacity:.4;transform:translateY(-4px)}to{opacity:1;transform:none}}
-@media(max-width:385px){.site-header .menu-caption{display:none}
-.site-header .cart-toggle>.ico{display:none}}
-@media(prefers-reduced-motion:reduce){.site-header *, .site-header::after{animation:none!important;transition:none!important}}
-@media(prefers-reduced-motion:no-preference){.site-header .nav .btn{position:relative;isolation:isolate;overflow:hidden}
-.site-header .nav .btn::before{content:"";position:absolute;z-index:-1;inset:0 auto 0 0;width:42%;background:linear-gradient(100deg,transparent,#fff5d9a6,transparent);transform:translateX(-130%) skewX(-20deg);animation:cta-reflection 9s ease-in-out 1.4s infinite;pointer-events:none}
-.site-header .cart-toggle:is(:hover,:focus-visible) .ico{animation:bag-lift .45s ease-out both}
-@keyframes cta-reflection{0%,74%{transform:translateX(-130%) skewX(-20deg)}89%,100%{transform:translateX(355%) skewX(-20deg)}}
-@keyframes bag-lift{0%,100%{transform:none}45%{transform:translateY(-3px) rotate(-7deg)}}}
-.hero .hero-inner{position:relative;z-index:1;text-align:left}
-.hero h1{font-size:clamp(3.05rem,6vw,5.5rem);line-height:1.01;letter-spacing:-.067em;max-width:100%;margin:.28em 0 0}
-.hero h1 span,.hero h1 em{display:block;margin:0}
-.hero .lead{margin-top:1.2rem}
-.hero .cta-row{gap:.75rem}
-.hero .cta-row .btn{min-height:50px;position:relative;isolation:isolate;overflow:hidden}
-.hero .cta-row .btn-accent{background:linear-gradient(110deg,#ffad7f,#ff8652);box-shadow:0 6px 22px #ff744b32}
-.hero .cta-row .btn-ghost{border-color:#ceaa9d;background:#221c1be8}
-.hero .cta-row .btn-ghost:is(:hover,:focus-visible){border-color:#ffb291;background:#362520}
-.hero .cta-row .btn:focus-visible{outline:2px solid #ffcfba;outline-offset:4px}
-.hero .scanlines{z-index:0;bottom:0;height:26%;opacity:.28;mask-image:linear-gradient(transparent,#000 75%)}
-.hero .scanlines::after{content:"";position:absolute;top:48%;left:0;width:30%;height:1px;background:linear-gradient(90deg,transparent,#ff9d71 70%,#fff1df);box-shadow:0 0 14px #ff855a;transform:translateX(-110%)}
-@media(prefers-reduced-motion:no-preference){.hero .scanlines::after{animation:hero-scan 3.8s linear infinite}
-.hero .cta-row .btn{transition:transform .2s ease,box-shadow .2s ease,background .2s ease}
-.hero .cta-row .btn:is(:hover,:focus-visible){transform:translateY(-3px);box-shadow:0 8px 24px #ff75464a}
-.hero .cta-row .btn::before{content:"";position:absolute;z-index:-1;inset:0 auto 0 -45%;width:40%;background:linear-gradient(90deg,transparent,#fff9ef80,transparent);transform:skewX(-20deg);pointer-events:none}
-.hero .cta-row .btn:is(:hover,:focus-visible)::before{animation:hero-cta-shine .55s ease-out both}
-.hero .cta-row .arr{transition:transform .2s ease}
-.hero .cta-row .btn:is(:hover,:focus-visible) .arr{transform:translateX(3px)}}
-@keyframes hero-scan{from{transform:translateX(-110%)}to{transform:translateX(350%)}}
-@keyframes hero-cta-shine{to{left:115%}}
-@media(max-width:700px){.hero h1{font-size:clamp(2.05rem,9.2vw,3.65rem);letter-spacing:-.06em}
-.hero .hero-inner{width:92%}
-.hero .cta-row .btn{min-height:46px}}
-:root{--accent:#ffa078;--ink:#231b18;--paper:#f6efe7;--line:#decfc2}
-body{background:var(--paper);color:var(--ink)}
-.site-header{background:#1b1716;border-color:#654539}
-.site-header .bar,.wrap{width:min(1280px,92%)}
-.hero{display:block;min-height:0;padding:clamp(34px,6vw,92px) 0 0;background:radial-gradient(ellipse at 68% 12%,#3a261f,#211817 45%,#191514 82%)}
-.hero .opening{display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);align-items:center;gap:clamp(24px,5vw,78px)}
-.hero .hero-inner{width:auto;margin:0;padding:.65rem 0}
-.hero .eyebrow{display:flex;align-items:center;gap:.7rem;color:#ffd0ba;font-size:.68rem;letter-spacing:.19em}
-.hero .eyebrow::before{content:"";width:28px;height:1px;background:#ffac86}
-.hero h1{font-size:clamp(2.65rem,5.05vw,5.15rem);line-height:.99;letter-spacing:-.078em;margin:.38em 0 0}
-.hero .lead{color:#e2cfc5;margin:1.25rem 0 1.5rem}
-.hero .cta-row .btn{min-height:46px}
-.hero-signature{border-top:1px solid #705145;padding-top:.9rem;width:fit-content;color:#e3bba6;font-size:.65rem}
-.hero-showcase{position:relative;isolation:isolate;margin:0;min-width:0;aspect-ratio:1.15;overflow:hidden;border-radius:clamp(14px,2vw,30px);background:#201a19;box-shadow:0 18px 50px #0e090760}
-.hero-showcase .hero-media,.hero-showcase .frame{z-index:0}
-.hero-showcase .hero-media img{width:100%;height:100%;object-position:center}
-.hero-showcase::after{content:"";position:absolute;z-index:1;inset:55% 0 0;background:linear-gradient(0deg,#160e0bc9,transparent);pointer-events:none}
-.hero-showcase figcaption{position:absolute;z-index:2;left:1rem;right:1rem;bottom:1rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;color:#fff6ef;font-size:.68rem;font-weight:720;letter-spacing:.15em;text-transform:uppercase}
-.showcase-tag{background:#2e211dde;border:1px solid #c9957b8a;border-radius:99px;padding:.4rem .65rem}
-.showcase-indicator{width:clamp(42px,7vw,90px);height:2px;background:#e7beab70;overflow:hidden}
-.showcase-indicator::after{content:"";display:block;width:100%;height:100%;background:#ffaf8a;transform-origin:left}
-.studio-strip{overflow:hidden;margin-top:clamp(28px,5vw,64px);border-top:1px solid #765248;border-bottom:1px solid #765248;background:#32231e;color:#ffd6c4}
-.studio-strip-inner{display:flex;width:max-content}
-.studio-strip-line{display:flex;min-width:100vw;justify-content:space-around;align-items:center;gap:clamp(1.2rem,3vw,3.5rem);padding:.82rem clamp(1.2rem,3vw,3.5rem) .82rem 0;white-space:nowrap;font-size:.69rem;font-weight:740;text-transform:uppercase;letter-spacing:.15em}
-.studio-strip-line b{color:#ffa47d}
-@media(prefers-reduced-motion:no-preference){.studio-strip-inner{animation:studio-strip 29s linear infinite}
-.studio-strip:hover .studio-strip-inner{animation-play-state:paused}
-.showcase-indicator::after{animation:studio-timing 3.5s linear infinite}
-.hero-showcase:focus-within .showcase-indicator::after,.hero:focus-within .showcase-indicator::after{animation-play-state:paused}}
-@keyframes studio-strip{to{transform:translateX(-50%)}}
-@keyframes studio-timing{from{transform:scaleX(0)}to{transform:scaleX(1)}}
-.cards .card>.btn{border-radius:10px;background:#2c211d;color:#fff7ef;transition:background .2s,transform .2s}
-.cards .card>.btn:is(:hover,:focus-visible){background:#673e30}
-@media(prefers-reduced-motion:no-preference){.cards .card>.btn:is(:hover,:focus-visible){transform:translateY(-2px)}}
-@media(max-width:740px){.hero .opening{grid-template-columns:1fr;gap:24px}
-.hero h1{font-size:clamp(2.3rem,9.3vw,4.3rem)}
-.hero-showcase{aspect-ratio:1.55}
-.hero .hero-inner{padding:0}
-.hero-signature{margin-top:1.2rem}}
-@media(max-width:500px){.hero-showcase figcaption{font-size:.6rem}}
-@media(prefers-reduced-motion:reduce){.studio-strip-inner{width:auto;overflow:hidden}
-.studio-strip-line{white-space:normal;flex-wrap:wrap}
-.studio-strip-line[aria-hidden]{display:none}}
-.hero{padding:0}
-.hero .opening{position:relative;isolation:isolate;display:grid;grid-template-columns:1fr;width:100%;min-height:clamp(590px,78svh,840px);padding:clamp(72px,9vw,135px) max(4%,calc((100% - 1280px) / 2));gap:0;align-items:center}
-.hero .hero-inner{z-index:2;max-width:660px}
-.hero .hero-showcase{position:absolute;inset:0;z-index:0;aspect-ratio:auto;border-radius:0;box-shadow:none;pointer-events:none}
-.hero-showcase .hero-media img{object-fit:cover}
-.hero-showcase .frame:first-child img{object-position:66% 49%}
-.hero-showcase::after{inset:0;background:linear-gradient(90deg,#191211f5 0%,#191211dc 27%,#19121180 53%,#1912111f 85%),linear-gradient(0deg,#191211a6,transparent 28%)}
-.hero-showcase figcaption{left:auto;right:max(4%,calc((100% - 1280px) / 2));bottom:1.35rem}
-.studio-strip{margin-top:0}
-@media(max-width:740px){.hero .opening{min-height:clamp(590px,83svh,720px);padding:95px 4% 76px;align-items:end}
-.hero-showcase::after{background:linear-gradient(0deg,#191211f7 5%,#191211e0 25%,#19121191 56%,#19121120 93%)}
-.hero-showcase figcaption{bottom:.8rem}}
-#prodotti .head>.eyebrow{grid-column:1/-1;display:flex;align-items:center;gap:.6rem;margin:0 0 .8rem}
-#prodotti .head>.eyebrow::before{content:"";width:24px;height:1px;background:#a25134}
-#prodotti .head>p:not(.eyebrow){margin:0 0 .2rem;color:#61473a;font-size:.97rem}
-#prodotti .card>.btn{min-height:44px;gap:.65rem;font-size:.82rem}
-#prodotti .card:not([data-quote])>.btn{color:#2b1b16;background:linear-gradient(112deg,#ffc3a3,#ffa079)}
-#prodotti .card:not([data-quote])>.btn:is(:hover,:focus-visible){background:#ffad86}
-#prodotti .card[data-quote]>.btn{background:#33231e}
-@media(prefers-reduced-motion:no-preference){#prodotti .card>.btn .arr{transition:transform .22s ease}
-#prodotti .card>.btn:is(:hover,:focus-visible) .arr{transform:translateX(3px)}}
-@keyframes catalog-sweep{to{transform:translateX(365%) skewX(-15deg)}}
-@media(max-width:680px){#prodotti .head>.eyebrow{margin:0}}
-#su-misura .lead{max-width:45ch;margin:1.3rem 0 1.45rem;color:#fff2eb}
-#su-misura .btn{background:linear-gradient(115deg,#ffbd9b,#ff986e);box-shadow:0 6px 25px #170c0a55}
-#su-misura .btn:focus-visible{outline:2px solid #ffd8c7;outline-offset:4px}
-@media(prefers-reduced-motion:no-preference){#su-misura .btn .arr{transition:transform .2s ease}
-#su-misura .btn:is(:hover,:focus-visible) .arr{transform:translateX(4px)}}
-@keyframes lab-pan{from{transform:translateX(-2.7%)}to{transform:translateX(2.7%)}}
-@media(prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
-.info-view .lead{font-size:1.12rem;color:#69483a}
-:root{--paper:#fff}
-body,#prodotti,#come-funziona,#faq,#contatti,.info-view,#checkout.checkout-page,.quick-checkout-page{background:#fff}
-#prodotti .card:not([data-quote])>[data-add] .arr{width:1.05rem;height:1.05rem}
-@keyframes cart-button-shine{to{left:115%}}
-#assistenza-whatsapp .eyebrow{display:flex;align-items:center;gap:.65rem;color:#8b452d;margin:0 0 .75rem}
-#assistenza-whatsapp .eyebrow::before{content:"";width:24px;height:1px;background:#b87256}
-/* Mobile: niente animazioni infinite o modifiche del background per ogni frame. */
-@media (max-width:700px){
-  .site-header::after,.hero .scanlines::after,.studio-strip-inner,
-  .showcase-indicator::after,.hero-signature .signal,
-  #su-misura .band-bg img{animation:none!important}
-  .hero-media .frame,.hero-media .frame img{animation:none!important;transition:none!important}
-  .hero-media .frame{opacity:0!important}
-  .hero-media .frame.is-active{opacity:1!important}
-}
-
-
-
-/* v3: slideshow a basso consumo. Anima solo l'opacita (composited),
-   senza box-shadow, background-position o zoom continui. */
-.hero .hero-media .frame{display:block!important;opacity:0!important;animation:none!important;transition:opacity .55s ease!important;pointer-events:none}
-.hero .hero-media .frame.is-active{opacity:1!important}
-.hero .hero-media .frame img{animation:none!important;transform:none!important}
-@media(prefers-reduced-motion:reduce){.hero .hero-media .frame{transition:none!important}}
-@media(max-width:700px){.hero .hero-media .frame{transition:opacity .55s ease!important}}
-/* Il titolo e visibile dal primo frame: nessun delay nel primo paint. */
-.hero h1 span,.hero h1 em{animation:none!important;opacity:1!important}
-/* Se una immagine non e disponibile, il colore di base mantiene i testi leggibili. */
-.hero-showcase{background-color:#1b1514}
-
-</style>
-<link rel="stylesheet" href="assets/site.css" media="print" onload="this.onload=null;this.media='all'">
-<noscript><link rel="stylesheet" href="assets/site.css"></noscript>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sumisura 3D – Stampa 3D su misura: ricambi, prototipi e oggetti personalizzati</title>
+<meta name="description" content="Sumisura 3D realizza in stampa 3D ricambi introvabili, prototipi e progetti personalizzati. Richiedi un preventivo o sfoglia il catalogo.">
+<link rel="canonical" href="https://www.sumisura3d.it/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Sumisura 3D">
+<meta property="og:title" content="Sumisura 3D – Stampa 3D su misura: ricambi, prototipi e oggetti personalizzati">
+<meta property="og:description" content="Sumisura 3D realizza in stampa 3D ricambi introvabili, prototipi e progetti personalizzati. Richiedi un preventivo o sfoglia il catalogo.">
+<meta property="og:url" content="https://www.sumisura3d.it/">
+<meta property="og:image" content="https://www.sumisura3d.it/assets/img/og-image.jpg">
+<meta property="og:locale" content="it_IT">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#24272C">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="assets/css/style.css">
+<script>(function(){var t=null;try{t=JSON.parse(localStorage.getItem("s3d-theme"))}catch(e){}document.documentElement.dataset.theme=t||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")})();</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "name": "Sumisura 3D", "url": "https://www.sumisura3d.it", "logo": "https://www.sumisura3d.it/assets/img/logo.svg", "sameAs": ["https://www.instagram.com/sumisura3d.it/"]}</script>
 </head>
-<body>
-  <!-- Icone: un solo set, stesso tratto ovunque -->
-  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
-    <symbol id="i-arrow" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></symbol>
-    <symbol id="i-prev" viewbox="0 0 24 24"><path d="M15 6l-6 6 6 6"></path></symbol>
-    <symbol id="i-next" viewbox="0 0 24 24"><path d="M9 6l6 6-6 6"></path></symbol>
-    <symbol id="i-pause" viewbox="0 0 24 24"><path d="M9 5v14M15 5v14"></path></symbol>
-    <symbol id="i-play" viewbox="0 0 24 24"><path d="M8 5l11 7-11 7z"></path></symbol>
-    <symbol id="i-edit" viewbox="0 0 24 24"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4z"></path></symbol>
-    <symbol id="i-layers" viewbox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></symbol>
-    <symbol id="i-package" viewbox="0 0 24 24"><path d="M16.5 9.4l-9-5.19M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16zM3.27 6.96L12 12.01l8.73-5.05M12 22.08V12"></path></symbol>
-    <symbol id="i-check" viewbox="0 0 24 24"><path d="M22 11.08V12a10 10 0 11-5.93-9.14M22 4L12 14.01l-3-3"></path></symbol>
-    <symbol id="i-alert" viewbox="0 0 24 24"><path d="M12 22a10 10 0 100-20 10 10 0 000 20zM12 8v4M12 16h.01"></path></symbol>
-    <symbol id="i-info" viewbox="0 0 24 24"><path d="M12 22a10 10 0 100-20 10 10 0 000 20zM12 16v-4M12 8h.01"></path></symbol>
-  </svg>
+<body data-page="home">
+<a class="skip-link" href="#main">Vai al contenuto</a>
+<header class="site-header" id="site-header">
+  <noscript><div class="wrap header-inner"><a class="logo" href="index.html"><span class="logo-word">Sumisura 3D</span></a>
+  <nav class="main-nav" aria-label="Principale"><ul><li><a href="catalogo.html">Catalogo</a></li><li><a href="chi-siamo.html">Chi siamo</a></li><li><a href="faq.html">FAQ</a></li><li><a href="contatti.html">Contatti</a></li></ul></nav></div></noscript>
+</header>
+<main id="main">
 
-  <a class="skip" href="#contenuto">Vai al contenuto</a>
-
-  <header class="site-header" id="top">
-    <div class="wrap bar">
-      <a class="brand" href="#hero" aria-label="Su Misura 3D, torna all'inizio">
-        <svg width="28" height="28" viewbox="0 0 32 32" aria-hidden="true"><path d="M16 4l10 5.5v13L16 28 6 22.500v-13z" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"></path><path d="M6 9.500L16 15l10-5.500M16 15v13" fill="none" stroke="var(--accent)" stroke-width="2.4" stroke-linejoin="round"></path></svg>
-        <span>Su Misura <b>3D</b></span>
-      </a>
-      <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="nav" aria-label="Menu di navigazione">
-        <span class="menu-mark" aria-hidden="true"><i></i><i></i></span><span class="menu-caption" aria-hidden="true">Menu</span></button>
-      <nav id="nav" class="nav" aria-label="Principale">
-        <a href="#prodotti">Prodotti</a>
-        <a href="#su-misura">Su misura</a>
-        <a href="#come-funziona">Come funziona</a>
-        <a href="#faq">Domande</a>
-        <a class="btn btn-accent btn-sm" href="#contatti">Richiedi un pezzo</a>
-      </nav>
-    <noscript><p class="script-note">Per usare carrello e checkout, scarica il file e aprilo nel browser con JavaScript attivo.</p></noscript><a class="cart-toggle" id="cartToggle" href="#cart" aria-haspopup="dialog" aria-expanded="false" aria-controls="cart"><svg viewbox="0 0 24 24" class="ico" aria-hidden="true"><path d="M4 8h16l1 13H3L4 8zM8 9V6a4 4 0 0 1 8 0v3"></path></svg> Carrello <span id="cartCount" aria-live="polite">0</span><span class="native-count" aria-label="Articoli nel carrello"></span></a></div>
-  </header>
-
-  <main id="contenuto">
-    <!-- HOME: livello fotografico in movimento (3 inquadrature), velatura fissa, testi fermi -->
-    <section class="hero" id="hero" aria-labelledby="t-hero">
-<div class="wrap opening">
-<div class="wrap hero-inner">
-        <p class="eyebrow">Stampa 3D italiana, pezzo per pezzo</p>
-        <h1 id="t-hero"><span>Le tue idee</span><em>prendono forma.</em></h1>
-        <p class="lead">Oggetti stampati in 3D e progetti realizzati su misura.</p>
-        <div class="cta-row">
-          <a class="btn btn-accent" href="#prodotti">Esplora il catalogo <svg class="ico arr" aria-hidden="true"><use href="#i-arrow"></use></svg></a>
-          <a class="btn btn-ghost" href="#contatti">Richiedi un pezzo su misura</a>
-        </div>
-      <div class="hero-signature"><span class="signal" aria-hidden="true"></span> Design, prototipi e stampa 3D</div></div>
-<figure class="hero-showcase">
-<div class="hero-media" id="heroMedia" aria-hidden="true">
-        <div class="frame is-active" data-label="Vaso scultoreo">
-          <picture>
-            
-            <img src="assets/hero-1-800.webp" width="800" height="537" alt="" fetchpriority="high" decoding="async" srcset="assets/hero-1-400.webp 400w, assets/hero-1-800.webp 800w" sizes="100vw" loading="eager">
-          </picture>
-        </div>
-        <div class="frame" data-label="Materia a strati">
-          <picture>
-            
-            <img src="assets/hero-2-800.webp" width="800" height="537" alt="" loading="lazy" decoding="async" fetchpriority="low" srcset="assets/hero-2-400.webp 400w, assets/hero-2-800.webp 800w" sizes="100vw">
-          </picture>
-        </div>
-        <div class="frame" data-label="Stampa in corso">
-          <picture>
-            
-            <img src="assets/hero-3-800.webp" width="800" height="537" alt="" loading="lazy" decoding="async" fetchpriority="low" srcset="assets/hero-3-400.webp 400w, assets/hero-3-800.webp 800w" sizes="100vw">
-          </picture>
-        </div>
+<section class="hero" aria-labelledby="hero-title">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <h1 id="hero-title">Il pezzo che ti serve, stampato in 3D su misura.</h1>
+      <p class="lead">Ricambi introvabili, prototipi e progetti personalizzati. Ci mandi l'idea, una foto o il pezzo rotto: noi lo realizziamo strato dopo strato.</p>
+      <div class="hero-ctas">
+        <a class="btn" href="contatti.html#richiesta">Richiedi un preventivo</a>
+        <a class="btn btn-ghost" href="catalogo.html">Sfoglia il catalogo</a>
       </div>
-<figcaption><span class="showcase-tag">Dentro la stampa 3D</span><span class="showcase-indicator" aria-hidden="true"></span></figcaption>
-</figure>
-</div>
-<div class="studio-strip"><div class="studio-strip-inner"><div class="studio-strip-line"> <span>Design a strati</span><b>✦</b><span>Oggetti personalizzati</span><b>✦</b><span>Prototipi e ricambi</span><b>✦</b></div><div class="studio-strip-line" aria-hidden="true"> <span>Design a strati</span><b>✦</b><span>Oggetti personalizzati</span><b>✦</b><span>Prototipi e ricambi</span><b>✦</b></div></div></div>
+      <ul class="hero-facts">
+        <li><strong>8 anni</strong>di stampa 3D</li>
+        <li><strong>Oltre 1.000</strong>progetti realizzati</li>
+        <li><strong>1–2 giorni</strong>per la consegna dopo la realizzazione</li>
+      </ul>
+    </div>
+
+    <div class="stage" id="stage" role="region" aria-roledescription="carosello" aria-label="Lavori in evidenza">
+      <div class="stage-progress" aria-hidden="true"><span></span></div>
+      <figure class="stage-shot is-active" data-link="prodotto.html#ingranaggio-ricambio" data-title="Ingranaggio di ricambio">
+        <img src="assets/img/hero/hero-ingranaggio.webp" alt="Ingranaggio nero stampato in 3D, visto dall'alto" width="1400" height="1400" fetchpriority="high">
+      </figure>
+      <figure class="stage-shot" data-link="prodotto.html#vaso-geometrico" data-title="Vaso torsione">
+        <img src="assets/img/hero/hero-vaso.webp" alt="Vaso arancione con pareti a spirale" width="1400" height="1400" loading="lazy">
+      </figure>
+      <figure class="stage-shot" data-link="prodotto.html#manopola-ricambio" data-title="Manopola zigrinata">
+        <img src="assets/img/hero/hero-manopola.webp" alt="Manopola grigia zigrinata" width="1400" height="1400" loading="lazy">
+      </figure>
+      <div class="stage-ui">
+        <a class="stage-caption" href="prodotto.html#ingranaggio-ricambio" aria-live="polite">Ingranaggio di ricambio</a>
+        <button class="stage-btn" type="button" data-stage="prev" aria-label="Immagine precedente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+        <button class="stage-btn" type="button" data-stage="toggle" aria-label="Metti in pausa lo scorrimento"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="7" y="5" width="3.5" height="14" rx="1"/><rect x="13.5" y="5" width="3.5" height="14" rx="1"/></svg></button>
+        <button class="stage-btn" type="button" data-stage="next" aria-label="Immagine successiva"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+      </div>
+    </div>
+  </div>
 </section>
 
-    <!-- PRODOTTI -->
-    <section class="section" id="prodotti" aria-labelledby="t-prodotti">
-      <div class="wrap">
-        <div class="head">
-          <p class="eyebrow dark">Il catalogo</p>
-          <h2 id="t-prodotti">Oggetti che prendono forma.</h2>
-          <p>Ogni oggetto è stampato su ordinazione. Scegli una categoria e dicci cosa ti serve: ti rispondiamo con le opzioni disponibili.</p>
-        <div class="shop-facts"><span>01 / Design a strati</span><span>02 / Dettagli personalizzabili</span><span>03 / Pezzi su richiesta</span></div></div>
-        <!-- Foto WebP reali: carica sempre tutta la cartella assets/ insieme a index.html. -->
-        <ul class="grid cards">
-          <li class="card" data-product="3" data-title="Ricambio o componente" data-variant="Dimensioni da definire" data-price="0" data-quote="true">
-            <div class="media">
-              <img src="assets/product-3-720.webp" width="720" height="483" alt="Ingranaggi e componenti stampati in 3D su un banco" loading="lazy" decoding="async" fetchpriority="low" srcset="assets/product-3-360.webp 360w, assets/product-3-720.webp 720w" sizes="(max-width: 500px) 92vw, (max-width: 1000px) 46vw, 23vw"><span class="product-tag">Pezzi tecnici</span><span class="catalog-index" aria-hidden="true">01</span></div>
-            <p class="catalog-availability">Su preventivo</p><h3>Ricambi e componenti</h3>
-            <p>Il pezzo che non si trova più, rifatto sulla tua misura.</p>
-            <a class="btn btn-dark btn-sm" href="#selezione-3" data-add="3">Aggiungi per preventivo <svg class="ico arr" aria-hidden="true"><use href="#i-arrow"></use></svg></a>
-          <a href="#contatti" class="direct-quote">Chiedi un preventivo</a></li>
-          <li class="card" data-product="2" data-title="Oggetto personalizzato" data-variant="Progetto su misura" data-price="0" data-quote="true">
-            <div class="media">
-              <img src="assets/product-2-720.webp" width="720" height="483" alt="Mani che mostrano un portachiavi personalizzato con il nome Alex" loading="lazy" decoding="async" fetchpriority="low" srcset="assets/product-2-360.webp 360w, assets/product-2-720.webp 720w" sizes="(max-width: 500px) 92vw, (max-width: 1000px) 46vw, 23vw"><span class="product-tag">Fatto per te</span><span class="catalog-index" aria-hidden="true">02</span></div>
-            <p class="catalog-availability">Su preventivo</p><h3>Personalizzati</h3>
-            <p>Nomi, misure e forme scelte da te. Un solo esemplare, il tuo.</p>
-            <a class="btn btn-dark btn-sm" href="#selezione-2" data-add="2">Aggiungi per preventivo <svg class="ico arr" aria-hidden="true"><use href="#i-arrow"></use></svg></a>
-          <a href="#contatti" class="direct-quote">Chiedi un preventivo</a></li>
-          <li class="card" data-product="0" data-title="Vaso geometrico" data-variant="Verde salvia" data-price="6700">
-            <div class="media">
-              <img src="assets/product-0-720.webp" width="720" height="483" alt="Vasi stampati in 3D con piante e fiori secchi" loading="lazy" decoding="async" fetchpriority="low" srcset="assets/product-0-360.webp 360w, assets/product-0-720.webp 720w" sizes="(max-width: 500px) 92vw, (max-width: 1000px) 46vw, 23vw"><span class="product-tag">Design per la casa</span><span class="catalog-index" aria-hidden="true">03</span></div>
-            <p class="catalog-availability">Stampato su ordinazione</p><h3>Casa e arredo</h3>
-            <p>Vasi, portaoggetti, lampade e accessori dal design pulito.</p>
-            <p class="price"><strong>Vaso geometrico</strong><span>€ 67,00 </span></p><a class="btn btn-dark btn-sm" data-add="0" href="#selezione-0">Aggiungi al carrello <svg class="ico arr" aria-hidden="true"><use href="#i-arrow"></use></svg></a>
-          </li>
-          <li class="card" data-product="1" data-title="Portachiavi e gadget" data-variant="Arancione e bianco" data-price="890">
-            <div class="media">
-              <img src="assets/product-1-720.webp" width="720" height="483" alt="Portachiavi e miniature arancioni e bianche" loading="lazy" decoding="async" fetchpriority="low" srcset="assets/product-1-360.webp 360w, assets/product-1-720.webp 720w" sizes="(max-width: 500px) 92vw, (max-width: 1000px) 46vw, 23vw"><span class="product-tag">Idee regalo</span><span class="catalog-index" aria-hidden="true">04</span></div>
-            <p class="catalog-availability">Stampato su ordinazione</p><h3>Regali e gadget</h3>
-            <p>Idee originali per compleanni, ricorrenze e piccoli grazie.</p>
-            <p class="price"><strong>Portachiavi e gadget</strong><span>€ 8,90 </span></p><a class="btn btn-dark btn-sm" data-add="1" href="#selezione-1">Aggiungi al carrello <svg class="ico arr" aria-hidden="true"><use href="#i-arrow"></use></svg></a>
-          </li>
-        </ul>
-        <p class="note" id="shopNote" hidden><a id="shopLink" class="btn btn-accent" href="#">Vai al negozio online <svg class="ico arr" aria-hidden="true"><use href="#i-arrow"></use></svg></a></p>
-      </div>
-    </section>
-
-    <!-- SU MISURA: taglio fotografico ampio -->
-    <section class="band" id="su-misura" aria-labelledby="t-misura">
-      <div class="band-bg" aria-hidden="true">
-        <picture>
-          
-          <img src="assets/studio-1264.webp" width="1264" height="848" alt="" loading="lazy" decoding="async" fetchpriority="low" srcset="assets/studio-720.webp 720w, assets/studio-1264.webp 1264w" sizes="100vw">
-        </picture>
-      </div>
-      <div class="band-veil" aria-hidden="true"></div>
-      <div class="wrap band-inner">
-        <p class="band-kicker">Progetti su misura</p>
-        <h2 id="t-misura">Hai un’idea?<br><span>Le diamo forma.</span></h2>
-        <p class="lead">Una misura che non esiste, una forma che non trovi, un regalo che nessun altro ha. Raccontaci cosa ti serve e ti diciamo come realizzarlo.</p>
-        <a class="btn btn-accent" href="#contatti">Raccontaci la tua idea <svg class="ico arr" aria-hidden="true"><use href="#i-arrow"></use></svg></a>
-      </div>
-    </section>
-
-    <!-- COME FUNZIONA -->
-    <section class="section" id="come-funziona" aria-labelledby="t-come">
-      <div class="wrap">
-        <div class="head">
-          <p class="eyebrow dark">Come funziona</p>
-          <h2 id="t-come">Tre passi, nessuna sorpresa</h2>
-        </div>
-        <ol class="steps">
-          <li style="--i:0">
-            <div class="step-head"><span class="num" aria-hidden="true">1</span><span class="step-ico" aria-hidden="true"><svg class="ico"><use href="#i-edit"></use></svg></span></div>
-            <h3>Scegli o descrivi</h3>
-            <p>Seleziona una categoria o scrivici l'idea, con misure e uso previsto.</p>
-          </li>
-          <li style="--i:1">
-            <div class="step-head"><span class="num" aria-hidden="true">2</span><span class="step-ico" aria-hidden="true"><svg class="ico"><use href="#i-layers"></use></svg></span></div>
-            <h3>Progettiamo e stampiamo</h3>
-            <p>Ti confermiamo i dettagli prima di iniziare, poi stampiamo il tuo pezzo.</p>
-          </li>
-          <li style="--i:2">
-            <div class="step-head"><span class="num" aria-hidden="true">3</span><span class="step-ico" aria-hidden="true"><svg class="ico"><use href="#i-package"></use></svg></span></div>
-            <h3>Ricevi e racconta</h3>
-            <p>Quando arriva, dicci com'è andata: la tua recensione aiuta chi viene dopo di te.</p>
-          </li>
-        </ol>
-      </div>
-    </section>
-
-    <section id="assistenza-whatsapp" aria-labelledby="t-whatsapp">
- <div class="wrap whatsapp-inner">
-  <div>
-   <p class="eyebrow">Su Misura 3D · Contatti</p>
-   <h2 id="t-whatsapp">Assistenza su WhatsApp</h2>
-   <p class="whatsapp-lead">Hai domande sui prodotti, sul tuo ordine o su un progetto su misura? Scrivici per ricevere assistenza.</p>
-  </div>
-  <div class="whatsapp-action">
-   <a class="whatsapp-button" id="whatsapp-link" href="https://wa.me/393518148844" target="_blank" rel="noopener noreferrer"><span>Scrivici su WhatsApp</span><span aria-hidden="true">→</span></a>
-   </div>
- </div>
-</section><!-- RECENSIONI -->
-    <!-- FAQ -->
-    <section class="section" id="faq" aria-labelledby="t-faq">
-      <div class="wrap narrow">
-        <div class="head">
-          <p class="eyebrow dark">Domande frequenti</p>
-          <h2 id="t-faq">Prima di ordinare</h2>
-        </div>
-        <details><summary>Posso avere un oggetto personalizzato?</summary><p>Sì. Descrivici forma, misure e uso: ti diciamo se è fattibile e come procedere.</p></details>
-        <details><summary>Quanto tempo ci vuole?</summary><p>Dipende da dimensioni e complessità. Ti indichiamo i tempi prima di confermare l'ordine.</p></details>
-        <details><summary>Quanto costa?</summary><p>Il prezzo dipende dal pezzo. Ricevi sempre un preventivo chiaro prima di iniziare.</p></details>
-        <details><summary>Gli oggetti sono resistenti?</summary><p>Scegliamo il materiale in base all'uso che ne farai. Dicci dove lo userai e ti consigliamo quello giusto.</p></details>
-        <details><summary>E se non sono soddisfatto?</summary><p>Scrivici subito: troveremo insieme la soluzione migliore per il tuo caso.</p></details>
-      </div>
-    </section>
-
-    <!-- CONTATTI -->
-    <section class="section tint" id="contatti" aria-labelledby="t-cont">
-      <div class="wrap narrow">
-        <div class="head">
-          <p class="eyebrow dark">Contatti</p>
-          <h2 id="t-cont">Parliamo del tuo progetto.</h2>
-          <p>Da un ricambio introvabile a un oggetto tutto tuo. Parti da un’idea e descrivici come vorresti usarla.</p>
-        <ul class="project-notes"><li><b>01</b> Indica misure e utilizzo</li><li><b>02</b> Descrivi colore e finitura</li><li><b>03</b> Aggiungi i dettagli del progetto</li></ul></div>
-        <form id="contactForm">
-          <div class="two">
-            <div class="field">
-              <label for="cName">Nome</label>
-              <input id="cName" name="nome" autocomplete="name" required aria-describedby="err-cName">
-              <span class="err" id="err-cName" data-for="cName"></span>
-            </div>
-            <div class="field">
-              <label for="cMail">Email</label>
-              <input id="cMail" name="email" type="email" autocomplete="email" required aria-describedby="err-cMail">
-              <span class="err" id="err-cMail" data-for="cMail"></span>
-            </div>
-          </div>
-          <div class="field">
-            <label for="cTopic">Che cosa cerchi?</label>
-            <select id="cTopic" name="categoria" required aria-describedby="err-cTopic">
-              <option value="">Scegli…</option>
-              <option>Casa e arredo</option>
-              <option>Regali e gadget</option>
-              <option>Personalizzati</option>
-              <option>Ricambi e componenti</option>
-              <option>Altro</option>
-            </select>
-            <span class="err" id="err-cTopic" data-for="cTopic"></span>
-          </div>
-          <div class="field">
-            <label for="cMsg">Descrivi l'idea (misure, uso, colori)</label>
-            <textarea id="cMsg" name="messaggio" rows="5" minlength="10" required aria-describedby="err-cMsg"></textarea>
-            <span class="err" id="err-cMsg" data-for="cMsg"></span>
-          </div>
-          <a class="btn btn-accent" id="contactWhatsapp" href="https://wa.me/393518148844" target="_blank" rel="noopener noreferrer"><span class="btn-label">Contattaci</span><svg class="ico arr" aria-hidden="true"><use href="#i-arrow"></use></svg></a>
-          <p class="status" data-state="" aria-live="polite" aria-atomic="true"></p>
-        </form>
-      </div>
-    </section>
-  </main>
-
-  <section id="info-spedizioni" class="info-view" aria-labelledby="titolo-spedizioni"><div class="info-wrap"><a class="info-back" href="#documenti">← Torna al sito</a><h1 id="titolo-spedizioni">Spedizioni e consegne</h1><p class="lead">Tempi di produzione, costi e modalità di consegna.</p><div class="content"><h2>Dove spediamo</h2><p>Zone previste: <strong>Italia e altri Stati membri dell’Unione europea</strong>. La selezione della zona nel carrello e il controllo dell’indirizzo sono da configurare prima di attivare il pagamento.</p>
-<h2>Costi e tempi di trasporto</h2>
-<table><thead><tr><th>Zona</th><th>Costo per ordine</th><th>Tempi di trasporto</th></tr></thead><tbody><tr><td>Italia</td><td>6,99 €</td><td>1–2 giorni lavorativi</td></tr><tr><td>Altri Stati UE</td><td>39,99 €</td><td>2 giorni lavorativi</td></tr></tbody></table>
-<p>I tempi indicati in tabella sono stimati e riguardano il <strong>solo trasporto</strong>, dal momento della spedizione: i tempi di produzione degli oggetti stampati in 3D si aggiungono separatamente. Il costo di spedizione applicabile deve essere mostrato e confermato prima del pagamento. Per le spedizioni tracciate, il codice di tracciamento viene comunicato quando disponibile.</p>
-<h2>Tempi complessivi</h2><ol><li><strong>Produzione:</strong> giorni lavorativi indicati per l’articolo stampato in 3D.</li><li><strong>Trasporto:</strong> giorni lavorativi previsti per la zona di consegna.</li></ol>
-<p>Per i preordini, i tempi sono indicati nell’offerta. Gli ordini con articoli pronti e articoli in preordine possono arrivare in più spedizioni, secondo le condizioni comunicate prima dell’acquisto. Salvo diverso accordo, la consegna ai consumatori deve avvenire senza ritardo ingiustificato ed entro 30 giorni dalla conclusione del contratto.</p>
-<h2>Indirizzo di consegna</h2><p>Controlla l’indirizzo prima di confermare l’ordine. Dopo la partenza del pacco, la modifica potrebbe non essere possibile. Eventuali costi di nuova spedizione per indirizzo errato o mancato ritiro saranno comunicati secondo le condizioni applicabili.</p>
-<h2>Alla consegna</h2><p>Controlla l’imballo. Se è visibilmente danneggiato, puoi accettare con riserva se il corriere lo consente, fotografare pacco e contenuto e contattarci. Restano validi i tuoi diritti di <a href="#info-garanzia">garanzia legale</a>.</p>
-<h2>Preordini da Paesi extra UE</h2><p>Se un’offerta prevede la spedizione da fuori UE, indica prima dell’ordine l’origine e gli eventuali dazi e oneri doganali applicabili.</p>
-<h2>Servizi con invio di un oggetto</h2><p>Quando il progetto richiede l’invio di un campione o di un componente, le istruzioni per l’imballaggio, l’eventuale etichetta prepagata e i costi di riconsegna vengono specificati nel preventivo.</p>
-</div><h2>Documenti correlati</h2><nav aria-label="Documenti correlati"><a href="#info-condizioni">Condizioni generali di vendita</a><a href="#info-resi">Recesso, resi e rimborsi</a><a href="#info-garanzia">Garanzia legale di conformità</a><a href="#info-privacy">Informativa privacy</a><a href="#info-cookie">Cookie policy</a><a href="#info-note-legali">Note legali</a></nav></div></section><section id="info-resi" class="info-view" aria-labelledby="titolo-resi"><div class="info-wrap"><a class="info-back" href="#documenti">← Torna al sito</a><h1 id="titolo-resi">Recesso, resi e rimborsi</h1><p class="lead">Per i prodotti danneggiati la nostra soluzione preferita è ricevere il pezzo e rifarlo senza costi per il cliente. Non offriamo rimborsi volontari per il semplice ripensamento sugli articoli realizzati su misura, restando fermi i diritti previsti dalla legge.</p><div class="content">
-<h2>La nostra politica: restituzione e rifacimento</h2>
-<p><strong>Non effettuiamo rimborsi volontari per il semplice cambio di idea sui prodotti realizzati su misura o chiaramente personalizzati.</strong> Se un prodotto arriva rotto o difettoso, ti chiediamo di contattarci: organizzeremo, quando necessario, la restituzione a nostre spese e proporremo il <strong>rifacimento o la sostituzione gratuita</strong> del pezzo.</p>
-<p>Questa politica non limita il diritto di recesso sui prodotti standard né i rimedi della garanzia legale: nei casi previsti dalla legge restano possibili la riduzione del prezzo e il rimborso.</p><h2>Il diritto di recesso</h2>
-<p>Se acquisti come consumatore a distanza, puoi recedere <strong>entro 14 giorni</strong>, senza indicare un motivo e senza penali, ai sensi degli artt. 52 e seguenti del Codice del Consumo.</p>
-<ul><li><strong>Prodotti:</strong> il termine decorre dalla consegna a te o a un terzo che hai designato, diverso dal corriere. Per più beni ordinati insieme e consegnati separatamente, decorre dalla consegna dell’ultimo bene.</li><li><strong>Servizi:</strong> il termine decorre dalla conclusione del contratto.</li></ul>
-<p>La produzione di un articolo standard del catalogo dopo l’ordine, da sola, non lo rende personalizzato. Anche per questi articoli vale il recesso, salvo altre eccezioni applicabili.</p>
-<h2>Quando il recesso non si applica</h2>
-<ul><li>Beni confezionati su misura o chiaramente personalizzati secondo le tue specifiche, come dimensioni, scritte o modifiche richieste appositamente.</li><li>Servizi interamente eseguiti alle condizioni dell’art. 59 del Codice del Consumo, tra cui, per i servizi a pagamento, il consenso espresso all’avvio e l’accettazione della perdita del diritto dopo l’esecuzione completa.</li></ul>
-<p>Se chiedi espressamente di iniziare il servizio durante il periodo di recesso e poi recedi, l’importo proporzionale per il servizio già prestato si applica alle condizioni previste dalla legge.</p>
-<h2>Come esercitare il recesso</h2>
-<p>Prima della scadenza, invia al venditore una dichiarazione esplicita della tua decisione, indicando il numero d’ordine e gli articoli interessati. Puoi usare una formula come «Comunico il recesso dall’ordine n. … per i seguenti articoli: …». Per informazioni sui recapiti del venditore e per comunicare la richiesta, consulta i <a href="#contatti">contatti</a> e utilizza un mezzo che permetta di conservare prova dell’invio. I recapiti obbligatori del venditore devono essere resi disponibili prima della vendita.</p>
-<h2>Restituzione dei prodotti</h2>
-<ul><li>Spedisci i prodotti entro 14 giorni dalla comunicazione di recesso, all’indirizzo indicato dal venditore.</li><li>I costi diretti della restituzione sono a tuo carico se ne sei stato informato prima dell’acquisto e il venditore non si è offerto di sostenerli. Per difetti di conformità si applicano le regole della garanzia legale.</li><li>Imballa i prodotti in modo adeguato, preferibilmente nella confezione originale.</li><li>Rispondi solo dell’eventuale diminuzione di valore causata da una manipolazione che vada oltre quanto necessario per verificare natura, caratteristiche e funzionamento.</li><li>Per i preordini, usa l’indirizzo di restituzione indicato dal venditore.</li></ul>
-<h2>Rimborso nei casi previsti dalla legge</h2>
-<ul><li>Il rimborso comprende le spese di consegna standard e avviene entro 14 giorni dalla comunicazione del recesso. I costi supplementari di una consegna più cara scelta da te possono essere esclusi.</li><li>Si usa lo stesso mezzo di pagamento, salvo diverso accordo espresso e senza costi a tuo carico.</li><li>Per i beni, il venditore può trattenere il rimborso fino alla ricezione del reso o della prova di spedizione, secondo quale avvenga prima, salvo che si sia offerto di ritirarli.</li><li>Per i servizi, dall’eventuale acconto può essere detratto l’importo proporzionale dovuto nei casi previsti dalla legge.</li></ul>
-<h2>Prodotti difettosi, danneggiati o diversi dall’ordine</h2>
-<p>Se il prodotto arriva rotto, difettoso o diverso da quanto ordinato, <a href="#contatti">contattaci</a> indicando il numero d’ordine e descrivendo il problema, possibilmente con fotografie.</p>
-<p><strong>Preferiamo che il pezzo danneggiato ci venga restituito e che possiamo rifarlo o sostituirlo gratuitamente</strong>. Se il reso è necessario per la gestione del difetto, ti comunicheremo le istruzioni e sosterremo i relativi costi, compresa la nuova spedizione. Il ripristino avverrà entro un termine ragionevole e senza notevoli inconvenienti per te.</p>
-<p>La preferenza per il rifacimento non limita i rimedi previsti dalla <a href="#info-garanzia">garanzia legale di conformità</a>: nei casi stabiliti dalla legge restano possibili anche la riduzione del prezzo o la risoluzione del contratto con rimborso.</p>
-<h2>Se cambi idea dopo l’acquisto</h2>
-<p>Per oggetti <strong>realizzati su misura o chiaramente personalizzati</strong> in base alle tue specifiche, il recesso per semplice ripensamento è escluso nei casi previsti dall’art. 59, comma 1, lett. c), del Codice del Consumo. <strong>In questi casi non prevediamo rimborsi volontari per il cambio di idea.</strong> Se preferisci una modifica o un nuovo pezzo, <a href="#contatti">contattaci</a>: valuteremo insieme un possibile rifacimento, senza che ciò costituisca un diritto automatico.</p>
-<p>Per i <strong>prodotti standard del catalogo</strong> acquistati a distanza, il diritto di recesso entro 14 giorni resta applicabile anche se il pezzo è stampato dopo l’ordine. In questi casi, quando la legge lo prevede, il rimborso non può essere sostituito obbligatoriamente con un altro prodotto.</p>
-<h2>Clienti professionali</h2><p>Il diritto di recesso previsto dal Codice del Consumo è riservato ai consumatori. Per i clienti professionali, eventuali resi possono essere concordati con il venditore.</p>
-</div><h2>Documenti correlati</h2><nav aria-label="Documenti correlati"><a href="#info-condizioni">Condizioni generali di vendita</a><a href="#info-spedizioni">Spedizioni e consegne</a><a href="#info-garanzia">Garanzia legale di conformità</a><a href="#info-privacy">Informativa privacy</a><a href="#info-cookie">Cookie policy</a><a href="#info-note-legali">Note legali</a></nav></div></section><section id="info-privacy" class="info-view" aria-labelledby="titolo-privacy"><div class="info-wrap"><a class="info-back" href="#documenti">← Torna al sito</a><h1 id="titolo-privacy">Informativa privacy</h1><p class="lead">Quali dati sono trattati, per quali finalità e quali diritti puoi esercitare.</p><div class="content"><p>Bozza predisposta ai sensi degli artt. 13 e, quando applicabile, 14 del Regolamento (UE) 2016/679 (GDPR).</p>
-<h2>1. Titolare del trattamento</h2><p>[Inserire denominazione, sede e recapito email del titolare, ed eventuale recapito del responsabile della protezione dei dati.]</p>
-<h2>2. Quali dati trattiamo</h2><p><strong>Navigazione.</strong> Quando il sito sarà online, il fornitore di hosting potrà registrare dati tecnici come indirizzo IP, browser, pagina richiesta e orario. [Verificare i dati effettivi.]</p>
-<p><strong>Carrello.</strong> Articoli e quantità sono salvati nel browser. Vedi la <a href="#info-cookie">Cookie policy</a>.</p>
-<p><strong>Ordini e pagamenti.</strong> I link di acquisto per singolo prodotto portano a Stripe. L’informativa va completata con i dati effettivamente raccolti per ordine, fatturazione, consegna e pagamento. Consulta l’<a href="https://stripe.com/it/privacy">informativa di Stripe</a>.</p>
-<p><strong>Comunicazioni.</strong> Il pulsante Contattaci apre WhatsApp e usa gli eventuali dati inseriti nel modulo per preparare un messaggio. Se lo invii al venditore, i dati forniti possono essere usati per risponderti.</p>
-<h2>3. Finalità e basi giuridiche</h2><table><thead><tr><th>Finalità</th><th>Base giuridica, ove applicabile</th></tr></thead><tbody><tr><td>Gestire ordini, produzione, spedizioni, assistenza, resi e garanzia</td><td>Esecuzione del contratto, art. 6.1.b GDPR</td></tr><tr><td>Rispondere prima dell’acquisto</td><td>Misure precontrattuali, art. 6.1.b</td></tr><tr><td>Adempiere agli obblighi fiscali e contabili</td><td>Obbligo legale, art. 6.1.c</td></tr><tr><td>Sicurezza, prevenzione delle frodi e difesa di diritti</td><td>Legittimo interesse, art. 6.1.f, previa valutazione</td></tr></tbody></table>
-<p>I dati necessari all’ordine servono a eseguirlo. [Confermare l’assenza di marketing, profilazione o altri trattamenti e indicare eventuali dati facoltativi.]</p>
-<h2>4. Destinatari</h2><p>[Indicare fornitori effettivi e ruoli: pagamento, hosting, corrieri, eventuali fornitori che spediscono direttamente, email, consulenti e autorità nei casi previsti dalla legge. Verificare Stripe, Cloudflare e WhatsApp prima di indicarli come attivi.]</p>
-<h2>5. Trasferimenti fuori dallo SEE</h2><p>[Indicare se avvengono trasferimenti, per quali servizi, verso quali Paesi, con quali garanzie e come ottenerne copia.]</p>
-<h2>6. Conservazione</h2><ul><li>Documenti contabili: per il periodo previsto dagli obblighi applicabili.</li><li>Richieste di assistenza: [indicare durata e criteri effettivi].</li><li>Dati di navigazione: [indicare la durata effettiva dei log].</li><li>Carrello: fino allo svuotamento o alla cancellazione dei dati del sito, salvo limiti del browser.</li></ul>
-<h2>7. Diritti</h2><p>Puoi chiedere accesso, rettifica, cancellazione, limitazione e portabilità, e opporti al trattamento nei casi previsti dagli artt. 15–21 GDPR. Usa il recapito del titolare. In generale, il riscontro è dovuto entro un mese, fatte salve le proroghe previste dal GDPR. Puoi proporre reclamo al <a href="https://www.garanteprivacy.it/">Garante per la protezione dei dati personali</a> o all’autorità competente.</p>
-<h2>8. Decisioni automatizzate</h2><p>[Verificare eventuali decisioni automatizzate e controlli antifrode dopo l’attivazione del pagamento.]</p>
-<h2>9. Minori</h2><p>[Confermare la politica sugli acquisti e sui dati dei minori.]</p>
-<h2>10. Modifiche</h2><p>Indicare in cima alla pagina la data dell’aggiornamento e comunicare le modifiche rilevanti secondo le modalità applicabili.</p>
-</div><h2>Documenti correlati</h2><nav aria-label="Documenti correlati"><a href="#info-condizioni">Condizioni generali di vendita</a><a href="#info-resi">Recesso, resi e rimborsi</a><a href="#info-spedizioni">Spedizioni e consegne</a><a href="#info-garanzia">Garanzia legale di conformità</a><a href="#info-cookie">Cookie policy</a><a href="#info-note-legali">Note legali</a></nav></div></section><section id="info-note-legali" class="info-view" aria-labelledby="titolo-note-legali"><div class="info-wrap"><a class="info-back" href="#documenti">← Torna al sito</a><h1 id="titolo-note-legali">Note legali</h1><p class="lead">Dati del venditore, hosting, marchi e crediti.</p><div class="content"><h2>Informazioni sul venditore</h2><p>Su Misura 3D. [Inserire ragione sociale, sede, email, partita IVA e dati di registrazione applicabili ai sensi dell’art. 7 del D.Lgs. 70/2003.]</p>
-<h2>Hosting</h2><p>[Indicare il fornitore effettivo dopo la pubblicazione. Cloudflare è citato nella bozza fornita, ma la configurazione del sito deve essere confermata.]</p>
-<h2>Marchi e proprietà intellettuale</h2><p>I marchi eventualmente mostrati appartengono ai rispettivi titolari. Testi, immagini, progetti e grafica sono tutelati secondo la legge e le rispettive licenze. [Inserire i crediti effettivi delle immagini e verificarne le autorizzazioni.]</p>
-<h2>Link esterni</h2><p>I siti esterni applicano le proprie condizioni e informative. Se verranno usati link di affiliazione, indicarlo chiaramente accanto ai link interessati.</p>
-</div><h2>Documenti correlati</h2><nav aria-label="Documenti correlati"><a href="#info-condizioni">Condizioni generali di vendita</a><a href="#info-resi">Recesso, resi e rimborsi</a><a href="#info-spedizioni">Spedizioni e consegne</a><a href="#info-garanzia">Garanzia legale di conformità</a><a href="#info-privacy">Informativa privacy</a><a href="#info-cookie">Cookie policy</a></nav></div></section><section id="info-garanzia" class="info-view" aria-labelledby="titolo-garanzia"><div class="info-wrap"><a class="info-back" href="#documenti">← Torna al sito</a><h1 id="titolo-garanzia">Garanzia legale di conformità</h1><p class="lead">Cosa copre la garanzia di 24 mesi e come richiederla.</p><div class="content"><h2>Cosa copre</h2><p>I prodotti venduti ai consumatori sono coperti dalla garanzia legale di conformità prevista dagli artt. 128 e seguenti del Codice del Consumo. Per i beni nuovi il venditore risponde dei difetti presenti alla consegna che si manifestano entro <strong>24 mesi</strong>. Salvo prova contraria, quelli che si manifestano entro un anno si presumono già esistenti alla consegna, salvo incompatibilità con la natura del bene o del difetto.</p>
-<p>Il prodotto deve corrispondere alla descrizione, alle qualità e alle prestazioni promesse ed essere idoneo agli usi pertinenti.</p>
-<h2>Cosa non è un difetto</h2><ul><li>Usura normale.</li><li>Danni da urti, modifiche, riparazioni o installazione impropria, se sono la causa del problema.</li><li>Danni dovuti all’uso fuori dalle condizioni indicate, ad esempio a temperature superiori a quelle previste per il materiale.</li><li>Lievi linee di strato o variazioni di tonalità, se coerenti con le caratteristiche dichiarate e i requisiti di conformità.</li></ul>
-<h2>I tuoi rimedi</h2><p>Puoi chiedere riparazione o sostituzione senza spese, salvo che il rimedio scelto sia impossibile o sproporzionato. Nei casi previsti dalla legge puoi chiedere la riduzione del prezzo o la risoluzione del contratto. La risoluzione è esclusa per difetti di lieve entità. Per eventuali articoli usati, la durata può essere ridotta mediante accordo a un periodo non inferiore a 12 mesi.</p>
-<h2>Come richiederla</h2><p>Contatta il venditore indicando numero d’ordine, descrizione del problema e, se utili, foto del prodotto o dell’installazione. Il ripristino previsto dalla legge, comprese le spese necessarie di restituzione e rispedizione, avviene senza spese per il consumatore. <a href="#contatti">Vai ai contatti</a>.</p>
-<h2>Clienti professionali</h2><p>Si applicano le condizioni concordate e le norme del Codice civile sulla garanzia per vizi. In via generale, l’art. 1495 prevede la denuncia entro otto giorni dalla scoperta e la prescrizione in un anno dalla consegna, fatte salve le eccezioni applicabili.</p>
-<h2>Servizi</h2><p>Per un problema riconducibile a un servizio di progettazione o stampa, contatta il venditore. Si applicano le condizioni concordate e i diritti previsti dalla normativa pertinente.</p>
-</div><h2>Documenti correlati</h2><nav aria-label="Documenti correlati"><a href="#info-condizioni">Condizioni generali di vendita</a><a href="#info-resi">Recesso, resi e rimborsi</a><a href="#info-spedizioni">Spedizioni e consegne</a><a href="#info-privacy">Informativa privacy</a><a href="#info-cookie">Cookie policy</a><a href="#info-note-legali">Note legali</a></nav></div></section><section id="info-cookie" class="info-view" aria-labelledby="titolo-cookie"><div class="info-wrap"><a class="info-back" href="#documenti">← Torna al sito</a><h1 id="titolo-cookie">Cookie policy</h1><p class="lead">Come il sito usa gli strumenti tecnici del browser.</p><div class="content"><h2>In breve</h2><p>Questa versione del sito non include strumenti pubblicitari, di profilazione o di analisi del traffico. Prima della pubblicazione, verificare anche gli strumenti attivati dall’hosting e dalle integrazioni.</p>
-<h2>Strumenti tecnici usati</h2><table><thead><tr><th>Nome</th><th>Tipo</th><th>Scopo</th><th>Durata</th></tr></thead><tbody><tr><td><code>su-misura-3d-cart-v1</code></td><td>localStorage</td><td>Ricorda gli articoli e le quantità del carrello</td><td>Fino allo svuotamento o alla cancellazione dei dati, salvo limiti del browser</td></tr></tbody></table>
-<p>I dati del carrello rimangono nel browser. I caratteri di questa versione sono quelli del dispositivo. La memorizzazione della zona di spedizione e gli eventuali cookie di sicurezza dell’hosting andranno descritti dopo la configurazione.</p>
-<h2>Pagamento e siti esterni</h2><p>I link per acquistare aprono una pagina esterna di Stripe, che applica la propria <a href="https://stripe.com/it/cookies-policy/legal">Cookie policy</a>. Gli altri siti esterni applicano le rispettive informative.</p>
-<h2>Come gestirli</h2><p>Puoi cancellare i dati del sito dalle impostazioni del browser. Così svuoti anche il carrello salvato.</p>
-<h2>Aggiornamenti</h2><p>Se verranno aggiunti strumenti che richiedono consenso, aggiornare l’informativa e raccogliere il consenso prima di attivarli. Consulta le <a href="https://www.garanteprivacy.it/home/docweb/-/docweb-display/docweb/9677876">linee guida del Garante</a>.</p>
-</div><h2>Documenti correlati</h2><nav aria-label="Documenti correlati"><a href="#info-condizioni">Condizioni generali di vendita</a><a href="#info-resi">Recesso, resi e rimborsi</a><a href="#info-spedizioni">Spedizioni e consegne</a><a href="#info-garanzia">Garanzia legale di conformità</a><a href="#info-privacy">Informativa privacy</a><a href="#info-note-legali">Note legali</a></nav></div></section><section id="info-condizioni" class="info-view" aria-labelledby="titolo-condizioni"><div class="info-wrap"><a class="info-back" href="#documenti">← Torna al sito</a><h1 id="titolo-condizioni">Condizioni generali di vendita</h1><p class="lead">Ordini, prezzi, pagamenti e prodotti su richiesta.</p><div class="content"><h2>1. Ambito di applicazione</h2>
-<p><strong>1.1.</strong> Queste Condizioni generali di vendita («CGV») regolano la vendita a distanza di prodotti e servizi tramite Su Misura 3D tra il venditore identificato in questa pagina («Venditore») e chi effettua un ordine («Cliente»).</p>
-<p><strong>1.2.</strong> Chi acquista per scopi estranei alla propria attività imprenditoriale, commerciale, artigianale o professionale è un Consumatore ai sensi dell’art. 3 del Codice del Consumo. Le clausole riservate ai clienti professionali sono indicate espressamente.</p>
-<p><strong>1.3.</strong> Si applicano le CGV disponibili al momento dell’ordine. Il Cliente può salvarle o stamparle.</p>
-<p><strong>1.4.</strong> Il sito si rivolge a clienti maggiorenni. Le destinazioni previste sono l’Italia e gli altri Stati membri dell’Unione europea, da confermare prima dell’attivazione delle vendite.</p>
-
-<h2>2. Prodotti e servizi</h2>
-<p><strong>2.1.</strong> L’offerta riguarda oggetti stampati in 3D da catalogo, articoli in preordine se indicati come tali, oggetti personalizzati e servizi di progettazione o stampa su preventivo. Ogni scheda indica le caratteristiche essenziali e le eventuali opzioni. Se verranno inseriti link a negozi partner, l’acquisto su quei siti sarà disciplinato dalle condizioni del venditore terzo.</p>
-<p><strong>2.2.</strong> Le foto illustrano l’articolo o la categoria. Lievi linee di stratificazione e variazioni di tonalità o finitura possono essere tipiche della stampa 3D, se coerenti con quanto dichiarato e con i requisiti di conformità.</p>
-<p><strong>2.3.</strong> Per oggetti su misura, materiali, misure, personalizzazioni e prezzo vengono definiti nel preventivo.</p>
-
-<h2>3. Compatibilità, montaggio e utilizzo</h2>
-<p><strong>3.1.</strong> Verifica misure, materiali, requisiti di compatibilità e condizioni d’uso indicati nella scheda o nel preventivo. In caso di dubbi, <a href="#contatti">contatta Su Misura 3D</a> prima dell’ordine.</p>
-<p><strong>3.2.</strong> Se l’articolo richiede il montaggio, segui le istruzioni fornite e usa il prodotto nelle condizioni dichiarate.</p>
-<p><strong>3.3.</strong> Eventuali limiti d’uso, ad esempio per carichi o temperature, sono riportati nella scheda o nell’offerta.</p>
-
-<h2>4. Prezzi e spese</h2>
-<p><strong>4.1.</strong> I prezzi del negozio saranno espressi in euro, con IVA ove applicabile. Quelli attualmente visibili sono dimostrativi. Gli articoli su preventivo hanno un prezzo concordato separatamente.</p>
-<p><strong>4.2.</strong> Costi, zone e tempi di consegna sono descritti in <a href="#info-spedizioni">Spedizioni e consegne</a>. I costi applicabili devono essere comunicati prima della conferma dell’ordine.</p>
-<p><strong>4.3.</strong> Per eventuali preordini da fuori UE, l’offerta indica prima dell’ordine i dazi e gli altri oneri applicabili o la possibilità che siano dovuti.</p>
-<p><strong>4.4.</strong> In caso di errore manifesto nel prezzo, il Venditore contatta il Cliente per proporre un nuovo ordine al prezzo corretto o gestire l’annullamento e il rimborso, ove applicabile.</p>
-
-<h2>5. Ordine e conclusione del contratto</h2>
-<p><strong>5.1.</strong> Il flusso previsto consente di selezionare gli articoli, verificare e correggere i dati e visualizzare prezzi, spese di spedizione e totale prima di pagare. I link attuali aprono Stripe per singolo prodotto. Il carrello del sito non viene trasferito automaticamente.</p>
-<p><strong>5.2.</strong> Quando le vendite saranno attive, il pulsante finale indicherà l’obbligo di pagamento. [Confermare il momento di conclusione del contratto e configurare l’invio della conferma d’ordine via email.]</p>
-<p><strong>5.3.</strong> Il sito attuale è in italiano. [Indicare eventuali altre lingue disponibili per il contratto.] I dati dell’ordine saranno trattati secondo l’<a href="#info-privacy">Informativa privacy</a>.</p>
-<p><strong>5.4.</strong> Per indisponibilità, impossibilità di produzione, dati non validi o fondato sospetto di frode, il Venditore comunica come verrà gestito l’ordine e rimborsa le somme eventualmente incassate se l’ordine viene annullato, fatti salvi i diritti del Cliente.</p>
-
-<h2>6. Pagamento</h2>
-<p><strong>6.1.</strong> I link di pagamento per singolo prodotto portano a Stripe. Metodi disponibili e modalità di trattamento dei dati di pagamento saranno indicati nel checkout e nell’informativa privacy.</p>
-<p><strong>6.2.</strong> Per i preordini, l’offerta specifica se e quando è dovuto il pagamento integrale.</p>
-<p><strong>6.3.</strong> Se un preventivo prevede un acconto, specifica importo, saldo e scadenze. L’acconto viene scalato dal prezzo finale. Eventuali rimborsi sono disciplinati dal preventivo e dalla legge applicabile.</p>
-<p><strong>6.4.</strong> [Configurare ricevute via email e indicare quando e come fornire i dati per la fatturazione.]</p>
-
-<h2>7. Produzione e consegna</h2>
-<p><strong>7.1.</strong> I tempi di produzione e trasporto sono distinti. Per gli articoli in preordine, i tempi previsti sono comunicati prima dell’acquisto.</p>
-<p><strong>7.2.</strong> Salvo diverso accordo, il Venditore consegna al Consumatore senza ritardo ingiustificato e al più tardi entro 30 giorni dalla conclusione del contratto. In caso di ritardo, il Consumatore può assegnare un termine supplementare adeguato e, se anche questo scade inutilmente, risolvere il contratto e ottenere il rimborso. Restano applicabili i casi di risoluzione immediata previsti dall’art. 61 del Codice del Consumo.</p>
-<p><strong>7.3.</strong> Di norma, il rischio passa quando il Consumatore o un terzo designato, diverso dal vettore, riceve fisicamente i beni. Se il Consumatore sceglie autonomamente un vettore che il Venditore non gli aveva proposto, si applica l’eccezione prevista dall’art. 63 del Codice del Consumo.</p>
-<p><strong>7.4.</strong> Consulta <a href="#info-spedizioni">Spedizioni e consegne</a> per zone, modalità e costi.</p>
-
-<h2>8. Servizi</h2>
-<p><strong>8.1.</strong> I servizi di progettazione e stampa su misura seguono le modalità indicate nel preventivo. Se occorre inviare un oggetto o campione, il preventivo indica istruzioni, recapiti, costi e l’eventuale etichetta prepagata.</p>
-<p><strong>8.2.</strong> Il Cliente fornisce misure e specifiche corrette e, quando necessario, imballa adeguatamente il campione. Il Venditore svolge il lavoro con la diligenza professionale richiesta e comunica l’esito prima della consegna.</p>
-<p><strong>8.3.</strong> Se il progetto non può essere eseguito per cause non imputabili al Cliente, il Venditore lo informa e gestisce la restituzione del campione e l’eventuale rimborso dell’acconto secondo il preventivo e la normativa applicabile.</p>
-
-<h2>9. Diritto di recesso</h2>
-<p>Per gli acquisti a distanza, il Consumatore dispone di norma di 14 giorni per recedere. Modalità ed eccezioni, compresa quella per gli oggetti confezionati su misura o chiaramente personalizzati, sono descritte in <a href="#info-resi">Recesso, resi e rimborsi</a>.</p>
-
-<h2>10. Garanzia legale di conformità</h2>
-<p>Ai prodotti venduti ai consumatori si applica la garanzia legale prevista dagli artt. 128 e seguenti del Codice del Consumo. Consulta <a href="#info-garanzia">Garanzia legale di conformità</a>.</p>
-
-<h2>11. Responsabilità</h2>
-<p><strong>11.1.</strong> Per i danni causati da uso improprio, montaggio errato, modifiche del Cliente o forza maggiore, si applicano le regole di responsabilità previste dalla legge.</p>
-<p><strong>11.2.</strong> Restano fermi i diritti inderogabili del Consumatore e la responsabilità del Venditore nei casi in cui la legge ne vieta l’esclusione o la limitazione, anche per dolo, colpa grave o danni alla persona.</p>
-
-<h2>12. Proprietà intellettuale</h2>
-<p>Progetti, modelli 3D, fotografie, testi e grafica appartengono al Venditore o ai rispettivi titolari. L’acquisto di un oggetto non trasferisce i diritti sul progetto. La riproduzione e la commercializzazione dei modelli sono soggette ai diritti e alle licenze applicabili.</p>
-
-<h2>13. Reclami e controversie</h2>
-<p><strong>13.1.</strong> Per reclami e assistenza, consulta la sezione <a href="#contatti">Contatti</a>. [Inserire il recapito effettivo e confermare i tempi di risposta.]</p>
-<p><strong>13.2.</strong> Il Consumatore può ricorrere alle procedure extragiudiziali applicabili previste dagli artt. 141 e seguenti del Codice del Consumo, ferma la facoltà di rivolgersi al giudice.</p>
-
-<h2>14. Legge applicabile e foro</h2>
-<p><strong>14.1.</strong> Le CGV sono regolate dalla legge italiana, ferme le tutele inderogabili del Paese di residenza abituale del Consumatore nei casi previsti dall’art. 6 del Regolamento (CE) n. 593/2008.</p>
-<p><strong>14.2.</strong> Per le controversie con i consumatori si applicano le norme inderogabili sulla competenza, incluso l’art. 66-bis del Codice del Consumo ove applicabile. Per i clienti professionali, [indicare il foro previsto, se concordato].</p>
-
-<h2>15. Modifiche</h2>
-<p>Le modifiche si applicano agli ordini successivi alla loro pubblicazione. La data di aggiornamento va indicata all’inizio di questa pagina.</p>
-</div><h2>Documenti correlati</h2><nav aria-label="Documenti correlati"><a href="#info-resi">Recesso, resi e rimborsi</a><a href="#info-spedizioni">Spedizioni e consegne</a><a href="#info-garanzia">Garanzia legale di conformità</a><a href="#info-privacy">Informativa privacy</a><a href="#info-cookie">Cookie policy</a><a href="#info-note-legali">Note legali</a></nav></div></section><section id="checkout" hidden aria-labelledby="checkoutTitle" class="section checkout-page" tabindex="-1">
-<div class="wrap checkout-card"><a id="backCart" class="back-button" href="#prodotti">← Torna al negozio</a>
-<h3 id="checkoutTitle" tabindex="-1">Riepilogo checkout</h3>
-<p>Rivedi gli articoli selezionati e apri il link Stripe del prodotto che vuoi acquistare.</p>
-<ul id="checkoutItems" aria-label="Prodotti selezionati"></ul>
-<p class="checkout-total" id="checkoutPricedTotal"><strong>Subtotale indicativo</strong><output id="checkoutTotal"></output></p>
-
-<p id="checkoutEmpty" hidden>Il carrello è vuoto. <a href="#prodotti">Esplora il catalogo</a>.</p><div class="payment-placeholder" id="checkoutPayment"><strong>Pagamento con Stripe</strong><p>Ogni link apre il pagamento del singolo prodotto. Controlla quantità, prezzo e spedizione su Stripe prima di pagare. Questi link Stripe sono per il singolo prodotto: quantità, importi del carrello e spedizione NON sono trasferiti automaticamente. Se vuoi più articoli o quantità, contattaci prima di pagare.</p><div class="stripe-pay-actions"><a class="btn btn-accent stripe-pay-cart" data-stripe-product="0" href="https://buy.stripe.com/7sY00i0XZ7jV55x7aLbo404" hidden>Paga con Stripe · Vaso geometrico</a><a class="btn btn-accent stripe-pay-cart" data-stripe-product="1" href="https://buy.stripe.com/bJe3cugWX0VxfKbeDdbo401" hidden>Paga con Stripe · Portachiavi e gadget</a></div></div><p class="quote-summary" id="quoteCheckout" hidden>Gli articoli su preventivo hanno un percorso separato. <a href="#contatti" id="checkoutQuoteLink">Prepara la richiesta</a></p></div></section><section id="checkout-salvato" class="section quick-checkout-page"><div class="wrap checkout-card"><a class="back-button" href="#cart">← Torna al carrello</a><h2>Checkout</h2><div class="native-line native-line-0"><span class="native-thumb product-thumb-0" aria-hidden="true"></span><div><strong>Vaso geometrico</strong><p>Verde salvia</p><small>Quantità: <span class="quick-value" data-total="0-1">1</span><span class="quick-value" data-total="0-2">2</span><span class="quick-value" data-total="0-3">3</span><span class="quick-value" data-total="0-4">4</span><span class="quick-value" data-total="0-5">5</span><span class="quick-value" data-total="0-6">6</span><span class="quick-value" data-total="0-7">7</span><span class="quick-value" data-total="0-8">8</span><span class="quick-value" data-total="0-9">9</span><span class="quick-value" data-total="0-10">10</span></small></div><strong><span class="quick-value" data-total="0-1">€ 67,00</span><span class="quick-value" data-total="0-2">€ 134,00</span><span class="quick-value" data-total="0-3">€ 201,00</span><span class="quick-value" data-total="0-4">€ 268,00</span><span class="quick-value" data-total="0-5">€ 335,00</span><span class="quick-value" data-total="0-6">€ 402,00</span><span class="quick-value" data-total="0-7">€ 469,00</span><span class="quick-value" data-total="0-8">€ 536,00</span><span class="quick-value" data-total="0-9">€ 603,00</span><span class="quick-value" data-total="0-10">€ 670,00</span></strong></div><div class="native-line native-line-1"><span class="native-thumb product-thumb-1" aria-hidden="true"></span><div><strong>Portachiavi e gadget</strong><p>Arancione e bianco</p><small>Quantità: <span class="quick-value" data-total="1-1">1</span><span class="quick-value" data-total="1-2">2</span><span class="quick-value" data-total="1-3">3</span><span class="quick-value" data-total="1-4">4</span><span class="quick-value" data-total="1-5">5</span><span class="quick-value" data-total="1-6">6</span><span class="quick-value" data-total="1-7">7</span><span class="quick-value" data-total="1-8">8</span><span class="quick-value" data-total="1-9">9</span><span class="quick-value" data-total="1-10">10</span></small></div><strong><span class="quick-value" data-total="1-1">€ 8,90</span><span class="quick-value" data-total="1-2">€ 17,80</span><span class="quick-value" data-total="1-3">€ 26,70</span><span class="quick-value" data-total="1-4">€ 35,60</span><span class="quick-value" data-total="1-5">€ 44,50</span><span class="quick-value" data-total="1-6">€ 53,40</span><span class="quick-value" data-total="1-7">€ 62,30</span><span class="quick-value" data-total="1-8">€ 71,20</span><span class="quick-value" data-total="1-9">€ 80,10</span><span class="quick-value" data-total="1-10">€ 89,00</span></strong></div><div class="native-line native-line-3"><span class="native-thumb product-thumb-3" aria-hidden="true"></span><div><strong>Ricambio o componente</strong><p>Dimensioni da definire</p><small>Quantità: <span class="quick-value" data-total="3-1">1</span><span class="quick-value" data-total="3-2">2</span><span class="quick-value" data-total="3-3">3</span><span class="quick-value" data-total="3-4">4</span><span class="quick-value" data-total="3-5">5</span><span class="quick-value" data-total="3-6">6</span><span class="quick-value" data-total="3-7">7</span><span class="quick-value" data-total="3-8">8</span><span class="quick-value" data-total="3-9">9</span><span class="quick-value" data-total="3-10">10</span></small></div><strong>Su preventivo</strong></div><div class="native-line native-line-2"><span class="native-thumb product-thumb-2" aria-hidden="true"></span><div><strong>Oggetto personalizzato</strong><p>Progetto su misura</p><small>Quantità: <span class="quick-value" data-total="2-1">1</span><span class="quick-value" data-total="2-2">2</span><span class="quick-value" data-total="2-3">3</span><span class="quick-value" data-total="2-4">4</span><span class="quick-value" data-total="2-5">5</span><span class="quick-value" data-total="2-6">6</span><span class="quick-value" data-total="2-7">7</span><span class="quick-value" data-total="2-8">8</span><span class="quick-value" data-total="2-9">9</span><span class="quick-value" data-total="2-10">10</span></small></div><strong>Su preventivo</strong></div><p class="selection-total native-priced-total"><strong>Subtotale indicativo</strong><b class="native-total"></b></p><div class="payment-placeholder native-payment"><strong>Pagamento con Stripe</strong><p>Ogni link apre il pagamento del singolo prodotto. Controlla quantità, prezzo e spedizione su Stripe prima di pagare. Questi link Stripe sono per il singolo prodotto: quantità, importi del carrello e spedizione NON sono trasferiti automaticamente. Se vuoi più articoli o quantità, contattaci prima di pagare.</p><div class="stripe-pay-actions"><a class="btn btn-accent stripe-pay-native" data-stripe-product="0" href="https://buy.stripe.com/7sY00i0XZ7jV55x7aLbo404">Paga con Stripe · Vaso geometrico</a><a class="btn btn-accent stripe-pay-native" data-stripe-product="1" href="https://buy.stripe.com/bJe3cugWX0VxfKbeDdbo401">Paga con Stripe · Portachiavi e gadget</a></div></div><p class="quote-summary">Gli articoli su preventivo sono inclusi nel riepilogo. Il loro prezzo verrà definito separatamente.</p><a href="#contatti" class="btn btn-accent native-quote-link">Richiedi preventivo →</a></div></section><section id="checkout-prodotto-1" class="section quick-checkout-page" aria-labelledby="checkout-prodotto-title-1">
-      <div class="wrap checkout-card">
-        <a class="back-button" href="#selezione-1">← Torna al carrello</a>
-        <p class="eyebrow dark">Riepilogo ordine</p>
-        <h2 id="checkout-prodotto-title-1">Checkout</h2>
-        <div class="quick-order-line"><div class="quick-order-product"><img class="quick-checkout-image" src="assets/product-1-360.webp" width="360" height="242" alt="Foto del prodotto" loading="lazy" decoding="async"><div><strong class="quick-title">Portachiavi e gadget</strong><p class="quick-variant">Arancione e bianco</p><p>Quantità: <b><span class="quick-value" data-total="1-1">1</span><span class="quick-value" data-total="1-2">2</span><span class="quick-value" data-total="1-3">3</span><span class="quick-value" data-total="1-4">4</span><span class="quick-value" data-total="1-5">5</span><span class="quick-value" data-total="1-6">6</span><span class="quick-value" data-total="1-7">7</span><span class="quick-value" data-total="1-8">8</span><span class="quick-value" data-total="1-9">9</span><span class="quick-value" data-total="1-10">10</span></b></p></div></div><strong><span class="quick-value" data-total="1-1">€ 8,90</span><span class="quick-value" data-total="1-2">€ 17,80</span><span class="quick-value" data-total="1-3">€ 26,70</span><span class="quick-value" data-total="1-4">€ 35,60</span><span class="quick-value" data-total="1-5">€ 44,50</span><span class="quick-value" data-total="1-6">€ 53,40</span><span class="quick-value" data-total="1-7">€ 62,30</span><span class="quick-value" data-total="1-8">€ 71,20</span><span class="quick-value" data-total="1-9">€ 80,10</span><span class="quick-value" data-total="1-10">€ 89,00</span></strong></div>
-        <p class="checkout-total"><strong>Subtotale indicativo</strong><b><span class="quick-value" data-total="1-1">€ 8,90</span><span class="quick-value" data-total="1-2">€ 17,80</span><span class="quick-value" data-total="1-3">€ 26,70</span><span class="quick-value" data-total="1-4">€ 35,60</span><span class="quick-value" data-total="1-5">€ 44,50</span><span class="quick-value" data-total="1-6">€ 53,40</span><span class="quick-value" data-total="1-7">€ 62,30</span><span class="quick-value" data-total="1-8">€ 71,20</span><span class="quick-value" data-total="1-9">€ 80,10</span><span class="quick-value" data-total="1-10">€ 89,00</span></b></p>
-        <div class="payment-placeholder"><strong>Pagamento con Stripe</strong><p>Ogni link apre il pagamento del singolo prodotto. Controlla quantità, prezzo e spedizione su Stripe prima di pagare. Questi link Stripe sono per il singolo prodotto: quantità, importi del carrello e spedizione NON sono trasferiti automaticamente. Se vuoi più articoli o quantità, contattaci prima di pagare.</p><div class="stripe-pay-actions"><a class="btn btn-accent stripe-pay-single" data-stripe-product="1" href="https://buy.stripe.com/bJe3cugWX0VxfKbeDdbo401">Paga con Stripe · Portachiavi e gadget</a></div></div>
-      </div>
-    </section><section id="checkout-prodotto-0" class="section quick-checkout-page" aria-labelledby="checkout-prodotto-title-0">
-      <div class="wrap checkout-card">
-        <a class="back-button" href="#selezione-0">← Torna al carrello</a>
-        <p class="eyebrow dark">Riepilogo ordine</p>
-        <h2 id="checkout-prodotto-title-0">Checkout</h2>
-        <div class="quick-order-line"><div class="quick-order-product"><img class="quick-checkout-image" src="assets/product-0-360.webp" width="360" height="242" alt="Foto del prodotto" loading="lazy" decoding="async"><div><strong class="quick-title">Vaso geometrico</strong><p class="quick-variant">Verde salvia</p><p>Quantità: <b><span class="quick-value" data-total="0-1">1</span><span class="quick-value" data-total="0-2">2</span><span class="quick-value" data-total="0-3">3</span><span class="quick-value" data-total="0-4">4</span><span class="quick-value" data-total="0-5">5</span><span class="quick-value" data-total="0-6">6</span><span class="quick-value" data-total="0-7">7</span><span class="quick-value" data-total="0-8">8</span><span class="quick-value" data-total="0-9">9</span><span class="quick-value" data-total="0-10">10</span></b></p></div></div><strong><span class="quick-value" data-total="0-1">€ 67,00</span><span class="quick-value" data-total="0-2">€ 134,00</span><span class="quick-value" data-total="0-3">€ 201,00</span><span class="quick-value" data-total="0-4">€ 268,00</span><span class="quick-value" data-total="0-5">€ 335,00</span><span class="quick-value" data-total="0-6">€ 402,00</span><span class="quick-value" data-total="0-7">€ 469,00</span><span class="quick-value" data-total="0-8">€ 536,00</span><span class="quick-value" data-total="0-9">€ 603,00</span><span class="quick-value" data-total="0-10">€ 670,00</span></strong></div>
-        <p class="checkout-total"><strong>Subtotale indicativo</strong><b><span class="quick-value" data-total="0-1">€ 67,00</span><span class="quick-value" data-total="0-2">€ 134,00</span><span class="quick-value" data-total="0-3">€ 201,00</span><span class="quick-value" data-total="0-4">€ 268,00</span><span class="quick-value" data-total="0-5">€ 335,00</span><span class="quick-value" data-total="0-6">€ 402,00</span><span class="quick-value" data-total="0-7">€ 469,00</span><span class="quick-value" data-total="0-8">€ 536,00</span><span class="quick-value" data-total="0-9">€ 603,00</span><span class="quick-value" data-total="0-10">€ 670,00</span></b></p>
-        <div class="payment-placeholder"><strong>Pagamento con Stripe</strong><p>Ogni link apre il pagamento del singolo prodotto. Controlla quantità, prezzo e spedizione su Stripe prima di pagare. Questi link Stripe sono per il singolo prodotto: quantità, importi del carrello e spedizione NON sono trasferiti automaticamente. Se vuoi più articoli o quantità, contattaci prima di pagare.</p><div class="stripe-pay-actions"><a class="btn btn-accent stripe-pay-single" data-stripe-product="0" href="https://buy.stripe.com/7sY00i0XZ7jV55x7aLbo404">Paga con Stripe · Vaso geometrico</a></div></div>
-      </div>
-    </section><footer class="site-footer">
-    <div class="wrap footer-docs" id="documenti"><p class="eyebrow">Su Misura 3D · Informazioni</p><p class="footer-statement">I prodotti in preordine<br> vengono realizzati su richiesta.</p><nav aria-label="Informazioni e condizioni"><a href="#info-condizioni">Condizioni generali di vendita</a><a href="#info-resi">Recesso, resi e rimborsi</a><a href="#info-spedizioni">Spedizioni e consegne</a><a href="#info-garanzia">Garanzia legale di conformità</a><a href="#info-privacy">Informativa privacy</a><a href="#info-cookie">Cookie policy</a><a href="#info-note-legali">Note legali</a></nav></div><div class="wrap foot">
-      <div>
-        <p class="brand-line">Su Misura <b>3D</b></p>
-        <p>Oggetti stampati in 3D, anche su misura.</p>
-        <!-- Compilato dallo script solo se in CONFIG.CONTACT_INFO ci sono dati reali (email, telefono, social, P. IVA, privacy) -->
-        <ul class="foot-info" id="footerInfo" hidden></ul>
-      </div>
-      <nav aria-label="Footer" id="footNav">
-        <a href="#prodotti">Prodotti</a>
-        <a href="#su-misura">Su misura</a>
-        <a href="#faq">Domande</a>
-        <a href="#contatti">Contatti</a>
-      </nav>
-      <section class="footer-contact" aria-labelledby="footer-contact-title">
-  <h2 id="footer-contact-title">Contatti</h2>
-  <address>
-    <a href="https://wa.me/393518148844" target="_blank" rel="noopener noreferrer"><strong>WhatsApp · Manuel</strong><span>+39 351 814 8844</span></a>
-  </address>
-</section><p class="small footer-copyright">© <span id="year">2026</span> Su Misura 3D</p>
+<section class="section-tight" aria-labelledby="servizi-title">
+  <div class="wrap">
+    <h2 id="servizi-title" class="sr-only">Cosa realizziamo</h2>
+    <div class="services">
+      <div class="service"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M24 6l3 5 6-1 1 6 5 3-3 5 3 5-5 3-1 6-6-1-3 5-3-5-6 1-1-6-5-3 3-5-3-5 5-3 1-6 6 1z"/><circle cx="24" cy="24" r="6"/></svg><h3>Ricambi introvabili</h3><p>Il pezzo non si produce più o non si trova? Lo ricostruiamo dalle misure o dall'originale.</p><a href="catalogo.html#ricambi">Vedi i ricambi</a></div>
+      <div class="service"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M24 5 41 14.5v19L24 43 7 33.5v-19z"/><path d="M7 14.5 24 24l17-9.5M24 24v19" stroke-dasharray="3 3"/></svg><h3>Prototipi</h3><p>Dall'idea all'oggetto da tenere in mano, per verificare forme, ingombri e incastri.</p><a href="contatti.html#richiesta">Parlaci del progetto</a></div>
+      <div class="service"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M8 40 40 8"/><path d="M14 34l3 3M19 29l2 2M24 24l3 3M29 19l2 2M34 14l3 3"/><path d="M6 42h10M42 6v10" /></svg><h3>Progetti su misura</h3><p>Oggetti personalizzati per casa, lavoro e hobby, nelle dimensioni che ti servono.</p><a href="catalogo.html#su-misura">Scopri come funziona</a></div>
     </div>
-  </footer>
+  </div>
+</section>
 
-  <div id="cartShade" hidden aria-hidden="true"></div><section id="cart" aria-labelledby="cartTitle" class="cart-panel" hidden="" role="dialog" aria-modal="true">
-<div class="wrap cart-wrap"><div class="drawer-head"><div><p class="eyebrow dark">Su Misura 3D</p><h2 id="cartTitle" tabindex="-1">Il tuo carrello</h2><p class="drawer-kicker">I pezzi che hai scelto, tutti qui.</p><p id="cartFeedback" role="status"></p></div><a id="closeCart" aria-label="Chiudi carrello" href="#prodotti" class="drawer-close">×</a></div>
-<div id="cartItems">Il carrello è vuoto. Esplora il catalogo per aggiungere un articolo.<p class="cart-static-note">Se il contatore rimane a zero dopo aver scelto un prodotto, scarica il file e aprilo direttamente in Chrome, Safari o Edge.</p></div>
-<div id="nativeCart"><p class="native-empty">Il carrello è vuoto.</p><div class="native-line native-line-0"><span class="native-thumb product-thumb-0" aria-hidden="true"></span><div><strong>Vaso geometrico</strong><p>Verde salvia</p><small>Quantità: <span class="quick-value" data-total="0-1">1</span><span class="quick-value" data-total="0-2">2</span><span class="quick-value" data-total="0-3">3</span><span class="quick-value" data-total="0-4">4</span><span class="quick-value" data-total="0-5">5</span><span class="quick-value" data-total="0-6">6</span><span class="quick-value" data-total="0-7">7</span><span class="quick-value" data-total="0-8">8</span><span class="quick-value" data-total="0-9">9</span><span class="quick-value" data-total="0-10">10</span></small></div><strong><span class="quick-value" data-total="0-1">€ 67,00</span><span class="quick-value" data-total="0-2">€ 134,00</span><span class="quick-value" data-total="0-3">€ 201,00</span><span class="quick-value" data-total="0-4">€ 268,00</span><span class="quick-value" data-total="0-5">€ 335,00</span><span class="quick-value" data-total="0-6">€ 402,00</span><span class="quick-value" data-total="0-7">€ 469,00</span><span class="quick-value" data-total="0-8">€ 536,00</span><span class="quick-value" data-total="0-9">€ 603,00</span><span class="quick-value" data-total="0-10">€ 670,00</span></strong><div class="native-tools"><a href="#selezione-0">Modifica quantità</a><label for="salva-0">Rimuovi</label></div></div><div class="native-line native-line-1"><span class="native-thumb product-thumb-1" aria-hidden="true"></span><div><strong>Portachiavi e gadget</strong><p>Arancione e bianco</p><small>Quantità: <span class="quick-value" data-total="1-1">1</span><span class="quick-value" data-total="1-2">2</span><span class="quick-value" data-total="1-3">3</span><span class="quick-value" data-total="1-4">4</span><span class="quick-value" data-total="1-5">5</span><span class="quick-value" data-total="1-6">6</span><span class="quick-value" data-total="1-7">7</span><span class="quick-value" data-total="1-8">8</span><span class="quick-value" data-total="1-9">9</span><span class="quick-value" data-total="1-10">10</span></small></div><strong><span class="quick-value" data-total="1-1">€ 8,90</span><span class="quick-value" data-total="1-2">€ 17,80</span><span class="quick-value" data-total="1-3">€ 26,70</span><span class="quick-value" data-total="1-4">€ 35,60</span><span class="quick-value" data-total="1-5">€ 44,50</span><span class="quick-value" data-total="1-6">€ 53,40</span><span class="quick-value" data-total="1-7">€ 62,30</span><span class="quick-value" data-total="1-8">€ 71,20</span><span class="quick-value" data-total="1-9">€ 80,10</span><span class="quick-value" data-total="1-10">€ 89,00</span></strong><div class="native-tools"><a href="#selezione-1">Modifica quantità</a><label for="salva-1">Rimuovi</label></div></div><div class="native-line native-line-3"><span class="native-thumb product-thumb-3" aria-hidden="true"></span><div><strong>Ricambio o componente</strong><p>Dimensioni da definire</p><small>Quantità: <span class="quick-value" data-total="3-1">1</span><span class="quick-value" data-total="3-2">2</span><span class="quick-value" data-total="3-3">3</span><span class="quick-value" data-total="3-4">4</span><span class="quick-value" data-total="3-5">5</span><span class="quick-value" data-total="3-6">6</span><span class="quick-value" data-total="3-7">7</span><span class="quick-value" data-total="3-8">8</span><span class="quick-value" data-total="3-9">9</span><span class="quick-value" data-total="3-10">10</span></small></div><strong>Su preventivo</strong><div class="native-tools"><a href="#selezione-3">Modifica quantità</a><label for="salva-3">Rimuovi</label></div></div><div class="native-line native-line-2"><span class="native-thumb product-thumb-2" aria-hidden="true"></span><div><strong>Oggetto personalizzato</strong><p>Progetto su misura</p><small>Quantità: <span class="quick-value" data-total="2-1">1</span><span class="quick-value" data-total="2-2">2</span><span class="quick-value" data-total="2-3">3</span><span class="quick-value" data-total="2-4">4</span><span class="quick-value" data-total="2-5">5</span><span class="quick-value" data-total="2-6">6</span><span class="quick-value" data-total="2-7">7</span><span class="quick-value" data-total="2-8">8</span><span class="quick-value" data-total="2-9">9</span><span class="quick-value" data-total="2-10">10</span></small></div><strong>Su preventivo</strong><div class="native-tools"><a href="#selezione-2">Modifica quantità</a><label for="salva-2">Rimuovi</label></div></div><div class="native-actions"><p class="selection-total native-priced-total"><strong>Subtotale indicativo</strong><b class="native-total"></b></p><a href="#checkout-salvato" class="btn btn-accent native-pay-link">Vai al checkout</a><a href="#contatti" class="btn btn-accent native-quote-link">Richiedi preventivo →</a><a class="btn btn-dark" href="#prodotti">Continua a esplorare</a></div></div><div class="drawer-foot" id="cartFooter" hidden><p id="cartPricedTotal"><strong>Subtotale</strong><output id="cartTotal"></output></p><p class="form-note">Totale indicativo. Il pagamento avviene su Stripe per singolo prodotto.</p><a id="openCheckout" class="btn btn-accent" href="#checkout">Vai al checkout</a><a class="btn btn-ghost quote-link" href="#contatti" id="cartQuote" hidden>Richiedi un preventivo</a><p class="form-note" id="cartStorageStatus" aria-live="polite"></p><button class="btn btn-dark" id="keepExploring" type="button">Continua a esplorare</button></div>
-<noscript><p>Il carrello richiede JavaScript. Apri il file scaricato in Chrome, Safari o Edge con JavaScript attivo.</p></noscript><article id="selezione-0" class="static-selection">
-      <p class="eyebrow dark">Prodotto selezionato</p>
-      <div class="selection-line"><span class="selection-thumb product-thumb-0" aria-hidden="true"></span><div><h3>Vaso geometrico</h3><p>Verde salvia</p><span class="selection-qty">€ 67,00 per pezzo</span></div></div>
-      <fieldset class="quick-quantity"><legend>Quantità</legend><div class="quantity-stepper"><input type="radio" name="qty-0" value="1" checked id="qty-0-1" aria-label="1 pezzi" class="sr"><div class="step-state" data-step="1"><span class="step-control" aria-hidden="true">−</span><output>1</output><label class="step-control" for="qty-0-2" aria-label="Aumenta quantità">+</label></div><input type="radio" name="qty-0" value="2" id="qty-0-2" aria-label="2 pezzi" class="sr"><div class="step-state" data-step="2"><label class="step-control" for="qty-0-1" aria-label="Diminuisci quantità">−</label><output>2</output><label class="step-control" for="qty-0-3" aria-label="Aumenta quantità">+</label></div><input type="radio" name="qty-0" value="3" id="qty-0-3" aria-label="3 pezzi" class="sr"><div class="step-state" data-step="3"><label class="step-control" for="qty-0-2" aria-label="Diminuisci quantità">−</label><output>3</output><label class="step-control" for="qty-0-4" aria-label="Aumenta quantità">+</label></div><input type="radio" name="qty-0" value="4" id="qty-0-4" aria-label="4 pezzi" class="sr"><div class="step-state" data-step="4"><label class="step-control" for="qty-0-3" aria-label="Diminuisci quantità">−</label><output>4</output><label class="step-control" for="qty-0-5" aria-label="Aumenta quantità">+</label></div><input type="radio" name="qty-0" value="5" id="qty-0-5" aria-label="5 pezzi" class="sr"><div class="step-state" data-step="5"><label class="step-control" for="qty-0-4" aria-label="Diminuisci quantità">−</label><output>5</output><label class="step-control" for="qty-0-6" aria-label="Aumenta quantità">+</label></div><input type="radio" name="qty-0" value="6" id="qty-0-6" aria-label="6 pezzi" class="sr"><div class="step-state" data-step="6"><label class="step-control" for="qty-0-5" aria-label="Diminuisci quantità">−</label><output>6</output><label class="step-control" for="qty-0-7" aria-label="Aumenta quantità">+</label></div><input type="radio" name="qty-0" value="7" id="qty-0-7" aria-label="7 pezzi" class="sr"><div class="step-state" data-step="7"><label class="step-control" for="qty-0-6" aria-label="Diminuisci quantità">−</label><output>7</output><label class="step-control" for="qty-0-8" aria-label="Aumenta quantità">+</label></div><input type="radio" name="qty-0" value="8" id="qty-0-8" aria-label="8 pezzi" class="sr"><div class="step-state" data-step="8"><label class="step-control" for="qty-0-7" aria-label="Diminuisci quantità">−</label><output>8</output><label class="step-control" for="qty-0-9" aria-label="Aumenta quantità">+</label></div><input type="radio" name="qty-0" value="9" id="qty-0-9" aria-label="9 pezzi" class="sr"><div class="step-state" data-step="9"><label class="step-control" for="qty-0-8" aria-label="Diminuisci quantità">−</label><output>9</output><label class="step-control" for="qty-0-10" aria-label="Aumenta quantità">+</label></div><input type="radio" name="qty-0" value="10" id="qty-0-10" aria-label="10 pezzi" class="sr"><div class="step-state" data-step="10"><label class="step-control" for="qty-0-9" aria-label="Diminuisci quantità">−</label><output>10</output><span class="step-control" aria-hidden="true">+</span></div></div></fieldset><p class="selection-total"><strong>Subtotale indicativo</strong><b><span class="quick-value" data-total="0-1">€ 67,00</span><span class="quick-value" data-total="0-2">€ 134,00</span><span class="quick-value" data-total="0-3">€ 201,00</span><span class="quick-value" data-total="0-4">€ 268,00</span><span class="quick-value" data-total="0-5">€ 335,00</span><span class="quick-value" data-total="0-6">€ 402,00</span><span class="quick-value" data-total="0-7">€ 469,00</span><span class="quick-value" data-total="0-8">€ 536,00</span><span class="quick-value" data-total="0-9">€ 603,00</span><span class="quick-value" data-total="0-10">€ 670,00</span></b></p>
-      <p class="form-note">Salva l’articolo nel carrello. Prima di pagare, verifica i dettagli su Stripe.</p>
-      <input type="checkbox" id="salva-0" class="sr saved-product" aria-label="Salva prodotto nel carrello"><label for="salva-0" class="btn btn-accent save-choice"><span class="save-inactive">Salva nel carrello</span><span class="save-active">✓ Nel carrello</span></label><a href="#cart" class="btn btn-accent saved-checkout-link">Apri il carrello →</a><a class="btn btn-dark continue-saved" href="#prodotti">Continua a esplorare</a>
-    </article><article id="selezione-1" class="static-selection">
-      <p class="eyebrow dark">Prodotto selezionato</p>
-      <div class="selection-line"><span class="selection-thumb product-thumb-1" aria-hidden="true"></span><div><h3>Portachiavi e gadget</h3><p>Arancione e bianco</p><span class="selection-qty">€ 8,90 per pezzo</span></div></div>
-      <fieldset class="quick-quantity"><legend>Quantità</legend><div class="quantity-stepper"><input type="radio" name="qty-1" value="1" checked id="qty-1-1" aria-label="1 pezzi" class="sr"><div class="step-state" data-step="1"><span class="step-control" aria-hidden="true">−</span><output>1</output><label class="step-control" for="qty-1-2" aria-label="Aumenta quantità">+</label></div><input type="radio" name="qty-1" value="2" id="qty-1-2" aria-label="2 pezzi" class="sr"><div class="step-state" data-step="2"><label class="step-control" for="qty-1-1" aria-label="Diminuisci quantità">−</label><output>2</output><label class="step-control" for="qty-1-3" aria-label="Aumenta quantità">+</label></div><input type="radio" name="qty-1" value="3" id="qty-1-3" aria-label="3 pezzi" class="sr"><div class="step-state" data-step="3"><label class="step-control" for="qty-1-2" aria-label="Diminuisci quantità">−</label><output>3</output><label class="step-control" for="qty-1-4" aria-label="Aumenta quantità">+</label></div><input type="radio" name="qty-1" value="4" id="qty-1-4" aria-label="4 pezzi" class="sr"><div class="step-state" data-step="4"><label class="step-control" for="qty-1-3" aria-label="Diminuisci quantità">−</label><output>4</output><label class="step-control" for="qty-1-5" aria-label="Aumenta quantità">+</label></div><input type="radio" name="qty-1" value="5" id="qty-1-5" aria-label="5 pezzi" class="sr"><div class="step-state" data-step="5"><label class="step-control" for="qty-1-4" aria-label="Diminuisci quantità">−</label><output>5</output><label class="step-control" for="qty-1-6" aria-label="Aumenta quantità">+</label></div><input type="radio" name="qty-1" value="6" id="qty-1-6" aria-label="6 pezzi" class="sr"><div class="step-state" data-step="6"><label class="step-control" for="qty-1-5" aria-label="Diminuisci quantità">−</label><output>6</output><label class="step-control" for="qty-1-7" aria-label="Aumenta quantità">+</label></div><input type="radio" name="qty-1" value="7" id="qty-1-7" aria-label="7 pezzi" class="sr"><div class="step-state" data-step="7"><label class="step-control" for="qty-1-6" aria-label="Diminuisci quantità">−</label><output>7</output><label class="step-control" for="qty-1-8" aria-label="Aumenta quantità">+</label></div><input type="radio" name="qty-1" value="8" id="qty-1-8" aria-label="8 pezzi" class="sr"><div class="step-state" data-step="8"><label class="step-control" for="qty-1-7" aria-label="Diminuisci quantità">−</label><output>8</output><label class="step-control" for="qty-1-9" aria-label="Aumenta quantità">+</label></div><input type="radio" name="qty-1" value="9" id="qty-1-9" aria-label="9 pezzi" class="sr"><div class="step-state" data-step="9"><label class="step-control" for="qty-1-8" aria-label="Diminuisci quantità">−</label><output>9</output><label class="step-control" for="qty-1-10" aria-label="Aumenta quantità">+</label></div><input type="radio" name="qty-1" value="10" id="qty-1-10" aria-label="10 pezzi" class="sr"><div class="step-state" data-step="10"><label class="step-control" for="qty-1-9" aria-label="Diminuisci quantità">−</label><output>10</output><span class="step-control" aria-hidden="true">+</span></div></div></fieldset><p class="selection-total"><strong>Subtotale indicativo</strong><b><span class="quick-value" data-total="1-1">€ 8,90</span><span class="quick-value" data-total="1-2">€ 17,80</span><span class="quick-value" data-total="1-3">€ 26,70</span><span class="quick-value" data-total="1-4">€ 35,60</span><span class="quick-value" data-total="1-5">€ 44,50</span><span class="quick-value" data-total="1-6">€ 53,40</span><span class="quick-value" data-total="1-7">€ 62,30</span><span class="quick-value" data-total="1-8">€ 71,20</span><span class="quick-value" data-total="1-9">€ 80,10</span><span class="quick-value" data-total="1-10">€ 89,00</span></b></p>
-      <p class="form-note">Salva l’articolo nel carrello. Prima di pagare, verifica i dettagli su Stripe.</p>
-      <input type="checkbox" id="salva-1" class="sr saved-product" aria-label="Salva prodotto nel carrello"><label for="salva-1" class="btn btn-accent save-choice"><span class="save-inactive">Salva nel carrello</span><span class="save-active">✓ Nel carrello</span></label><a href="#cart" class="btn btn-accent saved-checkout-link">Apri il carrello →</a><a class="btn btn-dark continue-saved" href="#prodotti">Continua a esplorare</a>
-    </article><article id="selezione-3" class="static-selection">
-      <p class="eyebrow dark">Prodotto selezionato</p>
-      <div class="selection-line"><span class="selection-thumb product-thumb-3" aria-hidden="true"></span><div><h3>Ricambio o componente</h3><p>Dimensioni da definire</p><span class="selection-qty">Prezzo su preventivo</span></div></div>
-      <fieldset class="quick-quantity"><legend>Quantità</legend><div class="quantity-stepper"><input type="radio" name="qty-3" value="1" checked id="qty-3-1" aria-label="1 pezzi" class="sr"><div class="step-state" data-step="1"><span class="step-control" aria-hidden="true">−</span><output>1</output><label class="step-control" for="qty-3-2" aria-label="Aumenta quantità">+</label></div><input type="radio" name="qty-3" value="2" id="qty-3-2" aria-label="2 pezzi" class="sr"><div class="step-state" data-step="2"><label class="step-control" for="qty-3-1" aria-label="Diminuisci quantità">−</label><output>2</output><label class="step-control" for="qty-3-3" aria-label="Aumenta quantità">+</label></div><input type="radio" name="qty-3" value="3" id="qty-3-3" aria-label="3 pezzi" class="sr"><div class="step-state" data-step="3"><label class="step-control" for="qty-3-2" aria-label="Diminuisci quantità">−</label><output>3</output><label class="step-control" for="qty-3-4" aria-label="Aumenta quantità">+</label></div><input type="radio" name="qty-3" value="4" id="qty-3-4" aria-label="4 pezzi" class="sr"><div class="step-state" data-step="4"><label class="step-control" for="qty-3-3" aria-label="Diminuisci quantità">−</label><output>4</output><label class="step-control" for="qty-3-5" aria-label="Aumenta quantità">+</label></div><input type="radio" name="qty-3" value="5" id="qty-3-5" aria-label="5 pezzi" class="sr"><div class="step-state" data-step="5"><label class="step-control" for="qty-3-4" aria-label="Diminuisci quantità">−</label><output>5</output><label class="step-control" for="qty-3-6" aria-label="Aumenta quantità">+</label></div><input type="radio" name="qty-3" value="6" id="qty-3-6" aria-label="6 pezzi" class="sr"><div class="step-state" data-step="6"><label class="step-control" for="qty-3-5" aria-label="Diminuisci quantità">−</label><output>6</output><label class="step-control" for="qty-3-7" aria-label="Aumenta quantità">+</label></div><input type="radio" name="qty-3" value="7" id="qty-3-7" aria-label="7 pezzi" class="sr"><div class="step-state" data-step="7"><label class="step-control" for="qty-3-6" aria-label="Diminuisci quantità">−</label><output>7</output><label class="step-control" for="qty-3-8" aria-label="Aumenta quantità">+</label></div><input type="radio" name="qty-3" value="8" id="qty-3-8" aria-label="8 pezzi" class="sr"><div class="step-state" data-step="8"><label class="step-control" for="qty-3-7" aria-label="Diminuisci quantità">−</label><output>8</output><label class="step-control" for="qty-3-9" aria-label="Aumenta quantità">+</label></div><input type="radio" name="qty-3" value="9" id="qty-3-9" aria-label="9 pezzi" class="sr"><div class="step-state" data-step="9"><label class="step-control" for="qty-3-8" aria-label="Diminuisci quantità">−</label><output>9</output><label class="step-control" for="qty-3-10" aria-label="Aumenta quantità">+</label></div><input type="radio" name="qty-3" value="10" id="qty-3-10" aria-label="10 pezzi" class="sr"><div class="step-state" data-step="10"><label class="step-control" for="qty-3-9" aria-label="Diminuisci quantità">−</label><output>10</output><span class="step-control" aria-hidden="true">+</span></div></div></fieldset><p class="form-note">Salva l’articolo una volta. Puoi poi modificare la quantità dal carrello.</p>
-      <input type="checkbox" id="salva-3" class="sr saved-product" aria-label="Salva prodotto nel carrello"><label for="salva-3" class="btn btn-accent save-choice"><span class="save-inactive">Salva nel carrello</span><span class="save-active">✓ Nel carrello</span></label><a href="#cart" class="btn btn-accent saved-checkout-link">Apri il carrello →</a><a class="btn btn-dark continue-saved" href="#prodotti">Continua a esplorare</a>
-    <a href="#contatti" class="btn btn-dark">Vai ai contatti</a></article><article id="selezione-2" class="static-selection">
-      <p class="eyebrow dark">Prodotto selezionato</p>
-      <div class="selection-line"><span class="selection-thumb product-thumb-2" aria-hidden="true"></span><div><h3>Oggetto personalizzato</h3><p>Progetto su misura</p><span class="selection-qty">Prezzo su preventivo</span></div></div>
-      <fieldset class="quick-quantity"><legend>Quantità</legend><div class="quantity-stepper"><input type="radio" name="qty-2" value="1" checked id="qty-2-1" aria-label="1 pezzi" class="sr"><div class="step-state" data-step="1"><span class="step-control" aria-hidden="true">−</span><output>1</output><label class="step-control" for="qty-2-2" aria-label="Aumenta quantità">+</label></div><input type="radio" name="qty-2" value="2" id="qty-2-2" aria-label="2 pezzi" class="sr"><div class="step-state" data-step="2"><label class="step-control" for="qty-2-1" aria-label="Diminuisci quantità">−</label><output>2</output><label class="step-control" for="qty-2-3" aria-label="Aumenta quantità">+</label></div><input type="radio" name="qty-2" value="3" id="qty-2-3" aria-label="3 pezzi" class="sr"><div class="step-state" data-step="3"><label class="step-control" for="qty-2-2" aria-label="Diminuisci quantità">−</label><output>3</output><label class="step-control" for="qty-2-4" aria-label="Aumenta quantità">+</label></div><input type="radio" name="qty-2" value="4" id="qty-2-4" aria-label="4 pezzi" class="sr"><div class="step-state" data-step="4"><label class="step-control" for="qty-2-3" aria-label="Diminuisci quantità">−</label><output>4</output><label class="step-control" for="qty-2-5" aria-label="Aumenta quantità">+</label></div><input type="radio" name="qty-2" value="5" id="qty-2-5" aria-label="5 pezzi" class="sr"><div class="step-state" data-step="5"><label class="step-control" for="qty-2-4" aria-label="Diminuisci quantità">−</label><output>5</output><label class="step-control" for="qty-2-6" aria-label="Aumenta quantità">+</label></div><input type="radio" name="qty-2" value="6" id="qty-2-6" aria-label="6 pezzi" class="sr"><div class="step-state" data-step="6"><label class="step-control" for="qty-2-5" aria-label="Diminuisci quantità">−</label><output>6</output><label class="step-control" for="qty-2-7" aria-label="Aumenta quantità">+</label></div><input type="radio" name="qty-2" value="7" id="qty-2-7" aria-label="7 pezzi" class="sr"><div class="step-state" data-step="7"><label class="step-control" for="qty-2-6" aria-label="Diminuisci quantità">−</label><output>7</output><label class="step-control" for="qty-2-8" aria-label="Aumenta quantità">+</label></div><input type="radio" name="qty-2" value="8" id="qty-2-8" aria-label="8 pezzi" class="sr"><div class="step-state" data-step="8"><label class="step-control" for="qty-2-7" aria-label="Diminuisci quantità">−</label><output>8</output><label class="step-control" for="qty-2-9" aria-label="Aumenta quantità">+</label></div><input type="radio" name="qty-2" value="9" id="qty-2-9" aria-label="9 pezzi" class="sr"><div class="step-state" data-step="9"><label class="step-control" for="qty-2-8" aria-label="Diminuisci quantità">−</label><output>9</output><label class="step-control" for="qty-2-10" aria-label="Aumenta quantità">+</label></div><input type="radio" name="qty-2" value="10" id="qty-2-10" aria-label="10 pezzi" class="sr"><div class="step-state" data-step="10"><label class="step-control" for="qty-2-9" aria-label="Diminuisci quantità">−</label><output>10</output><span class="step-control" aria-hidden="true">+</span></div></div></fieldset><p class="form-note">Salva l’articolo una volta. Puoi poi modificare la quantità dal carrello.</p>
-      <input type="checkbox" id="salva-2" class="sr saved-product" aria-label="Salva prodotto nel carrello"><label for="salva-2" class="btn btn-accent save-choice"><span class="save-inactive">Salva nel carrello</span><span class="save-active">✓ Nel carrello</span></label><a href="#cart" class="btn btn-accent saved-checkout-link">Apri il carrello →</a><a class="btn btn-dark continue-saved" href="#prodotti">Continua a esplorare</a>
-    <a href="#contatti" class="btn btn-dark">Vai ai contatti</a></article></div></section><!-- Pulsante WhatsApp fisso (arancione, in basso a destra) -->
-<style>
-.wa-float{position:fixed;right:max(18px,env(safe-area-inset-right,0px));bottom:max(18px,env(safe-area-inset-bottom,0px));z-index:40;display:grid;place-items:center;width:60px;height:60px;border-radius:50%;background:linear-gradient(115deg,#ffb188,#ff8650);color:#2b1b16;box-shadow:0 6px 20px rgba(255,117,70,.45),0 2px 6px rgba(0,0,0,.2);text-decoration:none;transition:transform .2s ease,box-shadow .2s ease}
-.wa-float svg{width:31px;height:31px;fill:currentColor}
-.wa-float:hover,.wa-float:focus-visible{transform:translateY(-3px) scale(1.05);box-shadow:0 10px 26px rgba(255,117,70,.6),0 3px 8px rgba(0,0,0,.25)}
-.wa-float:focus-visible{outline:2px solid #ffd0ba;outline-offset:4px}
-#cart:not([hidden]) ~ .wa-float,#cart:target ~ .wa-float{display:none}
-@media(max-width:700px){.wa-float{width:54px;height:54px}.wa-float svg{width:28px;height:28px}}
-@media(prefers-reduced-motion:reduce){.wa-float{transition:none}}
-</style>
-<a class="wa-float" href="https://wa.me/393518148844?text=Ciao%2C%20vorrei%20informazioni%20su%20Su%20Misura%203D" target="_blank" rel="noopener noreferrer" aria-label="Scrivici su WhatsApp">
-  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-</a>
-<script src="assets/app.js" defer></script>
+<section class="section" aria-labelledby="evidenza-title">
+  <div class="wrap">
+    <div class="section-head">
+      <div><h2 id="evidenza-title">In vetrina</h2><p class="muted">Scegli un pezzo per vederlo da vicino. Colore, misure e dettagli si possono adattare.</p></div>
+      <a class="btn btn-ghost btn-sm" href="catalogo.html">Tutto il catalogo</a>
+    </div>
+    <!-- Vetrina: i prodotti mostrati sono quelli con featured: true in products.js (poi gli altri, fino a 6) -->
+    <div class="showcase" id="showcase">
+      <ul class="rail" id="rail" aria-label="Prodotti in vetrina"></ul>
+      <div class="rail-panel" id="rail-panel" role="region" aria-labelledby="rail-panel-title" hidden></div>
+    </div>
+  </div>
+</section>
+
+<section class="section band-dark" aria-labelledby="come-title">
+  <div class="wrap">
+    <div class="section-head">
+      <div><h2 id="come-title">Come funziona</h2><p class="muted">Dalla richiesta al pezzo finito, senza complicazioni.</p></div>
+    </div>
+    <!-- Passaggi modificabili: adattali al tuo processo reale -->
+    <ol class="steps">
+      <li><h3>Ci scrivi</h3><p>Dal sito o su WhatsApp: descrivi il pezzo, le misure, l'uso.</p></li>
+      <li><h3>Ricevi il preventivo</h3><p>Valutiamo la richiesta e ti diciamo prezzo e tempi.</p></li>
+      <li><h3>Stampiamo</h3><p>Realizziamo il pezzo nel nostro laboratorio, strato dopo strato.</p></li>
+      <li><h3>Lo ricevi</h3><p>Consegna in 1–2 giorni dalla realizzazione.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="cta-title">
+  <div class="wrap">
+    <div class="cta-block">
+      <div>
+        <h2 id="cta-title">Hai un pezzo da rifare?</h2>
+        <p>Raccontaci cosa ti serve. Rispondiamo con una proposta e un prezzo chiaro prima di iniziare.</p>
+      </div>
+      <div class="cta-actions">
+        <a class="btn btn-dark" href="contatti.html#richiesta">Richiedi un preventivo</a>
+        <a class="btn btn-ghost" href="#" data-wa="Ciao Sumisura 3D, vorrei un preventivo per un pezzo stampato in 3D." data-requires="whatsapp" rel="noopener">Scrivici su WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-tight" aria-labelledby="rec-title" data-requires="reviewUrl">
+  <div class="wrap">
+    <div class="section-head">
+      <div><h2 id="rec-title">Hai già ricevuto un pezzo da noi?</h2><p class="muted">La tua opinione aiuta altre persone a trovare il ricambio giusto.</p></div>
+      <a class="btn" href="#" data-href-config="reviewUrl" rel="noopener">Lascia una recensione</a>
+    </div>
+  </div>
+</section>
+
+</main>
+<footer class="site-footer" id="site-footer"></footer>
+<script src="assets/js/config.js" defer></script>
+<script type="module" src="assets/js/products.js"></script>
+<script src="assets/js/app.js" defer></script>
+<script src="assets/js/home.js" defer></script>
 </body>
-</html> 
+</html>

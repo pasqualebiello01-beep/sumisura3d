@@ -1,0 +1,15 @@
+# Sumisura 3D — configurazione Cloudflare Workers (sito + checkout Stripe)
+# Pubblicazione:  npx wrangler deploy
+# Chiave Stripe:  npx wrangler secret put STRIPE_SECRET_KEY
+name = "sumisura3d"
+main = "worker.js"
+compatibility_date = "2024-09-23"
+
+[assets]
+directory = "."
+binding = "ASSETS"
+not_found_handling = "404-page"
+
+[vars]
+# Indirizzo pubblico del sito, usato per i link di ritorno da Stripe
+SITE_URL = "https://www.sumisura3d.it"

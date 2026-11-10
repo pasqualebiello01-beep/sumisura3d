@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Catalogo – Sumisura 3D</title>
+<meta name="description" content="Catalogo Sumisura 3D: ricambi, oggetti per la casa, accessori e progetti su misura stampati in 3D. Cerca, filtra e richiedi un preventivo.">
+<link rel="canonical" href="https://www.sumisura3d.it/catalogo.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Sumisura 3D">
+<meta property="og:title" content="Catalogo – Sumisura 3D">
+<meta property="og:description" content="Catalogo Sumisura 3D: ricambi, oggetti per la casa, accessori e progetti su misura stampati in 3D. Cerca, filtra e richiedi un preventivo.">
+<meta property="og:url" content="https://www.sumisura3d.it/catalogo.html">
+<meta property="og:image" content="https://www.sumisura3d.it/assets/img/og-image.jpg">
+<meta property="og:locale" content="it_IT">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#24272C">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="assets/css/style.css">
+<script>(function(){var t=null;try{t=JSON.parse(localStorage.getItem("s3d-theme"))}catch(e){}document.documentElement.dataset.theme=t||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")})();</script>
+</head>
+<body data-page="catalog">
+<a class="skip-link" href="#main">Vai al contenuto</a>
+<header class="site-header" id="site-header">
+  <noscript><div class="wrap header-inner"><a class="logo" href="index.html"><span class="logo-word">Sumisura 3D</span></a>
+  <nav class="main-nav" aria-label="Principale"><ul><li><a href="catalogo.html">Catalogo</a></li><li><a href="chi-siamo.html">Chi siamo</a></li><li><a href="faq.html">FAQ</a></li><li><a href="contatti.html">Contatti</a></li></ul></nav></div></noscript>
+</header>
+<main id="main">
+
+<section class="page-head">
+  <div class="wrap">
+    <nav class="breadcrumb" aria-label="Percorso"><ol><li><a href="index.html">Home</a></li><li aria-current="page">Catalogo</li></ol></nav>
+    <h1 id="catalog-title">Catalogo</h1>
+    <p class="lead" id="catalog-intro">Prodotti pronti da personalizzare. Non trovi quello che cerchi? Lo realizziamo su misura.</p>
+  </div>
+</section>
+<section class="wrap" aria-labelledby="catalog-title">
+  <div class="catalog">
+    <aside class="filters" id="filters" aria-label="Filtri">
+      <div class="filters-head"><h2>Filtri</h2><button class="icon-btn" type="button" data-close-filters aria-label="Chiudi i filtri"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+      <fieldset>
+        <legend>Categoria</legend>
+        <div class="chip-list" id="cat-chips"></div>
+      </fieldset>
+      <div>
+        <label class="filter-label" for="price-max">Prezzo massimo</label>
+        <input type="range" id="price-max" min="0" max="100" step="1" aria-describedby="price-out">
+        <div class="range-row"><span>0 €</span><output id="price-out" for="price-max"></output></div>
+        <label class="check" style="margin-top:.7rem"><input type="checkbox" id="include-quote" checked> Includi prodotti su preventivo</label>
+      </div>
+      <fieldset>
+        <legend>Visualizzazione</legend>
+        <label class="check"><input type="checkbox" id="only-3d"> Solo con vista 3D</label>
+      </fieldset>
+      <button type="button" class="btn btn-ghost btn-sm" id="reset-filters">Azzera i filtri</button>
+      <button type="button" class="btn btn-block filters-toggle" data-close-filters>Mostra i risultati</button>
+    </aside>
+
+    <div>
+      <div class="toolbar">
+        <div class="search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+          <label for="q" class="sr-only">Cerca nel catalogo</label>
+          <input type="search" id="q" placeholder="Cerca: ingranaggio, vaso, supporto…" autocomplete="off">
+        </div>
+        <label for="sort" class="sr-only">Ordina per</label>
+        <select id="sort" style="width:auto">
+          <option value="featured">In evidenza</option>
+          <option value="price-asc">Prezzo crescente</option>
+          <option value="price-desc">Prezzo decrescente</option>
+          <option value="name">Nome A–Z</option>
+        </select>
+        <button type="button" class="btn btn-ghost btn-sm filters-toggle" id="open-filters" aria-controls="filters" aria-expanded="false">Filtri</button>
+      </div>
+      <p class="results-count" id="results-count" role="status" aria-live="polite"></p>
+      <div class="grid-products" id="results"></div>
+    </div>
+  </div>
+</section>
+
+</main>
+<footer class="site-footer" id="site-footer"></footer>
+<script src="assets/js/config.js" defer></script>
+<script type="module" src="assets/js/products.js"></script>
+<script src="assets/js/app.js" defer></script>
+<script src="assets/js/catalog.js" defer></script>
+</body>
+</html>
