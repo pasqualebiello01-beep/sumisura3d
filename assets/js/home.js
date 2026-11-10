@@ -105,8 +105,18 @@ document.addEventListener("DOMContentLoaded", () => {
   const ICON_PAUSE = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="7" y="5" width="3.5" height="14" rx="1"/><rect x="13.5" y="5" width="3.5" height="14" rx="1"/></svg>';
   const ICON_PLAY = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5Z"/></svg>';
 
+  // Le inquadrature successive si scaricano solo dopo il caricamento della pagina
+  function loadShot(shot) {
+    const im = $("img", shot);
+    if (im && im.dataset.src) { if (im.dataset.srcset) im.srcset = im.dataset.srcset; im.src = im.dataset.src; delete im.dataset.src; delete im.dataset.srcset; }
+  }
+  const loadRest = () => shots.forEach(loadShot);
+  if (document.readyState === "complete") setTimeout(loadRest, 1200);
+  else addEventListener("load", () => ("requestIdleCallback" in window ? requestIdleCallback(loadRest, { timeout: 2500 }) : setTimeout(loadRest, 1200)));
+
   function show(i, animate = true) {
     index = (i + shots.length) % shots.length;
+    loadShot(shots[index]);
     shots.forEach((s, k) => {
       const active = k === index;
       s.classList.toggle("is-active", active);

@@ -653,4 +653,6 @@ html.no-motion .reveal { clip-path: none; }
   .hero .stage-ui { top: calc(min(78vw, 44vh) - 1.5rem); bottom: auto; right: var(--gutter); }
   .hero .stage-ui .stage-caption { display: none; }
 }
-  
+/* il blocco di testo non deve coprire i comandi del carosello (frecce e pausa) */
+.hero .hero-copy { pointer-events: none; }
+.hero .hero-copy > * { pointer-events: auto; }

@@ -18,7 +18,10 @@
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap"></noscript>
+<link rel="preload" as="image" href="assets/img/hero/hero-ingranaggio-700.webp" imagesrcset="assets/img/hero/hero-ingranaggio-700.webp 700w, assets/img/hero/hero-ingranaggio.webp 1400w" imagesizes="(max-width: 860px) 78vw, 40vw" fetchpriority="high">
 <link rel="stylesheet" href="assets/css/style.css">
 <script>(function(){var t=null;try{t=JSON.parse(localStorage.getItem("s3d-theme"))}catch(e){}document.documentElement.dataset.theme=t||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")})();</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "name": "Sumisura 3D", "url": "https://www.sumisura3d.it", "logo": "https://www.sumisura3d.it/assets/img/logo.svg", "sameAs": ["https://www.instagram.com/sumisura3d.it/"]}</script>
@@ -50,13 +53,13 @@
     <div class="stage" id="stage" role="region" aria-roledescription="carosello" aria-label="Lavori in evidenza">
       <div class="stage-progress" aria-hidden="true"><span></span></div>
       <figure class="stage-shot is-active" data-link="prodotto.html#ingranaggio-ricambio" data-title="Ingranaggio di ricambio">
-        <img src="assets/img/hero/hero-ingranaggio.webp" alt="Ingranaggio nero stampato in 3D, visto dall'alto" width="1400" height="1400" fetchpriority="high">
+        <img src="assets/img/hero/hero-ingranaggio-700.webp" srcset="assets/img/hero/hero-ingranaggio-700.webp 700w, assets/img/hero/hero-ingranaggio.webp 1400w" sizes="(max-width: 860px) 78vw, 40vw" alt="Ingranaggio nero stampato in 3D, visto dall'alto" width="1400" height="1400" fetchpriority="high" decoding="async">
       </figure>
       <figure class="stage-shot" data-link="prodotto.html#vaso-geometrico" data-title="Vaso torsione">
-        <img src="assets/img/hero/hero-vaso.webp" alt="Vaso arancione con pareti a spirale" width="1400" height="1400" loading="lazy">
+        <img data-src="assets/img/hero/hero-vaso-700.webp" data-srcset="assets/img/hero/hero-vaso-700.webp 700w, assets/img/hero/hero-vaso.webp 1400w" sizes="(max-width: 860px) 78vw, 40vw" alt="Vaso arancione con pareti a spirale" width="1400" height="1400" decoding="async">
       </figure>
       <figure class="stage-shot" data-link="prodotto.html#manopola-ricambio" data-title="Manopola zigrinata">
-        <img src="assets/img/hero/hero-manopola.webp" alt="Manopola grigia zigrinata" width="1400" height="1400" loading="lazy">
+        <img data-src="assets/img/hero/hero-manopola-700.webp" data-srcset="assets/img/hero/hero-manopola-700.webp 700w, assets/img/hero/hero-manopola.webp 1400w" sizes="(max-width: 860px) 78vw, 40vw" alt="Manopola grigia zigrinata" width="1400" height="1400" decoding="async">
       </figure>
       <div class="stage-ui">
         <a class="stage-caption" href="prodotto.html#ingranaggio-ricambio" aria-live="polite">Ingranaggio di ricambio</a>
@@ -139,4 +142,4 @@
 <script src="assets/js/app.js" defer></script>
 <script src="assets/js/home.js" defer></script>
 </body>
-</html> 
+</html>
