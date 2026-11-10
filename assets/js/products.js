@@ -48,7 +48,8 @@ export const S3D_CATEGORIES = [
 export const S3D_COLORS = {
   "Nero opaco": "#3A3C41",
   "Grigio titanio": "#8B9097",
-  "Arancione": "#FF5A1F"
+  "Arancione": "#FF5A1F",
+  "Bianco": "#E4E2DC"
 };
 
 /**
@@ -72,7 +73,7 @@ function coloreVariante(id, nome, colori) {
     }))
   };
 }
-const TRE_COLORI = ["Nero opaco", "Grigio titanio", "Arancione"];
+const TRE_COLORI = ["Nero opaco", "Grigio titanio", "Arancione", "Bianco"];
 
 export const S3D_PRODUCTS = [
   {
@@ -92,7 +93,7 @@ export const S3D_PRODUCTS = [
     ],
     model: "assets/models/ingranaggio-ricambio.glb",
     variants: [
-      coloreVariante("ingranaggio-ricambio", "Ingranaggio di ricambio", ["Nero opaco", "Grigio titanio"]),
+      coloreVariante("ingranaggio-ricambio", "Ingranaggio di ricambio", ["Nero opaco", "Grigio titanio", "Bianco"]),
       { name: "Diametro", options: [{ label: "40 mm", priceDelta: -4 }, { label: "60 mm", priceDelta: 0 }, { label: "80 mm", priceDelta: 6 }] }
     ],
     specs: [
@@ -117,7 +118,7 @@ export const S3D_PRODUCTS = [
     images: [{ src: "assets/img/prodotti/manopola-ricambio.webp", alt: "Manopola grigia cilindrica con zigrinatura verticale" }],
     model: "assets/models/manopola-ricambio-albero-a-d.glb",
     variants: [
-      coloreVariante("manopola-ricambio", "Manopola zigrinata", ["Grigio titanio", "Nero opaco", "Arancione"]),
+      coloreVariante("manopola-ricambio", "Manopola zigrinata", ["Grigio titanio", "Nero opaco", "Arancione", "Bianco"]),
       {
         name: "Attacco",
         view: 1, // quando cambia l'attacco mostra la foto da sotto
@@ -155,7 +156,7 @@ export const S3D_PRODUCTS = [
     ],
     model: "assets/models/vaso-geometrico.glb",
     variants: [
-      coloreVariante("vaso-geometrico", "Vaso torsione", ["Arancione", "Nero opaco", "Grigio titanio"]),
+      coloreVariante("vaso-geometrico", "Vaso torsione", ["Arancione", "Nero opaco", "Grigio titanio", "Bianco"]),
       { name: "Altezza", options: [{ label: "12 cm", priceDelta: 0 }, { label: "18 cm", priceDelta: 10 }] }
     ],
     specs: [{ label: "Tecnologia", value: "Stampa 3D FDM" }, { label: "Altezza", value: "12 o 18 cm" }],

@@ -352,23 +352,30 @@ if not COLORS_ONLY: print("hero ok")
 def hex_lin(h):
     h = h.lstrip("#"); c = [int(h[i:i+2], 16) / 255 for i in (0, 2, 4)]
     return [v / 12.92 if v <= 0.04045 else ((v + 0.055) / 1.055) ** 2.4 for v in c]
-COLORI = {"nero-opaco": "#3A3C41", "grigio-titanio": "#8B9097", "arancione": "#FF5A1F"}
+COLORI = {"nero-opaco": "#3A3C41", "grigio-titanio": "#8B9097", "arancione": "#FF5A1F", "bianco": "#E4E2DC"}
 PER_PRODOTTO = {
-    "ingranaggio-ricambio": ["nero-opaco", "grigio-titanio"],
-    "manopola-ricambio": ["nero-opaco", "grigio-titanio", "arancione"],
-    "vaso-geometrico": ["nero-opaco", "grigio-titanio", "arancione"],
-    "supporto-smartphone": ["nero-opaco", "grigio-titanio", "arancione"],
-    "organizer-scrivania": ["nero-opaco", "grigio-titanio", "arancione"],
+    "ingranaggio-ricambio": ["nero-opaco", "grigio-titanio", "bianco"],
+    "manopola-ricambio": ["nero-opaco", "grigio-titanio", "arancione", "bianco"],
+    "vaso-geometrico": ["nero-opaco", "grigio-titanio", "arancione", "bianco"],
+    "supporto-smartphone": ["nero-opaco", "grigio-titanio", "arancione", "bianco"],
+    "organizer-scrivania": ["nero-opaco", "grigio-titanio", "arancione", "bianco"],
 }
+# --solo=<colore> genera solo quel colore (es. --solo=bianco)
+SOLO = next((a.split("=", 1)[1] for a in sys.argv if a.startswith("--solo=")), None)
+def colori_di(name): return [c for c in PER_PRODOTTO.get(name, []) if not SOLO or c == SOLO]
+def salva_miniature(path):
+    im = Image.open(path)
+    im.resize((600, 600), Image.LANCZOS).save(path.replace(".webp", "-600.webp"), "WEBP", quality=82, method=6)
+    im.resize((300, 300), Image.LANCZOS).save(path.replace(".webp", "-300.webp"), "WEBP", quality=80, method=6)
 if "--colors" in sys.argv and "--knob" not in sys.argv:
     for name, fn, col, glb, view in items:
         hi = fn(30) if fn in (gear, organizer) else (fn(1) if fn is stand else fn(70))
-        for slug in PER_PRODOTTO.get(name, []):
+        for slug in colori_di(name):
             c = hex_lin(COLORI[slug])
             for suffix, v in (("", view), ("-dettaglio", {**view, "yaw": view["yaw"] + 140, "pitch": view["pitch"] + 6})):
                 path = f"{OUT}/assets/img/prodotti/{name}-{slug}{suffix}.webp"
                 render(hi, path, c, **v)
-                Image.open(path).resize((600, 600), Image.LANCZOS).save(path.replace(".webp", "-600.webp"), "WEBP", quality=82, method=6)
+                salva_miniature(path)
             print("colore", name, slug, flush=True)
 
 # ---------------------------------------------------------------- manopola: varianti di attacco
@@ -402,15 +409,15 @@ def knob_attacco(kind, nz=40, nt=192):
 
 ATTACCHI = ["albero-a-d", "albero-tondo", "su-misura"]
 if "--knob" in sys.argv:
-    for a in ATTACCHI:
+    for a in ([] if SOLO else ATTACCHI):
         kb = write_glb(knob_attacco(a, nz=12), f"{OUT}/assets/models/manopola-ricambio-{a}.glb", TITANIO) / 1024
         print("GLB", a, f"{kb:.0f} KB", flush=True)
     for a in ATTACCHI:
         hi = knob_attacco(a, nz=70)
-        for slug in PER_PRODOTTO["manopola-ricambio"]:
+        for slug in colori_di("manopola-ricambio"):
             c = hex_lin(COLORI[slug])
             for suffix, v, sh in (("", dict(yaw=20, pitch=30), True), ("-sotto", dict(yaw=20, pitch=-58, dist=2.3), False)):
                 path = f"{OUT}/assets/img/prodotti/manopola-ricambio-{slug}-{a}{suffix}.webp"
                 render(hi, path, c, shadow=sh, **v)
-                Image.open(path).resize((600, 600), Image.LANCZOS).save(path.replace(".webp", "-600.webp"), "WEBP", quality=82, method=6)
+                salva_miniature(path)
             print("render", a, slug, flush=True)
