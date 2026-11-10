@@ -653,3 +653,4 @@ html.no-motion .reveal { clip-path: none; }
   .hero .stage-ui { top: calc(min(78vw, 44vh) - 1.5rem); bottom: auto; right: var(--gutter); }
   .hero .stage-ui .stage-caption { display: none; }
 }
+  
