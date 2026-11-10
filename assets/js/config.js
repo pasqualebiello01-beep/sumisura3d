@@ -6,7 +6,7 @@
    ===================================================================== */
 window.S3D_CONFIG = {
   brand: "Sumisura 3D",
-  siteUrl: "https://www.sumisura3d.it",
+  siteUrl: "https://sumisura3d.it",
 
   // --- Contatti (DA COMPLETARE) -------------------------------------
   email: "",            // vuoto = non mostrata sul sito

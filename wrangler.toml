@@ -12,4 +12,4 @@ not_found_handling = "404-page"
 
 [vars]
 # Indirizzo pubblico del sito, usato per i link di ritorno da Stripe
-SITE_URL = "https://www.sumisura3d.it"
+SITE_URL = "https://sumisura3d.it"

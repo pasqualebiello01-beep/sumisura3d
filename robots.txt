@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /carrello.html
 Disallow: /ordine-confermato.html
-Sitemap: https://www.sumisura3d.it/sitemap.xml
+Sitemap: https://sumisura3d.it/sitemap.xml
