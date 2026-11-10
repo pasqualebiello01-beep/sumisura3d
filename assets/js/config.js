@@ -45,5 +45,5 @@ window.S3D_CONFIG = {
   // Stripe NON va mai inserita qui, ma nelle variabili segrete (vedi README).
   checkoutEndpoint: "/api/checkout",
   orderEndpoint: "/api/order",
-  showPlaceholders: true // false nasconde badge "Esempio" e segnaposto evidenziati
+  showPlaceholders: false // true mostra i badge "Esempio" e i segnaposto evidenziati
 };
