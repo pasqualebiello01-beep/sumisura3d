@@ -108,3 +108,8 @@ I dati reali usati provengono dalle indicazioni del brand: 8 anni di attività, 
 - **Privacy e terze parti**: l'unico servizio esterno è Google Fonts. Per non usarlo, scarica i caratteri e aggiorna il link in testa alle pagine.
 - **Accessibilità**: navigazione da tastiera, focus visibile, link "Vai al contenuto", errori dei moduli annunciati, rispetto di "riduci movimento" (niente scorrimento automatico, animazioni o parallasse).
 - **Movimento**: l'immagine della hero "si stampa" a strati al primo caricamento. I cambi di inquadratura usano una scia orizzontale, la vetrina in homepage fa crescere il prodotto scelto con un pannello che entra da destra, e nei browser compatibili l'immagine passa dalla scheda alla pagina prodotto con una transizione continua.
+
+## Nota sulla velocità della home
+Per caricare la home più in fretta, il CSS è copiato direttamente dentro `index.html` (blocco `<style id="css-in-pagina">`).
+Le altre pagine continuano a usare `assets/css/style.css`.
+Se modifichi `assets/css/style.css`, rilancia `node tools/inline-css.mjs` (oppure chiedi di aggiornare la home), altrimenti la home resta con lo stile vecchio.

@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const mp = minPrice(p);
       const price = mp == null ? "Su preventivo" : (hasPriceRange(p) ? "da " : "") + money(mp);
       return `<li><button type="button" class="rail-item" data-id="${esc(p.id)}" aria-expanded="false" aria-controls="rail-panel">
-        <img src="${esc(thumbSrc(S.imagesFor(p)[0].src))}" srcset="${esc(S.thumbSet(S.imagesFor(p)[0].src))}" sizes="(max-width: 860px) 42vw, 190px" alt="" width="600" height="600" loading="lazy" decoding="async" style="view-transition-name:p-${esc(p.id)}" onerror="${esc(S.thumbFallback(S.imagesFor(p)[0].src))}">
+        <img src="${esc(thumbSrc(S.imagesFor(p)[0].src))}" srcset="${esc(S.thumbSet(S.imagesFor(p)[0].src))}" sizes="(max-width: 860px) 38vw, 190px" alt="" width="600" height="600" loading="lazy" decoding="async" style="view-transition-name:p-${esc(p.id)}" onerror="${esc(S.thumbFallback(S.imagesFor(p)[0].src))}">
         <span class="rail-label"><strong>${esc(p.name)}</strong><span>${price}</span></span></button></li>`;
     }).join("");
     let current = null, lastTrigger = null;

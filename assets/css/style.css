@@ -661,14 +661,26 @@ html.no-motion .reveal { clip-path: none; }
    l'immagine è subito disegnata, una "tenda" con lo stesso sfondo la scopre strato dopo strato */
 .stage-shot.is-printing img { animation: none; }
 .stage-shot.is-printing::before {
-  content: ""; position: absolute; left: 0; right: 0; top: 0; z-index: 1; pointer-events: none;
+  content: ""; position: absolute; left: 0; right: 0; top: 0; height: 100%; z-index: 1; pointer-events: none; will-change: transform;
   background:
     repeating-linear-gradient(to bottom, transparent 0 5px, color-mix(in srgb, var(--ink) 5%, transparent) 5px 6px),
     radial-gradient(120% 90% at 30% 20%, var(--panel) 0%, var(--panel-2) 70%);
   background-size: 100% 100vh; background-position: top;
   animation: print-curtain 1.7s steps(26, end) both;
 }
-@keyframes print-curtain { from { height: 100%; } to { height: 0%; } }
+@keyframes print-curtain { from { transform: translateY(0); } to { transform: translateY(-100%); } }
+/* linea arancione dell'ugello: si muove con transform (animazione fluida, gestita dalla scheda grafica) */
+.stage-shot.is-printing::after {
+  top: 4%; bottom: 4%; height: auto; box-shadow: none; will-change: transform, opacity;
+  background: linear-gradient(to top,
+    transparent 0,
+    color-mix(in srgb, var(--orange) 35%, transparent) 3px,
+    var(--orange) 6px, var(--orange) 8px,
+    color-mix(in srgb, var(--orange) 35%, transparent) 11px,
+    transparent 16px);
+  animation-name: nozzle-move;
+}
+@keyframes nozzle-move { from { transform: translateY(0); opacity: 1; } 96% { opacity: 1; } to { transform: translateY(-100%); opacity: 0; } }
 @media (prefers-reduced-motion: reduce) { .stage-shot.is-printing::before { display: none; } }
 
 /* la tenda copre la prima immagine fin dal primo istante e parte quando l'immagine è arrivata */
