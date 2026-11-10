@@ -665,7 +665,7 @@ html.no-motion .reveal { clip-path: none; }
   background:
     repeating-linear-gradient(to bottom, transparent 0 5px, color-mix(in srgb, var(--ink) 5%, transparent) 5px 6px),
     radial-gradient(120% 90% at 30% 20%, var(--panel) 0%, var(--panel-2) 70%);
-  background-size: 100% var(--stage-h, 100vh); background-position: top;
+  background-size: 100% 100vh; background-position: top;
   animation: print-curtain 1.7s steps(26, end) both;
 }
 @keyframes print-curtain { from { height: 100%; } to { height: 0%; } }
