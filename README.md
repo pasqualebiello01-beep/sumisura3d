@@ -31,6 +31,8 @@ Quando un cliente invia il modulo Contatti o la richiesta di preventivo dal carr
 | Chiave Stripe | segreto `STRIPE_SECRET_KEY` sul server (mai nei file) |
 | Categorie del catalogo | `assets/js/products.js` (`S3D_CATEGORIES`) |
 | Colori e caratteri | `assets/css/style.css` (variabili in cima al file) |
+| Animazioni ed effetti (comparsa, onde sui pulsanti, menu, particelle) | `assets/js/motion.js` e la sezione "RESTYLING BIANCO & BEIGE + ANIMAZIONI" in fondo a `assets/css/style.css` |
+| Effetti avanzati: scorrimento morbido (Lenis), titoli parola per parola, parallasse, scintille, pulsanti magnetici (GSAP) | `assets/js/motion-pro.js`; da dove si caricano le librerie: `vendorBase` in `assets/js/config.js` |
 | Testi di homepage, Chi siamo, FAQ, Spedizioni, Privacy | i rispettivi file `.html` |
 | Logo | `assets/js/app.js` (costante `LOGO`), `assets/img/logo.svg`, `assets/img/favicon.svg` |
 
@@ -128,3 +130,15 @@ Quando aggiungi o cambi le foto dei prodotti, crea anche le copie JPG con `pytho
 Ogni prodotto ha una sua pagina (es. `manopola-ricambio.html`, online come sumisura3d.it/manopola-ricambio), con titolo, descrizione, foto, prezzo e dati per Google già scritti dentro. Le pagine e la `sitemap.xml` si creano con:
 `node tools/build-products.mjs`
 Rilancialo (oppure chiedi di farlo) ogni volta che aggiungi, togli o modifichi un prodotto in `assets/js/products.js`. I vecchi link `prodotto.html#id` portano in automatico alla pagina nuova.
+
+
+## Librerie per le animazioni
+`assets/js/motion-pro.js` carica [GSAP](https://github.com/greensock/GSAP) 3.15 (con ScrollTrigger e SplitText, gratuiti anche per uso commerciale) e [Lenis](https://github.com/darkroomengineering/lenis) 1.3 dal CDN jsDelivr, dopo che la pagina è già caricata. Alcuni effetti sono ispirati a [React Bits](https://github.com/DavidHDev/react-bits) (Magnet, Tilted Card, Click Spark, Split Text, Count Up, Scroll Velocity) e sono riscritti in JavaScript semplice, perché il sito non usa React.
+
+Se le librerie non si caricano, il sito funziona comunque con gli effetti di base di `motion.js`. Con "riduci animazioni" attivo sul dispositivo non si carica nulla.
+
+Per non dipendere dal CDN (e non inviare l'indirizzo IP dei visitatori a jsDelivr), scarica questi file e mettili in `assets/vendor/`, poi imposta `vendorBase: "assets/vendor/"` in `config.js`:
+- https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js
+- https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js
+- https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/SplitText.min.js
+- https://cdn.jsdelivr.net/npm/lenis@1.3.27/dist/lenis.min.js
