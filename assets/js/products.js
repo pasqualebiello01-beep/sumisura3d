@@ -217,7 +217,7 @@ export const S3D_PRODUCTS = [
       "In base all'uso scegliamo insieme il materiale più adatto tra PLA, PETG, ABS e ASA. Il prezzo dipende dal progetto e te lo comunichiamo nel preventivo su WhatsApp prima di iniziare."
     ],
     images: [
-      { src: "assets/img/prodotti/ingranaggio-ricambio-dettaglio.webp", alt: "Esempio di pezzo tecnico stampato in 3D" }
+      { src: "assets/img/prodotti/progetto-su-misura.webp", alt: "Schizzo con le misure su un foglio a quadretti e lo stesso oggetto stampato in 3D accanto" }
     ],
     model: null,
     variants: [
