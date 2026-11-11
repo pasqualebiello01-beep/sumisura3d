@@ -18,14 +18,14 @@
 <meta name="twitter:image" content="https://sumisura3d.it/assets/img/og-image.jpg">
 <meta property="og:locale" content="it_IT">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#24272C">
+<meta name="theme-color" content="#FBF8F3">
 <link rel="icon" href="/favicon.ico" sizes="48x48">
 <link rel="icon" href="/assets/img/icon-96.png" type="image/png" sizes="96x96">
 <link rel="icon" href="/assets/img/icon-192.png" type="image/png" sizes="192x192">
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
 <link rel="stylesheet" href="assets/css/style.css">
-<script>(function(){var t=null;try{t=JSON.parse(localStorage.getItem("s3d-theme"))}catch(e){}document.documentElement.dataset.theme=t||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")})();</script>
+<script>(function(){var d=document.documentElement;d.classList.add("js");if(!("onpagereveal" in window))d.classList.add("no-vt");var t=null;try{t=JSON.parse(localStorage.getItem("s3d-theme"))}catch(e){}document.documentElement.dataset.theme=t||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")})();</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Potete rifare un pezzo rotto o fuori produzione?", "acceptedAnswer": {"@type": "Answer", "text": "Sì, i ricambi introvabili sono una delle cose che facciamo più spesso. Mandaci una descrizione con misure e, se possibile, foto del pezzo: valutiamo la fattibilità e ti inviamo un preventivo."}}, {"@type": "Question", "name": "Come chiedo un preventivo?", "acceptedAnswer": {"@type": "Answer", "text": "Il preventivo serve per i pezzi su misura: aggiungili al carrello e premi \"Richiedi il preventivo su WhatsApp\", oppure usa il modulo di contatto. I prodotti del catalogo, invece, li ordini e paghi direttamente dal carrello."}}, {"@type": "Question", "name": "Il prezzo sul sito è quello finale?", "acceptedAnswer": {"@type": "Answer", "text": "Per i prodotti del catalogo sì: paghi il prezzo indicato più la spedizione con Poste Italiane (6,99 €). Per i pezzi su misura il prezzo te lo confermiamo nel preventivo prima di iniziare."}}, {"@type": "Question", "name": "Quanto tempo serve per ricevere il pezzo?", "acceptedAnswer": {"@type": "Answer", "text": "La consegna avviene in 1–2 giorni dalla realizzazione. I tempi di realizzazione dipendono dal pezzo e te li indichiamo nel preventivo."}}, {"@type": "Question", "name": "Quali materiali usate?", "acceptedAnswer": {"@type": "Answer", "text": "Stampiamo in tecnologia FDM con PLA, PETG, ABS e ASA. Il PLA è ideale per oggetti estetici e prototipi, il PETG per pezzi resistenti agli urti e all'umidità, l'ABS per ricambi meccanici e parti esposte al calore, l'ASA per i pezzi da usare all'aperto. Se non sai quale scegliere, ti consigliamo noi in base all'uso."}}, {"@type": "Question", "name": "Come posso pagare?", "acceptedAnswer": {"@type": "Answer", "text": "I prodotti del catalogo si pagano online al momento dell'ordine, con il pagamento sicuro di Stripe. Per i pezzi su misura le modalità di pagamento te le indichiamo insieme al preventivo."}}, {"@type": "Question", "name": "Posso restituire un prodotto?", "acceptedAnswer": {"@type": "Answer", "text": "Sì, per i prodotti del catalogo hai 14 giorni dalla consegna per recedere senza dare spiegazioni: usa il pulsante \"Recedi dal contratto qui\" in fondo a ogni pagina. Ci rispedisci il prodotto a tue spese e ti rimborsiamo, compresa la spedizione di andata. I prodotti su misura sono esclusi dal recesso, ma hanno comunque la garanzia legale di 2 anni."}}]}</script>
 <script>try{var c=JSON.parse(localStorage.getItem("s3d-consent"));if(c&&c.fonts===true&&Date.now()-c.date<15724800000){var l=document.createElement("link");l.id="s3d-fonts";l.rel="stylesheet";l.href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Space+Grotesk:wght@600;700&display=swap";document.head.appendChild(l)}}catch(e){}</script>
 </head>
@@ -63,5 +63,6 @@
 <script src="assets/js/config.js" defer></script>
 <script type="module" src="assets/js/products.js"></script>
 <script src="assets/js/app.js" defer></script>
+<script src="assets/js/motion.js" defer></script>
 </body>
 </html>

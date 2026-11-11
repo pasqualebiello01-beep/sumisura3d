@@ -31,6 +31,7 @@ Quando un cliente invia il modulo Contatti o la richiesta di preventivo dal carr
 | Chiave Stripe | segreto `STRIPE_SECRET_KEY` sul server (mai nei file) |
 | Categorie del catalogo | `assets/js/products.js` (`S3D_CATEGORIES`) |
 | Colori e caratteri | `assets/css/style.css` (variabili in cima al file) |
+| Animazioni ed effetti (comparsa, onde sui pulsanti, menu, particelle) | `assets/js/motion.js` e la sezione "RESTYLING BIANCO & BEIGE + ANIMAZIONI" in fondo a `assets/css/style.css` |
 | Testi di homepage, Chi siamo, FAQ, Spedizioni, Privacy | i rispettivi file `.html` |
 | Logo | `assets/js/app.js` (costante `LOGO`), `assets/img/logo.svg`, `assets/img/favicon.svg` |
 

@@ -106,7 +106,7 @@
     menu: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>',
     close: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>'
   };
-  const LOGO = `<svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 3.5 35 12 20 20.5 5 12Z" fill="#FF5A1F"/><path d="M5 12 20 20.5V37L5 28.5Z" fill="currentColor"/><path d="M35 12 20 20.5V37L35 28.5Z" fill="currentColor" opacity=".62"/><path d="M7.5 18.6 17.5 24.3M7.5 22.6 17.5 28.3M7.5 26.6 17.5 32.3" stroke="var(--bg)" stroke-width="1.1" opacity=".55"/></svg>`;
+  const LOGO = `<svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 3.5 35 12 20 20.5 5 12Z" fill="#C9AA82"/><path d="M5 12 20 20.5V37L5 28.5Z" fill="currentColor"/><path d="M35 12 20 20.5V37L35 28.5Z" fill="currentColor" opacity=".62"/><path d="M7.5 18.6 17.5 24.3M7.5 22.6 17.5 28.3M7.5 26.6 17.5 32.3" stroke="var(--bg)" stroke-width="1.1" opacity=".55"/></svg>`;
   const logoHTML = `<a class="logo" href="index.html" aria-label="Sumisura 3D, vai alla homepage">${LOGO}<span class="logo-word">Sumisura<span> 3D</span></span></a>`;
 
   /* ------------------------------------------------------------ layout */
