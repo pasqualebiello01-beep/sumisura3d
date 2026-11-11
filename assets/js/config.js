@@ -53,5 +53,12 @@ window.S3D_CONFIG = {
   checkoutEndpoint: "/api/checkout",
   orderEndpoint: "/api/order",
   withdrawalEndpoint: "/api/recesso",
-  showPlaceholders: false // true mostra i badge "Esempio" e i segnaposto evidenziati
+  showPlaceholders: false, // true mostra i badge "Esempio" e i segnaposto evidenziati
+
+  // --- Animazioni avanzate (GSAP, Lenis) ------------------------------------
+  // Da dove caricare le librerie. Per ospitarle sul tuo sito invece che dal CDN jsDelivr,
+  // copia gsap.min.js, ScrollTrigger.min.js, SplitText.min.js e lenis.min.js in assets/vendor/
+  // e scrivi qui: vendorBase: "assets/vendor/"
+  vendorBase: "https://cdn.jsdelivr.net/npm/",
+  advancedMotion: true      // false = solo gli effetti di base, senza librerie esterne
 };
